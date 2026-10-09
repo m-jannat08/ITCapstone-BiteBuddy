@@ -177,7 +177,7 @@
             font-size: 12px;
             font-weight: bold;
             cursor: pointer;
-            transition: 0.2s;
+            transition: 0.5s;
         }
 
         .join-btn:hover {
@@ -276,6 +276,44 @@
             }
 
         }
+        /* Bottom Continue to Preferences section */
+.bottom-progress {
+    width: 100%;
+    padding: 20px 5%;
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: #F8F6EF;
+}
+
+.continue-btn {
+    display: inline-block;
+    padding: 14px 28px;
+    background-color: #003D2E;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 30px;
+}
+
+.continue-btn:hover {
+    background-color: #002F24;
+    color: #8AF23A;
+}
+
+@media (max-width: 600px) {
+    .bottom-progress {
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .continue-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
 
     </style>
 
@@ -446,6 +484,12 @@
 
 
     </main>
+    <!-- CONTINUE TO PREFERENCES -->
+<section class="bottom-progress">
+    <a href="preferences.html" class="continue-btn">
+        Continue to Preferences →
+    </a>
+</section>
 
 
 
