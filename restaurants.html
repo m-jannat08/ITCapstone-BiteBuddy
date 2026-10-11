@@ -1,8 +1,4 @@
 <!doctype html>
-<!-- BiteBuddy Restaurants.
-     Keep bitebuddy-logo.png beside this HTML file.
-     Restaurant logos load from their official websites.
-     Edit restaurant information in the restaurant-data block below. -->
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -30,7 +26,7 @@
 @media(max-width:480px){.filters{grid-template-columns:repeat(2,minmax(0,1fr))}.restaurant-card{grid-template-columns:105px minmax(0,1fr)}.restaurant-info{padding:20px 13px 16px}.restaurant-title{font-size:17px;word-break:normal}.price-line{font-size:21px}.restaurant-actions{gap:6px}.restaurant-actions .btn{font-size:11px;padding:8px 11px}.badge{font-size:10px}.cuisine-meta{font-size:11px}.distance-line{font-size:10px}.tags{gap:4px}.sort-field{max-width:145px}.sort-field select{max-width:135px;font-size:11px}.results-bar strong{font-size:12px}.clear-filters{margin-left:0;padding-left:0}.results-bar>div{gap:3px;flex-direction:column;align-items:flex-start}}
 @media(max-width:340px){.restaurant-card{grid-template-columns:1fr}.restaurant-title{padding-right:0}.restaurant-info{padding:19px}.restaurant-actions .btn{font-size:12px}}
 
-/* Official restaurant images are fitted without cropping their logos. */
+/* Resturant logo picture */
 .restaurant-card {
     display: grid;
     grid-template-columns: 146px minmax(0, 1fr);
@@ -238,7 +234,7 @@
 @media(max-width:340px){.restaurant-card{grid-template-columns:1fr}.restaurant-visual{height:150px;min-height:150px;border-right:0;border-bottom:1px solid var(--line);padding:20px}.restaurant-visual img{max-height:110px;width:auto;max-width:100%}.restaurant-info{padding:20px}.restaurant-title{font-size:19px;padding-right:0}}
 
   
-/* Same header as home.html, Create-Group.html and join-group.html. */
+/* Header */
 .navbar {
   min-height: 76px;
   padding: 0 50px;
@@ -331,7 +327,7 @@
   <div class="restaurant-grid" id="restaurantGrid"></div>
 </main>
 
-<!-- EDIT RESTAURANTS HERE. Prices checked October 11, 2026; follow source links before updating. -->
+<!-- Info -->
 <script type="application/json" id="restaurant-data">
 {
   "origin": {
@@ -580,11 +576,11 @@
 }
 </script>
 
-<!-- Page behavior: filters and sorting. -->
+
 <script>
 'use strict';
 
-// All restaurant content is editable in the JSON block above. No API is required.
+
 const restaurantData = JSON.parse(document.getElementById('restaurant-data').textContent);
 const restaurants = restaurantData.restaurants;
 const dietNames = { vegetarian:'Vegetarian', vegan:'Vegan', glutenFree:'Gluten-free', halal:'Halal' };
@@ -592,7 +588,7 @@ const state = { images:{} };
 const byId = id => document.getElementById(id);
 const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 const icon = name => `<svg aria-hidden="true"><use href="#i-${name}"></use></svg>`;
-// Relative meal-price tiers for this list: midpoint up to $15 / $20 / above $20.
+// price point
 const priceLevel = restaurant => restaurant.price.level;
 const priceSymbols = restaurant => '$'.repeat(priceLevel(restaurant));
 const priceLabels = { 1:'cheap', 2:'moderate', 3:'expensive' };
@@ -670,7 +666,7 @@ function initializeRestaurants() {
 
 </script>
 
-<!-- Original restaurant image assets, embedded so this page opens as one file. -->
+
 <script type="application/json" id="restaurant-images">
 {
   "thelo-mediterranean": "https://cdn01.s4shops.com/skytabweb/uploads/aba7f03c-f689-f111-b337-000d3a7b73be/15c0c960-43b5-f111-a6a7-000d3a7d7da5.png",
