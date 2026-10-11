@@ -1,0 +1,686 @@
+<!doctype html>
+<!-- BiteBuddy Restaurants.
+     Keep bitebuddy-logo.png beside this HTML file.
+     Restaurant logos load from their official websites.
+     Edit restaurant information in the restaurant-data block below. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#003d2e">
+  <meta name="description" content="Find your next meal. Explore restaurants, compare prices, check dietary options, and open their menus.">
+  <title>Explore restaurants | BiteBuddy</title>
+  <style>
+
+:root{--green:#003d2e;--deep:#002f24;--lime:#8af23a;--orange:#ff6b3d;--cream:#f8f6ef;--white:#fff;--ink:#16352c;--muted:#64736b;--line:#dde7df;--soft:#e9f8d9;--peach:#fff0e7;--amber:#885517;--shadow:0 8px 28px rgba(0,61,46,.045)}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font:15px/1.55 Arial,Helvetica,sans-serif}h1,h2,h3,p{margin:0}h1,h2,h3{font-family:Arial,Helvetica,sans-serif;color:var(--green);line-height:1.2}h1{font-size:clamp(30px,4vw,43px);font-weight:800;letter-spacing:-1.6px}h2{font-size:23px;letter-spacing:-.6px}h3{font-size:18px;letter-spacing:-.3px}a{color:var(--green);text-decoration:none}button,input,select,textarea{font:inherit}button,a,input,select,textarea{touch-action:manipulation}button{cursor:pointer}button:disabled{opacity:.55;cursor:wait}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid var(--orange);outline-offset:4px}button svg,a svg{pointer-events:none}svg{width:20px;height:20px;stroke:currentColor;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round;vertical-align:middle}img{display:block;max-width:100%}[hidden]{display:none!important}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}.skip-link{position:fixed;top:-80px;left:20px;z-index:100;background:var(--lime);padding:12px 20px;border-radius:8px}.skip-link:focus{top:12px}.wrap{max-width:1192px;margin:0 auto;padding:0 32px}.location-band{border-bottom:1px solid var(--line);background:#eef1e7;color:#53705b;font-size:12px}.location-band .wrap{display:flex;align-items:center;gap:8px;padding-top:9px;padding-bottom:9px}.location-band svg{width:15px;height:15px}.main{padding-top:44px;padding-bottom:70px;min-height:calc(100vh - 235px)}.eyebrow{font-size:11px;letter-spacing:1.8px;text-transform:uppercase;font-weight:700;color:#657957;display:flex;gap:8px;align-items:center;margin-bottom:12px}.eyebrow:before{content:'';height:7px;width:7px;background:var(--orange);border-radius:50%}.page-heading{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:28px}.page-heading p{color:var(--muted);margin-top:10px;max-width:590px}.subtitle{color:var(--muted);margin-top:10px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:10px 20px;border-radius:24px;border:1px solid var(--line);font-size:13px;font-weight:700;line-height:1.3;background:var(--white);color:var(--green);transition:background .15s,transform .15s}.btn:hover{background:#f0f5eb;transform:translateY(-1px)}.btn-primary{background:var(--orange);border-color:var(--orange);color:#172e22}.btn-primary:hover{background:#f35c2c;border-color:#f35c2c}.btn-green{background:var(--green);border-color:var(--green);color:var(--white)}.btn-green:hover{background:var(--deep)}.btn-lime{background:var(--lime);border-color:var(--lime);color:var(--green)}.btn-small{min-height:35px;padding:8px 14px;font-size:12px}.btn-small svg{width:15px;height:15px}.text-link{font-weight:600;font-size:13px;text-decoration:underline;text-underline-offset:4px}.muted{color:var(--muted)}.caption{font-size:12px;color:var(--muted)}.panel{padding:27px;background:var(--white);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow)}.panel h2{margin-bottom:20px}.split-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}.field{margin-bottom:20px}.field label,.field-label{display:block;font-size:12px;font-weight:700;margin-bottom:8px}.input{width:100%;background:white;color:var(--ink);border:1px solid #d4ded5;border-radius:11px;min-height:45px;padding:11px 13px;outline-offset:3px}.input::placeholder{color:#839086}.input:focus{border-color:#679955}.input-help{font-size:12px;color:var(--muted);margin-top:6px}textarea.input{resize:vertical;min-height:85px}.chip-row{display:flex;gap:9px;flex-wrap:wrap}.chip{border:1px solid #dce4dc;background:white;color:#586a5d;border-radius:20px;padding:8px 15px;font-size:12px;min-height:37px;transition:background .1s}.chip:hover{border-color:#83a473}.chip[aria-pressed=true],.chip.selected{border-color:#80b459;background:var(--soft);color:var(--green);font-weight:700}.status-message{padding:12px 16px;border-radius:10px;font-size:13px;margin-top:16px;background:#edf5e5;color:var(--green)}.status-message.error{background:#fff0e9;color:#86381c;border:1px solid #f0c9b6}.status-message a{font-weight:700;text-decoration:underline}.page-error{margin-bottom:24px}.badge{display:inline-flex;align-items:center;gap:5px;padding:5px 10px;border-radius:20px;background:var(--soft);color:var(--green);font-size:10px;font-weight:600;line-height:1.35}.badge svg{width:12px;height:12px}.badge.limited{background:#fff0dc;color:#79551d}.badge.neutral{background:#f0f2ef;color:#69756c}.badge.dark{color:var(--lime);background:var(--green)}.badge.outlined{background:transparent;border:1px solid var(--line);color:var(--muted)}.progress-steps{background:#f5f0dd;border-bottom:1px solid #e9e3d0}.progress-steps ol{list-style:none;display:flex;justify-content:center;gap:32px;padding:10px 20px;margin:0;font-size:11px;color:#7c7a63}.progress-steps li{display:flex;align-items:center;gap:7px}.progress-steps li span{border-radius:50%;height:22px;width:22px;display:grid;place-items:center;background:#e8e3d2;font-size:10px}.progress-steps .current{color:var(--green);font-weight:700}.progress-steps .current span{background:var(--lime)}
+
+/* Restaurant exploration and matching. */
+.mode-tabs{display:flex;border-bottom:1px solid var(--line);gap:26px;margin-bottom:24px}.mode-tab{color:var(--muted);background:transparent;border:0;border-bottom:3px solid transparent;padding:0 2px 13px;font-size:13px;font-weight:600;display:flex;gap:8px;align-items:center}.mode-tab[aria-selected=true]{border-color:var(--orange);color:var(--green)}.mode-tab span{background:#e8ecdf;padding:2px 7px;border-radius:6px;font-size:10px}.group-picker{display:flex;align-items:center;gap:9px;min-width:230px}.group-picker label{color:var(--muted);font-size:11px}.group-picker select{min-width:185px;border:1px solid var(--line);background:white;border-radius:10px;padding:9px 12px;color:var(--green);font-size:12px;max-width:260px}.filters{display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap;background:transparent;margin:20px 0 13px}.filter{display:flex;flex-direction:column;gap:7px;min-width:106px}.filter label{font-size:11px;color:#627566}.filter select{border:1px solid var(--line);border-radius:11px;background:white;height:44px;padding:0 30px 0 12px;color:var(--green);font-size:12px;max-width:160px}.filter-note{display:flex;gap:6px;align-items:flex-start;color:#798476;font-size:11px;margin-bottom:25px}.filter-note svg{width:14px;height:14px;flex-shrink:0;margin-top:2px}.results-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:17px}.results-bar strong{font-size:13px}.sort-field{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--muted)}.sort-field select{border:0;background:transparent;color:var(--green);font-size:12px;font-weight:600;padding:6px}.restaurant-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:19px}.restaurant-card{background:white;border:1px solid var(--line);border-radius:19px;overflow:hidden;box-shadow:var(--shadow);display:grid;grid-template-columns:157px minmax(0,1fr);position:relative;min-height:206px}.restaurant-info{padding:20px 20px 18px;min-width:0;display:flex;flex-direction:column}.restaurant-title{padding-right:0;font-size:17px;margin-bottom:5px;line-height:1.25}.cuisine-meta{font-size:11px;color:var(--muted);margin-bottom:9px}.cuisine-meta .price-level{color:#799477;font-weight:700}.price-line{color:var(--green);font-size:19px;font-weight:700;letter-spacing:-.5px;line-height:1.4}.price-line small{font-size:10px;font-weight:400;letter-spacing:0;color:var(--muted);white-space:nowrap}.distance-line{font-size:10px;color:var(--muted);margin:3px 0 10px;display:flex;gap:4px;align-items:center}.distance-line svg{height:12px;width:12px}.tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:13px}.restaurant-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:auto}.restaurant-actions .btn{padding:7px 11px;font-size:10px;min-height:31px}.restaurant-actions .btn svg{width:12px;height:12px}.match-line{font-size:11px;margin:0 0 10px;color:#58764c;line-height:1.5}.match-line.needs-check{color:#8a642a}.vote-row{grid-column:1/-1;border-top:1px solid #e5eadf;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;background:#fbfcf7}.vote-row small{font-size:11px;color:var(--muted)}.vote-button{border:1px solid #cbdcbd;background:#f4f9ed;color:var(--green);border-radius:20px;padding:7px 12px;font-size:11px;font-weight:700}.vote-button[aria-pressed=true]{background:var(--lime);border-color:#7cda36}.group-banner{border:1px solid #cddbba;background:#f1f6e6;border-radius:15px;padding:19px 22px;margin-bottom:24px;display:flex;gap:24px;align-items:center;justify-content:space-between}.group-banner h2{font-size:16px}.group-banner p{font-size:12px;color:#66765a;margin-top:5px}.group-banner .btn{flex-shrink:0}.group-banner progress{width:100%;max-width:190px;display:block;height:5px;margin-top:10px;accent-color:#5b872d}.group-banner .ready-count{font-size:11px;font-weight:600;color:#5a7544}.results-section-heading{grid-column:1/-1;padding-top:13px}.results-section-heading h2{font-size:18px}.results-section-heading p{font-size:12px;color:var(--muted);margin-top:4px}.empty-state{padding:48px 25px;text-align:center;border:1px dashed #bccaaf;border-radius:19px;background:#fcfcf6;grid-column:1/-1}.empty-state svg{height:33px;width:33px;color:#739254;margin-bottom:13px}.empty-state h2{font-size:20px}.empty-state p{font-size:13px;color:var(--muted);max-width:420px;margin:10px auto 18px}.empty-state .btn{margin:0 5px 5px}.load-more-wrap{display:flex;justify-content:center;margin-top:28px}.loading{padding:48px;color:var(--muted);text-align:center;grid-column:1/-1}.spinner{height:22px;width:22px;border:2px solid #d6e2ca;border-top-color:var(--green);border-radius:50%;display:inline-block;animation:spin 1s linear infinite;vertical-align:middle;margin-right:10px}@keyframes spin{to{transform:rotate(360deg)}}.skeleton-card{height:206px;background:#eff1e9;border-radius:19px;border:1px solid #e2e7d9}
+
+@media(min-width:1400px){.main{padding-top:55px}.restaurant-card{min-height:215px}}
+@media(max-width:1050px){.wrap{padding-left:26px;padding-right:26px}.hero{gap:32px}.restaurant-card{grid-template-columns:130px minmax(0,1fr)}.restaurant-info{padding:18px 15px 16px}.restaurant-title{font-size:16px}.restaurant-actions .btn{padding:7px 9px}.filter{min-width:100px}.filter select{max-width:140px}.page-heading{align-items:flex-start}.group-picker{flex-direction:column;align-items:flex-start;min-width:180px}.pref-panel .card-head{flex-wrap:wrap}.hero-photo>img{height:355px}}
+@media(max-width:760px){.wrap{padding-left:21px;padding-right:21px}.main{padding-top:30px;padding-bottom:45px}.page-heading{display:block}.page-heading p{font-size:13px}.group-picker{flex-direction:row;margin-top:20px;align-items:center}.group-picker select{flex:1;max-width:100%}.restaurant-grid{gap:14px;grid-template-columns:1fr}.restaurant-card{grid-template-columns:145px minmax(0,1fr);min-height:211px}.restaurant-info{padding:19px}.restaurant-title{font-size:18px}.restaurant-actions .btn{font-size:11px;padding:8px 13px}.price-line{font-size:21px}.cuisine-meta{font-size:12px}.distance-line{font-size:11px}.badge{font-size:10px}.filters{gap:10px}.filter{flex:1;min-width:calc(25% - 10px)}.filter select{max-width:100%;width:100%;font-size:11px;padding-left:8px;padding-right:8px;height:39px}.filter-note{font-size:10px}.hero{grid-template-columns:1fr;padding-top:8px;gap:30px}.hero h1{font-size:54px}.hero p{max-width:100%;font-size:16px}.hero-photo>img{height:310px}.hero .caption{max-width:100%}.hero-actions{margin-top:22px}.steps{grid-template-columns:1fr;gap:10px;margin-top:0}.step{padding:18px 23px}.step strong{font-size:14px}.step p{font-size:12px}.split-grid,.pref-grid{grid-template-columns:1fr}.progress-steps ol{gap:12px;justify-content:space-between;font-size:9px;padding-left:12px;padding-right:12px}.progress-steps li{gap:5px}.progress-steps li span{height:18px;width:18px;font-size:9px}.pref-actions{flex-direction:column;align-items:stretch}.pref-actions>div{justify-content:flex-end}.pref-actions p{max-width:none}.group-banner{align-items:flex-start;gap:12px;padding:18px;flex-direction:column}.group-banner .btn{font-size:11px}.group-banner>div{width:100%}.group-banner progress{max-width:none}.group-panel-heading{flex-wrap:wrap}.group-panel-heading .btn{margin:0}.group-list a{flex-wrap:wrap}.empty-state{padding:35px 18px}.mode-tabs{gap:23px}.mode-tab{font-size:12px}.invite-header h2{font-size:18px}.pref-panel .card-head{flex-wrap:nowrap}}
+@media(max-width:420px){.wrap{padding-left:16px;padding-right:16px}.restaurant-card{grid-template-columns:111px minmax(0,1fr)}.restaurant-info{padding:17px 13px}.restaurant-title{font-size:16px}.restaurant-actions .btn{padding:7px 9px;font-size:10px}.restaurant-actions{gap:5px}.price-line{font-size:19px}.tags{gap:4px}.badge{padding:4px 7px;font-size:9px}.cuisine-meta{font-size:11px}.group-picker{flex-wrap:wrap}.filter{min-width:calc(50% - 10px)}.filter select{font-size:12px}.hero h1{font-size:47px}.hero-photo>img{height:260px}.photo-label{left:13px;right:13px;bottom:13px;padding:12px}.photo-label strong{font-size:12px}.photo-label .badge{font-size:9px}.progress-steps li{font-size:8px}.progress-steps ol{gap:7px}.panel{padding:22px}.invite-code strong{font-size:24px}.invite-extras{gap:12px}.invite-extras canvas{width:95px!important;height:95px!important}.invite-bottom{flex-direction:column;align-items:stretch}.pref-panel .card-head{flex-wrap:wrap}.pref-actions .btn{padding:10px 13px;font-size:12px}.sort-field{font-size:10px}.sort-field select{max-width:130px;font-size:11px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;scroll-behavior:auto!important;transition:none!important}.spinner{border-top-color:var(--orange)}}
+.filters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;padding:20px;background:#fff;border:1px solid var(--line);border-radius:17px;margin-bottom:12px}.filter select{max-width:none;width:100%;font-size:12px;padding-right:6px}.filter{min-width:0}.filter label{font-weight:700;color:var(--ink)}.filter-note{color:#647367;margin-bottom:23px;font-size:11px;line-height:1.65}.filter-note span{max-width:1050px}
+.clear-filters{border:0;background:transparent;color:var(--green);text-decoration:underline;text-underline-offset:3px;font-size:12px;padding:6px;margin-left:12px}.results-bar>div{display:flex;align-items:center;flex-wrap:wrap}.results-context{font-size:12px;color:var(--muted);margin:-5px 0 16px}.restaurant-card{min-height:253px}.restaurant-info{padding:21px 19px 18px}.restaurant-title{font-size:18px}.restaurant-actions .btn{min-height:40px;font-size:12px;padding:8px 13px}.cuisine-meta{font-size:12px;line-height:1.5}.price-line{font-size:22px}.price-line small{font-size:10px}.distance-line{font-size:11px;margin:5px 0 12px}.tags{min-height:25px}.badge{font-size:10px;padding:5px 9px}.budget-hit{font-size:11px;color:#476242;background:#f3f7ed;border-radius:8px;padding:7px 9px;margin:-2px 0 12px;line-height:1.5}.budget-hit.needs-check{color:#805c28;background:#fff5e8}.noscript-list li{margin:12px 0}.noscript-list a{text-decoration:underline}
+@media(max-width:1050px){.filters{grid-template-columns:repeat(4,minmax(0,1fr))}.restaurant-card{grid-template-columns:125px minmax(0,1fr)}.restaurant-actions .btn{padding:8px 11px;font-size:11px}.restaurant-info{padding:20px 15px 16px}.restaurant-title{font-size:17px}}
+@media(max-width:760px){.filters{grid-template-columns:repeat(2,minmax(0,1fr));padding:15px}.restaurant-card{grid-template-columns:145px minmax(0,1fr);min-height:249px}.restaurant-title{font-size:19px}.restaurant-info{padding:22px 20px 18px}.restaurant-actions .btn{font-size:12px}.location-band .wrap{flex-wrap:wrap;row-gap:2px}.filter select{font-size:12px;height:44px}.results-bar{align-items:flex-start}.sort-field{align-items:center;flex-wrap:wrap;justify-content:flex-end}}
+@media(max-width:480px){.filters{grid-template-columns:repeat(2,minmax(0,1fr))}.restaurant-card{grid-template-columns:105px minmax(0,1fr)}.restaurant-info{padding:20px 13px 16px}.restaurant-title{font-size:17px;word-break:normal}.price-line{font-size:21px}.restaurant-actions{gap:6px}.restaurant-actions .btn{font-size:11px;padding:8px 11px}.badge{font-size:10px}.cuisine-meta{font-size:11px}.distance-line{font-size:10px}.tags{gap:4px}.sort-field{max-width:145px}.sort-field select{max-width:135px;font-size:11px}.results-bar strong{font-size:12px}.clear-filters{margin-left:0;padding-left:0}.results-bar>div{gap:3px;flex-direction:column;align-items:flex-start}}
+@media(max-width:340px){.restaurant-card{grid-template-columns:1fr}.restaurant-title{padding-right:0}.restaurant-info{padding:19px}.restaurant-actions .btn{font-size:12px}}
+
+/* Official restaurant images are fitted without cropping their logos. */
+.restaurant-card {
+    display: grid;
+    grid-template-columns: 146px minmax(0, 1fr);
+    min-height: 0;
+    border-radius: 18px;
+    transition: box-shadow .15s, border-color .15s;
+}
+
+.restaurant-card:hover {
+    border-color: #b9cdb7;
+    box-shadow: 0 8px 25px rgba(0, 61, 46, .07);
+}
+
+.restaurant-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 17px;
+    border-right: 1px solid var(--line);
+    position: relative;
+    min-height: 170px;
+}
+
+.restaurant-visual img {
+    position: static;
+    width: 100%;
+    height: auto;
+    max-height: 190px;
+    object-fit: contain;
+}
+
+.restaurant-visual[data-kind="food"] {
+    padding: 0;
+}
+
+.restaurant-visual[data-kind="food"] img {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    max-height: none;
+    object-fit: cover;
+}
+
+.restaurant-info {
+    height: 100%;
+    padding: 23px 19px 21px;
+}
+
+.restaurant-title {
+    font-size: 19px;
+    padding-right: 0;
+    margin-bottom: 6px;
+    line-height: 1.3;
+}
+
+.cuisine-meta {
+    font-size: 12px;
+    margin-bottom: 13px;
+    color: #637460;
+}
+
+.restaurant-description {
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--muted);
+    margin: 0;
+    max-width: 440px;
+}
+
+.restaurant-facts {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 17px 0 14px;
+}
+
+.restaurant-facts .price-line {
+    font-size: 22px;
+    line-height: 1.2;
+    letter-spacing: 1px;
+}
+
+.restaurant-facts .distance-line {
+    font-size: 12px;
+    margin: 0;
+    border-left: 1px solid var(--line);
+    padding-left: 15px;
+    min-height: 22px;
+}
+
+.restaurant-facts .distance-line svg {
+    width: 14px;
+    height: 14px;
+}
+
+.restaurant-card .tags {
+    min-height: 26px;
+    margin-bottom: 20px;
+    gap: 6px;
+}
+
+.restaurant-card .badge {
+    font-size: 11px;
+    padding: 5px 10px;
+}
+
+.restaurant-card .restaurant-actions {
+    padding-top: 16px;
+    border-top: 1px solid #edf0e9;
+    gap: 8px;
+}
+
+.restaurant-card .restaurant-actions .btn {
+    min-height: 41px;
+    padding: 9px 16px;
+    font-size: 12px;
+}
+
+@media (max-width: 1050px) {
+    .restaurant-card {
+        grid-template-columns: 126px minmax(0, 1fr);
+    }
+
+    .restaurant-visual {
+        padding: 13px;
+    }
+
+    .restaurant-info {
+        padding: 21px 16px 19px;
+    }
+
+    .restaurant-title {
+        font-size: 18px;
+    }
+
+    .restaurant-card .restaurant-actions .btn {
+        font-size: 11px;
+        padding: 9px 12px;
+    }
+}
+
+@media (max-width: 760px) {
+    .restaurant-card {
+        grid-template-columns: 148px minmax(0, 1fr);
+    }
+
+    .restaurant-visual {
+        padding: 19px;
+    }
+
+    .restaurant-info {
+        padding: 24px 21px 22px;
+    }
+
+    .restaurant-title {
+        font-size: 20px;
+    }
+
+    .restaurant-card .restaurant-actions .btn {
+        font-size: 12px;
+        padding: 9px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .restaurant-card {
+        grid-template-columns: 100px minmax(0, 1fr);
+    }
+
+    .restaurant-visual {
+        padding: 11px;
+    }
+
+    .restaurant-info {
+        padding: 21px 14px 19px;
+    }
+
+    .restaurant-title {
+        font-size: 17px;
+        padding-right: 0;
+    }
+
+    .restaurant-description {
+        font-size: 12px;
+    }
+
+    .restaurant-card .badge {
+        font-size: 10px;
+    }
+
+    .restaurant-card .restaurant-actions .btn {
+        font-size: 11px;
+        padding: 9px 12px;
+    }
+
+    .restaurant-facts {
+        gap: 11px;
+    }
+
+    .restaurant-facts .distance-line {
+        padding-left: 11px;
+        font-size: 11px;
+    }
+}
+@media(max-width:340px){.restaurant-card{grid-template-columns:1fr}.restaurant-visual{height:150px;min-height:150px;border-right:0;border-bottom:1px solid var(--line);padding:20px}.restaurant-visual img{max-height:110px;width:auto;max-width:100%}.restaurant-info{padding:20px}.restaurant-title{font-size:19px;padding-right:0}}
+
+  
+/* Same header as home.html, Create-Group.html and join-group.html. */
+.navbar {
+  min-height: 76px;
+  padding: 0 50px;
+  background-color: #003D2E;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  line-height: normal;
+}
+.logo-area {
+  display: flex;
+  align-items: center;
+}
+.logo-image {
+  width: 105px;
+  height: 55px;
+  object-fit: contain;
+  display: block;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.nav-links a {
+  text-decoration: none;
+  color: #DCE8E1;
+  font-size: 13px;
+  transition: 0.2s;
+}
+.nav-links a:hover, .nav-links .active {
+  color: #8AF23A;
+}
+.nav-links .active {
+  font-weight: bold;
+}
+@media (max-width: 1000px) {
+  .navbar { padding: 0 25px; }
+  .nav-links { gap: 18px; }
+}
+@media (max-width: 650px) {
+  .navbar { min-height: 70px; padding: 0 18px; }
+  .logo-image { width: 90px; }
+  .nav-links { gap: 12px; }
+  .nav-links a { font-size: 11px; }
+}
+@media (max-width: 380px) {
+  .navbar { padding: 0 12px; }
+  .logo-image { width: 75px; }
+  .nav-links { gap: 8px; }
+  .nav-links a { font-size: 10px; }
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to restaurants</a>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true"><symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol><symbol id="i-location" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></symbol><symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></symbol><symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol><symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10v.2"/></symbol><symbol id="i-external" viewBox="0 0 24 24"><path d="M14 3h7v7m0-7L11 13m-1-9H4v16h16v-6"/></symbol><symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol><symbol id="i-people" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3m1-16a3 3 0 0 1 0 6m3 10v-3a6 6 0 0 0-2-4"/></symbol><symbol id="i-utensils" viewBox="0 0 24 24"><path d="M4 3v7a3 3 0 0 0 6 0V3M7 3v19m12 0V3c-4 2-4 9 0 10"/></symbol><symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V3H3v13h5"/></symbol><symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-4-4 4 4 4-4M4 16v5h16v-5"/></symbol></svg>
+<header class="navbar">
+  <div class="logo-area">
+    <a href="home.html">
+      <img src="bitebuddy-logo.png" class="logo-image" alt="BiteBuddy logo">
+    </a>
+  </div>
+  <nav class="nav-links" aria-label="Main navigation">
+    <a href="home.html">Home</a>
+    <a href="Create-Group.html">Create Group</a>
+    <a href="join-group.html">Join Group</a>
+    <a href="restaurants.html" class="active" aria-current="page">Restaurants</a>
+  </nav>
+</header>
+<main class="wrap main" id="main">
+  <div class="page-heading">
+    <h1>Explore restaurants</h1>
+  </div>
+  <section class="filters" aria-label="Filter restaurants">
+    <div class="filter"><label for="cuisineFilter">Cuisine</label><select id="cuisineFilter"><option value="">All cuisines</option></select></div>
+    <div class="filter"><label for="priceFilter">Price</label><select id="priceFilter"><option value="">Any price</option><option value="1">$</option><option value="2">$$</option><option value="3">$$$</option></select></div>
+    <div class="filter"><label for="dietaryFilter" title="Includes limited options; check restaurant details and confirm ingredients">Dietary options</label><select id="dietaryFilter"><option value="">All options</option><option value="vegetarian">Vegetarian</option><option value="vegan">Vegan</option><option value="glutenFree">Gluten-free</option><option value="halal">Halal</option></select></div>
+    <div class="filter"><label for="distanceFilter" title="Distances are straight-line estimates">Distance</label><select id="distanceFilter"><option value="">Any distance</option><option value="1">Within 1 mile</option><option value="2">Within 2 miles</option><option value="5">Within 5 miles</option></select></div>
+  </section>
+  <p class="filter-note">($ = cheap. $$ = moderate. $$$ = expensive)</p>
+  <div class="results-bar"><div><strong id="resultCount" role="status" aria-live="polite">6 restaurants to explore</strong><button class="clear-filters" type="button" id="clearFilters" hidden>Clear filters</button></div><label class="sort-field" for="sortSelect">Sort <select id="sortSelect"><option value="default">Our starter list</option><option value="distance">Nearest first</option><option value="price">Price: low to high</option><option value="name">Name A–Z</option></select></label></div>
+  <p class="results-context" id="resultsContext" hidden></p>
+  <noscript><section class="panel"><h2>Restaurant menus</h2><p>Enable JavaScript for restaurant images and filters. You can still open these menus:</p><ul class="noscript-list"><li><a href="https://thelomediterranean.com/" target="_blank" rel="noopener noreferrer">Thelo Mediterranean — open menu</a> · $$</li>
+<li><a href="https://dorataqueria.online/locations/dorchester" target="_blank" rel="noopener noreferrer">Dora Taqueria — open menu</a> · $</li>
+<li><a href="https://www.thechestertavern.com/menus/" target="_blank" rel="noopener noreferrer">The Chester Tavern — open menu</a> · $$$</li>
+<li><a href="https://www.clover.com/online-ordering/the-halal-fusion-boston" target="_blank" rel="noopener noreferrer">The Halal Fusion — open menu</a> · $$</li>
+<li><a href="https://www.shantiboston.com/dorchester-menu" target="_blank" rel="noopener noreferrer">Shanti — Dorchester — open menu</a> · $$</li>
+<li><a href="https://order.greatwokma.com/order/main" target="_blank" rel="noopener noreferrer">Great Wok — Dorchester — open menu</a> · $$</li></ul></section></noscript>
+  <div class="restaurant-grid" id="restaurantGrid"></div>
+</main>
+
+<!-- EDIT RESTAURANTS HERE. Prices checked October 11, 2026; follow source links before updating. -->
+<script type="application/json" id="restaurant-data">
+{
+  "origin": {
+    "lat": 42.3129045,
+    "lng": -71.0365247
+  },
+  "restaurants": [
+    {
+      "id": "thelo-mediterranean",
+      "name": "Thelo Mediterranean",
+      "cuisines": [
+        "Greek",
+        "Mediterranean"
+      ],
+      "description": "Greek pitas, Mediterranean bowls, and grilled platters on Dorchester Avenue.",
+      "address": "860 Dorchester Ave, Dorchester, MA 02125",
+      "websiteUrl": "https://thelomediterranean.com/",
+      "menuUrl": "https://thelomediterranean.com/",
+      "menuKind": "menu",
+      "imageCredit": "Thelo Mediterranean official website",
+      "imageAlt": "Thelo Mediterranean Restaurant gold circular logo.",
+      "price": {
+        "min": 13.99,
+        "max": 24.99,
+        "note": "Typical pitas, bowls, and selected platters, before tax, tip, drinks, and extras. Pitas are $13.99–$19.99; premium platters cost more, up to $32.99.",
+        "sourceUrl": "https://thelomediterranean.com/",
+        "checkedAt": "2026-10-11",
+        "level": 2,
+        "summary": "Based on typical pitas, bowls, and selected platters."
+      },
+      "dietary": {
+        "vegetarian": "yes",
+        "vegan": "limited",
+        "glutenFree": "limited",
+        "halal": "no"
+      },
+      "dietaryNote": "Vegetarian options; limited vegan and gluten-free choices; not halal, according to student-supplied notes. Confirm ingredients and preparation with the restaurant.",
+      "dietarySource": "Student-supplied restaurant notes, October 2026. Official menu checked for dish names and prices; no additional dietary verification.",
+      "coordinates": {
+        "lat": 42.321469635618,
+        "lng": -71.056700848418
+      },
+      "distanceMiles": 1.1886,
+      "imageSourceUrl": "https://cdn01.s4shops.com/skytabweb/uploads/aba7f03c-f689-f111-b337-000d3a7b73be/15c0c960-43b5-f111-a6a7-000d3a7d7da5.png",
+      "imageKind": "logo",
+      "imageBackground": "#162f26"
+    },
+    {
+      "id": "dora-taqueria",
+      "name": "Dora Taqueria",
+      "cuisines": [
+        "Mexican"
+      ],
+      "description": "A Dorchester taqueria serving burritos, taco plates, and birria.",
+      "address": "112 Stoughton St, Dorchester, MA 02125",
+      "websiteUrl": "https://dorataqueria.online/",
+      "menuUrl": "https://dorataqueria.online/locations/dorchester",
+      "menuKind": "menu",
+      "imageCredit": "Dora Taqueria official website",
+      "imageAlt": "Dora Taqueria logo with decorated skull and cream and teal lettering.",
+      "price": {
+        "min": 10.99,
+        "max": 15.99,
+        "note": "Common main dishes such as burritos, taco plates, and three birria tacos, before tax, tip, drinks, and extras. Larger birria orders and mixed fajitas are $20.99.",
+        "sourceUrl": "https://dorataqueria.online/locations/dorchester",
+        "checkedAt": "2026-10-11",
+        "level": 1,
+        "summary": "Based on burritos, taco plates, and birria."
+      },
+      "dietary": {
+        "vegetarian": "yes",
+        "vegan": "limited",
+        "glutenFree": "limited",
+        "halal": "no"
+      },
+      "dietaryNote": "Vegetarian options; limited vegan and gluten-free choices; not halal, according to student-supplied notes. Confirm tortilla, filling, and sauce ingredients with the restaurant.",
+      "dietarySource": "Student-supplied restaurant notes, October 2026. Official Dorchester menu checked for dish names and prices; no additional dietary verification.",
+      "coordinates": {
+        "lat": 42.315322728933,
+        "lng": -71.061158734802
+      },
+      "distanceMiles": 1.2696,
+      "imageSourceUrl": "https://dorataqueria.online/assets/dora/logo.png",
+      "imageKind": "logo",
+      "imageBackground": "#202a28"
+    },
+    {
+      "id": "the-chester-tavern",
+      "name": "The Chester Tavern",
+      "cuisines": [
+        "American"
+      ],
+      "description": "American tavern cooking with burgers, bowls, pasta, and larger dinner entrées.",
+      "address": "1119 Dorchester Ave, Dorchester, MA 02125",
+      "websiteUrl": "https://www.thechestertavern.com/",
+      "menuUrl": "https://www.thechestertavern.com/menus/",
+      "menuKind": "menu",
+      "imageCredit": "The Chester Tavern official website",
+      "imageAlt": "The Chester Tavern circular logo, Dorchester, MA.",
+      "price": {
+        "min": 17,
+        "max": 32,
+        "note": "Main entrées range from $17 Mac & Cheese to $32 Steak Frites; many burgers and bowls are $17–$24. Before tax, tip, drinks, and extras. Lower-priced salads and pizzas are also listed.",
+        "sourceUrl": "https://www.thechestertavern.com/menus/",
+        "checkedAt": "2026-10-11",
+        "level": 3,
+        "summary": "Based on burgers, bowls, and dinner entrées. Some salads and pizzas cost less."
+      },
+      "dietary": {
+        "vegetarian": "yes",
+        "vegan": "limited",
+        "glutenFree": "limited",
+        "halal": "no"
+      },
+      "dietaryNote": "Student notes list vegetarian options, limited gluten-free choices, and no halal food; vegan availability was unspecified. The official menu separately labels the Harvest Bowl vegan and gluten-free. Confirm preparation with the restaurant.",
+      "dietarySource": "Student-supplied restaurant notes, October 2026. Official addition: the Harvest Bowl is marked vegan and gluten-free at https://www.thechestertavern.com/menus/; the original vegan status remains unknown.",
+      "coordinates": {
+        "lat": 42.312443189258,
+        "lng": -71.057401633214
+      },
+      "distanceMiles": 1.0671,
+      "imageSourceUrl": "https://images.getbento.com/accounts/e3e915f130a577ffbbc56b024fa61cc8/media/images/85696TheChester-Logo-Circle-dark.png?w=1000&fit=max&auto=compress,format&cs=origin&h=1000",
+      "imageKind": "logo",
+      "imageBackground": "#f4f0e7"
+    },
+    {
+      "id": "halal-fusion",
+      "name": "The Halal Fusion",
+      "cuisines": [
+        "Fusion",
+        "Mediterranean",
+        "American"
+      ],
+      "description": "Build-your-own bowls, falafel pitas, and chicken meals at the Boston location in Mattapan.",
+      "address": "686 Morton St, Mattapan, MA 02126",
+      "websiteUrl": "https://thehalalfusionboston.com/",
+      "menuUrl": "https://www.clover.com/online-ordering/the-halal-fusion-boston",
+      "menuKind": "ordering",
+      "imageCredit": "The Halal Fusion Boston official website",
+      "imageAlt": "The Fusion logo with red lettering and green halal mark.",
+      "price": {
+        "min": 13.98,
+        "max": 17.98,
+        "note": "Regular and large Fusion Bowls are $13.98 and $17.98; pitas are $13.99. This range covers bowls and pitas, before tax, tip, drinks, and extras. A lower-priced classic burger is $8.99.",
+        "sourceUrl": "https://thehalalfusionboston.com/wp-content/uploads/2026/06/1-Screen.png",
+        "checkedAt": "2026-10-11",
+        "level": 2,
+        "summary": "Based on bowls and pitas. Some burgers cost less."
+      },
+      "dietary": {
+        "vegetarian": "yes",
+        "vegan": "no",
+        "glutenFree": "unknown",
+        "halal": "yes"
+      },
+      "dietaryNote": "Student notes identify halal and vegetarian options, no vegan meals, and unconfirmed gluten-free availability. The official menu includes falafel; confirm sauces and preparation with the restaurant.",
+      "dietarySource": "Student-supplied restaurant notes, October 2026. Official addition: falafel is listed in the bowls and pitas menu at https://thehalalfusionboston.com/wp-content/uploads/2026/06/1-Screen.png; vegan and gluten-free claims are not inferred.",
+      "coordinates": {
+        "lat": 42.284707241568,
+        "lng": -71.092341984036
+      },
+      "distanceMiles": 3.4543,
+      "imageSourceUrl": "https://thehalalfusionboston.com/wp-content/uploads/2025/11/WhatsApp-Image-2025-10-10-at-18.55.02_7f81a0a1-e1763625475120.png",
+      "imageKind": "logo",
+      "imageBackground": "#fff9ee"
+    },
+    {
+      "id": "shanti-dorchester",
+      "name": "Shanti — Dorchester",
+      "cuisines": [
+        "Indian"
+      ],
+      "description": "Indian curries, biryani, and tandoori dishes with a broad selection of vegetable entrées.",
+      "address": "1111 Dorchester Avenue, Boston, MA 02125",
+      "websiteUrl": "https://www.shantiboston.com/",
+      "menuUrl": "https://www.shantiboston.com/dorchester-menu",
+      "menuKind": "menu",
+      "imageCredit": "Shanti Dorchester official website",
+      "imageAlt": "Shanti Indian Cuisine orange and magenta logo.",
+      "price": {
+        "min": 15,
+        "max": 20,
+        "note": "Estimated range for common curries and vegetable entrées, including rice where the menu specifies it, before tax, tip, drinks, and extras. Mixed Grill ($26) and whole tandoori chicken ($28) cost more.",
+        "sourceUrl": "https://www.shantiboston.com/dorchester-menu",
+        "checkedAt": "2026-10-11",
+        "level": 2,
+        "summary": "Based on common curries and vegetable entrées, with rice where included."
+      },
+      "dietary": {
+        "vegetarian": "yes",
+        "vegan": "yes",
+        "glutenFree": "yes",
+        "halal": "yes"
+      },
+      "dietaryNote": "Student notes list vegan, vegetarian, gluten-free, and halal options. The official Dorchester menu marks suitable individual dishes, and the restaurant website advertises halal food. Confirm preparation for your needs.",
+      "dietarySource": "Student-supplied restaurant notes, October 2026. Official additions: dietary labels at https://www.shantiboston.com/dorchester-menu and halal availability at https://www.shantiboston.com/.",
+      "coordinates": {
+        "lat": 42.31266,
+        "lng": -71.057461
+      },
+      "distanceMiles": 1.0698,
+      "imageSourceUrl": "https://popmenucloud.com/cwlvubnt/ea921b3e-e032-422d-a14c-265e6c895b89.png",
+      "imageKind": "logo",
+      "imageBackground": "#222326"
+    },
+    {
+      "id": "great-wok",
+      "name": "Great Wok — Dorchester",
+      "cuisines": [
+        "Chinese"
+      ],
+      "description": "Chinese takeout with rice and noodle dishes, combination plates, and vegetable options.",
+      "address": "1284 Massachusetts Ave #1608, Dorchester, MA 02125",
+      "websiteUrl": "https://order.greatwokma.com/",
+      "menuUrl": "https://order.greatwokma.com/order/main",
+      "menuKind": "ordering",
+      "imageCredit": "Great Wok Dorchester official website",
+      "imageAlt": "The Great Wok logo with Chinese lettering and dark green name.",
+      "price": {
+        "min": 13.95,
+        "max": 16.95,
+        "note": "All-day combination meals, including pork fried rice, before tax, tip, drinks, and extras. This is not a vegetarian meal estimate; the price of a complete vegetarian meal needs checking.",
+        "sourceUrl": "https://order.greatwokma.com/order/main/all-day-combination",
+        "checkedAt": "2026-10-11",
+        "level": 2,
+        "summary": "Based on all-day combination meals with pork fried rice. Vegetarian meals may have different prices."
+      },
+      "dietary": {
+        "vegetarian": "yes",
+        "vegan": "unknown",
+        "glutenFree": "no",
+        "halal": "unknown"
+      },
+      "dietaryNote": "Student notes list vegetarian options, no gluten-free options, and unconfirmed vegan and halal availability. Check sauces and rice choices: the vegetable category includes oyster sauce, and combination plates include pork fried rice.",
+      "dietarySource": "Student-supplied restaurant notes, October 2026. Official additions: sauce descriptions at https://order.greatwokma.com/order/main/vegetable-tofu and pork fried rice at https://order.greatwokma.com/order/main/all-day-combination; no additional vegetarian or vegan guarantees.",
+      "coordinates": {
+        "lat": 42.3209947,
+        "lng": -71.0616522
+      },
+      "distanceMiles": 1.4002,
+      "imageSourceUrl": "https://imagedelivery.net/9lr8zq_Jvl7h6OFWqEi9IA/1b8ab327-1bcd-4182-05b4-181c5e0a6b00/public",
+      "imageKind": "logo",
+      "imageBackground": "#ffffff"
+    }
+  ]
+}
+</script>
+
+<!-- Page behavior: filters and sorting. -->
+<script>
+'use strict';
+
+// All restaurant content is editable in the JSON block above. No API is required.
+const restaurantData = JSON.parse(document.getElementById('restaurant-data').textContent);
+const restaurants = restaurantData.restaurants;
+const dietNames = { vegetarian:'Vegetarian', vegan:'Vegan', glutenFree:'Gluten-free', halal:'Halal' };
+const state = { images:{} };
+const byId = id => document.getElementById(id);
+const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+const icon = name => `<svg aria-hidden="true"><use href="#i-${name}"></use></svg>`;
+// Relative meal-price tiers for this list: midpoint up to $15 / $20 / above $20.
+const priceLevel = restaurant => restaurant.price.level;
+const priceSymbols = restaurant => '$'.repeat(priceLevel(restaurant));
+const priceLabels = { 1:'cheap', 2:'moderate', 3:'expensive' };
+const externalLink = url => { try { const parsed = new URL(url); return /^https?:$/.test(parsed.protocol) ? parsed.href : '#'; } catch { return '#'; } };
+const externalAttrs = 'target="_blank" rel="noopener noreferrer"';
+const imageBackground = restaurant => /^#[\da-f]{6}$/i.test(restaurant.imageBackground) ? restaurant.imageBackground : '#ffffff';
+const imageKind = restaurant => restaurant.imageKind === 'food' ? 'food' : 'logo';
+
+function dietaryStatus(restaurant, key) {
+  return restaurant.dietary[key];
+}
+function readFilters() {
+  return { cuisine:byId('cuisineFilter').value,
+    price:Number(byId('priceFilter').value) || null, diet:byId('dietaryFilter').value,
+    distance:Number(byId('distanceFilter').value) || null, sort:byId('sortSelect').value };
+}
+function selectRestaurants(filters) {
+  let items = restaurants.filter(restaurant => {
+    if (filters.cuisine && !restaurant.cuisines.includes(filters.cuisine)) return false;
+    if (filters.diet && !['yes','limited'].includes(dietaryStatus(restaurant,filters.diet))) return false;
+    if (filters.distance && (restaurant.distanceMiles === null || restaurant.distanceMiles > filters.distance)) return false;
+    if (filters.price && priceLevel(restaurant) !== filters.price) return false;
+    return true;
+  });
+  const sorters = {name:(a,b) => a.name.localeCompare(b.name),distance:(a,b) => (a.distanceMiles ?? Infinity)-(b.distanceMiles ?? Infinity),price:(a,b) => priceLevel(a)-priceLevel(b) || (a.price.min+a.price.max)-(b.price.min+b.price.max)};
+  if (sorters[filters.sort]) items.sort(sorters[filters.sort]);
+  return items;
+}
+function renderBadge(restaurant,key) {
+  const status = dietaryStatus(restaurant,key);
+  const label = dietNames[key] + (status === 'limited' ? ' · limited' : ' options');
+  return `<span class="badge ${status === 'limited' ? 'limited' : ''}">${status === 'yes' ? icon('check') : ''}${escapeHTML(label)}</span>`;
+}
+function renderCard(restaurant,filters) {
+  const badgeKeys = [filters.diet,...['vegetarian','halal','vegan','glutenFree']].filter((key,index,array) => key && array.indexOf(key) === index && ['yes','limited'].includes(dietaryStatus(restaurant,key)));
+  return `<article class="restaurant-card" aria-labelledby="title-${restaurant.id}">
+    <div class="restaurant-visual" data-kind="${imageKind(restaurant)}" style="background:${imageBackground(restaurant)}"><img src="${state.images[restaurant.id]}" alt="${escapeHTML(restaurant.imageAlt)}" loading="lazy" decoding="async"></div>
+    <div class="restaurant-info">
+      <h2 class="restaurant-title" id="title-${restaurant.id}">${escapeHTML(restaurant.name)}</h2>
+      <p class="cuisine-meta">${escapeHTML(restaurant.cuisines.join(' · '))}</p>
+      <p class="restaurant-description">${escapeHTML(restaurant.description)}</p>
+      <div class="restaurant-facts"><p class="price-line" aria-label="Price level: ${priceLabels[priceLevel(restaurant)]}">${priceSymbols(restaurant)}</p>
+      <p class="distance-line">${icon('location')}${restaurant.distanceMiles === null ? 'Distance not confirmed' : `${restaurant.distanceMiles.toFixed(1)} mi`}</p></div>
+      <div class="tags">${badgeKeys.map(key => renderBadge(restaurant,key)).join('')}</div>
+      <div class="restaurant-actions"><a class="btn btn-green" href="${escapeHTML(externalLink(restaurant.menuUrl))}" ${externalAttrs} aria-label="View menu for ${escapeHTML(restaurant.name)} (opens in new tab)">View menu ${icon('external')}</a></div>
+    </div>
+  </article>`;
+}
+function renderRestaurants() {
+  const filters = readFilters();
+  const items = selectRestaurants(filters);
+  byId('resultCount').textContent = `${items.length} ${items.length === 1 ? 'restaurant' : 'restaurants'} to explore`;
+  const active = Boolean(filters.cuisine || filters.price || filters.diet || filters.distance);
+  byId('clearFilters').hidden = !active;
+  const context = [];
+  if (filters.diet) context.push(`${dietNames[filters.diet]} results include limited choices; unconfirmed options are hidden.`);
+  byId('resultsContext').textContent = context.join(' ');
+  byId('resultsContext').hidden = !context.length;
+  byId('restaurantGrid').innerHTML = items.length ? items.map(item => renderCard(item,filters)).join('') : `<section class="empty-state">${icon('search')}<h2>No matches just yet</h2><p>Try another cuisine, a different budget, or a wider distance. The list has six restaurants for now.</p>${active ? '<button class="btn btn-green" type="button" data-clear>Clear filters</button>' : ''}</section>`;
+}
+function clearFilters() {
+  ['cuisineFilter','priceFilter','dietaryFilter','distanceFilter'].forEach(id => {byId(id).value = '';});
+  renderRestaurants();byId('cuisineFilter').focus();
+}
+function initializeRestaurants() {
+  state.images = JSON.parse(byId('restaurant-images').textContent);
+  [...new Set(restaurants.flatMap(item => item.cuisines))].sort().forEach(cuisine => byId('cuisineFilter').add(new Option(cuisine,cuisine)));
+  ['cuisineFilter','priceFilter','dietaryFilter','distanceFilter','sortSelect'].forEach(id => byId(id).addEventListener('change',() => renderRestaurants()));
+  byId('clearFilters').addEventListener('click',clearFilters);
+  byId('restaurantGrid').addEventListener('click',event => {
+    if (event.target.closest('[data-clear]')) clearFilters();
+  });
+  renderRestaurants();
+}
+
+</script>
+
+<!-- Original restaurant image assets, embedded so this page opens as one file. -->
+<script type="application/json" id="restaurant-images">
+{
+  "thelo-mediterranean": "https://cdn01.s4shops.com/skytabweb/uploads/aba7f03c-f689-f111-b337-000d3a7b73be/15c0c960-43b5-f111-a6a7-000d3a7d7da5.png",
+  "dora-taqueria": "https://dorataqueria.online/assets/dora/logo.png",
+  "the-chester-tavern": "https://images.getbento.com/accounts/e3e915f130a577ffbbc56b024fa61cc8/media/images/85696TheChester-Logo-Circle-dark.png?w=1000&fit=max&auto=compress,format&cs=origin&h=1000",
+  "halal-fusion": "https://thehalalfusionboston.com/wp-content/uploads/2025/11/WhatsApp-Image-2025-10-10-at-18.55.02_7f81a0a1-e1763625475120.png",
+  "shanti-dorchester": "https://popmenucloud.com/cwlvubnt/ea921b3e-e032-422d-a14c-265e6c895b89.png",
+  "great-wok": "https://imagedelivery.net/9lr8zq_Jvl7h6OFWqEi9IA/1b8ab327-1bcd-4182-05b4-181c5e0a6b00/public"
+}
+</script>
+<script>initializeRestaurants();</script>
+</body>
+</html>
