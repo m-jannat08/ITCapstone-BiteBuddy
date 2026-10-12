@@ -6,21 +6,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>BiteBuddy - Preferences</title>
+    <title>BiteBuddy - Join Group</title>
+
+    <!-- QR Scanner Library -->
+    <script src="https://unpkg.com/html5-qrcode"></script>
 
     <style>
         :root {
-            --green: #003D2E;
-            --green-dark: #002F24;
+            --dark-green: #003D2E;
+            --dark-green-2: #002F24;
             --lime: #8AF23A;
+            --orange: #FF6B3D;
             --cream: #F8F6EF;
             --white: #FFFFFF;
             --light-green: #E9F8D9;
-            --text: #16352C;
-            --gray: #68766F;
-            --border: #E5DDD3;
-            --yellow: #FFF3CC;
-            --inactive-circle: #E5E0D5;
+            --light-orange: #FDE3D6;
+            --text-dark: #16352C;
+            --text-gray: #68766F;
+            --border: #DDE9E1;
         }
 
         * {
@@ -31,41 +34,28 @@
 
         body {
             font-family: Arial, Helvetica, sans-serif;
-            background: var(--cream);
-            color: var(--text);
+            background-color: var(--cream);
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
-        button,
-        input {
-            font-family: inherit;
-        }
-
-        /* =========================
-           TOP NAVIGATION
-        ========================= */
+        /* NAVIGATION */
 
         .navbar {
-            width: 100%;
-            min-height: 91px;
-            padding: 8px 6%;
-            background: var(--green);
+            min-height: 76px;
+            background-color: var(--dark-green);
             display: flex;
+            align-items: center;
             justify-content: space-between;
-            align-items: center;
-            gap: 24px;
-            border-bottom: 1px solid var(--green-dark);
+            padding: 10px 50px;
+            gap: 20px;
         }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            flex-shrink: 0;
-        }
-
-        .logo img {
-            width: 85px;
-            height: 70px;
+        .logo-image {
+            width: 105px;
+            height: 55px;
             object-fit: contain;
             display: block;
         }
@@ -77,516 +67,337 @@
         }
 
         .nav-links a {
-            color: var(--white);
             text-decoration: none;
-            font-size: 16px;
-            font-weight: normal;
-            transition: color 0.2s;
+            color: #DCE8E1;
+            font-size: 13px;
+            transition: 0.2s;
         }
 
-        .nav-links a:hover,
-        .nav-links a.active {
+        .nav-links a:hover {
+            color: var(--lime);
+        }
+
+        .nav-links .active {
             color: var(--lime);
             font-weight: bold;
         }
 
-        /* =========================
-           PROGRESS BAR
-           LIGHT YELLOW BACKGROUND
-        ========================= */
+        /* MAIN CONTENT */
 
-        .progress-bar {
+        .main-container {
             width: 100%;
-            min-height: 43px;
-            padding: 8px 20px;
-            background: var(--yellow);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 12px;
-            font-size: 13px;
-            color: var(--text);
-        }
-
-        .progress-step {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--gray);
-            font-weight: normal;
-            white-space: nowrap;
-        }
-
-        .step-number {
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            background: var(--inactive-circle);
-            color: var(--gray);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 12px;
-            font-weight: normal;
-            flex-shrink: 0;
-        }
-
-        /* COMPLETED STEPS */
-
-        .progress-step.completed {
-            color: var(--green);
-            font-weight: bold;
-        }
-
-        .progress-step.completed .step-number {
-            background: var(--lime);
-            color: var(--green);
-            font-weight: bold;
-        }
-
-        /* ACTIVE STEP: BOLD DARK GREEN */
-
-        .progress-step.current {
-            color: var(--green);
-            font-weight: bold;
-        }
-
-        .progress-step.current .step-number {
-            background: var(--lime);
-            color: var(--green);
-            font-weight: bold;
-        }
-
-        /* INACTIVE STEPS */
-
-        .progress-step.upcoming {
-            color: var(--gray);
-            font-weight: normal;
-        }
-
-        .progress-step.upcoming .step-number {
-            background: var(--inactive-circle);
-            color: var(--gray);
-        }
-
-        .progress-arrow {
-            color: #A9A398;
-            font-size: 19px;
-            font-weight: normal;
-            flex-shrink: 0;
-        }
-
-        /* =========================
-           MAIN PAGE
-        ========================= */
-
-        .container {
-            max-width: 1320px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 38px 32px 55px;
+            padding: 60px 30px 45px;
+            flex: 1;
         }
 
-        .page-heading {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 24px;
-            margin-bottom: 30px;
+        .page-header {
+            text-align: center;
+            margin-bottom: 38px;
         }
 
-        .page-heading h1 {
-            font-size: 34px;
-            line-height: 1.3;
-            color: var(--green);
-            margin-bottom: 9px;
-        }
-
-        .page-heading p {
-            font-size: 15px;
-            color: var(--gray);
-            line-height: 1.5;
-        }
-
-        .group-status {
-            min-width: 210px;
-            font-size: 13px;
-            color: var(--text);
-        }
-
-        .progress-track {
-            height: 6px;
-            background: #E6DDD2;
-            border-radius: 10px;
-            margin-top: 9px;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            height: 100%;
-            width: 75%;
-            background: #438764;
-            border-radius: 10px;
-        }
-
-        /* =========================
-           PREFERENCE CARDS
-        ========================= */
-
-        .preference-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 16px;
-        }
-
-        .preference-card {
-            min-width: 0;
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 24px;
-            box-shadow: 0 6px 18px rgba(55, 40, 20, 0.04);
-        }
-
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 18px;
-        }
-
-        .card-header h2 {
-            font-size: 19px;
-            color: var(--green);
-            margin-bottom: 6px;
-        }
-
-        .card-header p {
-            font-size: 13px;
-            color: var(--gray);
-            line-height: 1.4;
-        }
-
-        /* MUST-HAVE AND NICE-TO-HAVE */
-
-        .priority-controls {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: flex-end;
-            gap: 7px;
-        }
-
-        .priority-btn {
-            background: var(--white);
-            border: 1px solid #E5D9CB;
-            border-radius: 20px;
-            padding: 8px 12px;
-            font-size: 12px;
-            font-weight: normal;
-            color: var(--text);
-            cursor: pointer;
-            white-space: nowrap;
-        }
-
-        .priority-btn.must.active {
-            background: var(--light-green);
-            border-color: #75AD89;
-            color: var(--green);
-            font-weight: bold;
-        }
-
-        .priority-btn.nice.active {
-            background: var(--yellow);
-            border-color: #E8BE4B;
-            color: var(--green);
-            font-weight: bold;
-        }
-
-        /* OPTION TITLES */
-
-        .options-heading {
-            display: block;
-            color: var(--text);
-            font-size: 13px;
-            font-weight: normal;
+        .page-header h1 {
+            font-size: 38px;
+            color: var(--dark-green);
             margin-bottom: 12px;
         }
 
-        /* OPTION BUTTONS */
-
-        .options {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 9px;
+        .page-header p {
+            font-size: 16px;
+            color: var(--text-gray);
+            line-height: 1.5;
         }
 
-        .chip {
-            background: var(--white);
-            border: 1px solid #E9DED3;
-            color: #6E6258;
+        /* JOIN CARD */
+
+        .join-card {
+            max-width: 650px;
+            margin: 0 auto;
+            background-color: var(--white);
+            border: 1px solid var(--border);
             border-radius: 22px;
-            padding: 10px 14px;
-            font-size: 13px;
-            font-weight: normal;
+            padding: 42px;
+            box-shadow: 0 8px 25px rgba(0, 61, 46, 0.06);
+        }
+
+        .join-card h2 {
+            font-size: 23px;
+            color: var(--dark-green);
+            margin-bottom: 12px;
+        }
+
+        .description {
+            font-size: 14px;
+            line-height: 1.7;
+            color: var(--text-gray);
+            margin-bottom: 32px;
+        }
+
+        /* INVITE CODE INPUT */
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: bold;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .invite-input {
+            width: 100%;
+            height: 60px;
+            padding: 0 19px;
+            border: 1px solid #D8DCD6;
+            border-radius: 13px;
+            outline: none;
+            font-size: 17px;
+            color: var(--text-dark);
+            background-color: white;
+            text-transform: uppercase;
+        }
+
+        .invite-input:focus {
+            border-color: var(--dark-green);
+            box-shadow: 0 0 0 3px rgba(0, 61, 46, 0.10);
+        }
+
+        /* JOIN BUTTON */
+
+        .join-btn {
+            width: 100%;
+            min-height: 56px;
+            margin-top: 22px;
+            border: none;
+            border-radius: 30px;
+            background-color: var(--orange);
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
             cursor: pointer;
             transition: 0.2s;
         }
 
-        .chip:hover {
-            border-color: var(--green);
+        .join-btn:hover {
+            background-color: #E95C35;
+            transform: translateY(-1px);
         }
 
-        /* SELECTED OPTIONS */
+        /* DIVIDER */
 
-        .chip.selected {
-            background: var(--green);
-            border-color: var(--green);
-            color: var(--white);
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 30px 0;
+            color: #9A9F9B;
+            font-size: 13px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background-color: var(--border);
+        }
+
+        /* QR SCANNER SECTION */
+
+        .qr-option {
+            text-align: center;
+            padding: 27px 22px;
+            background-color: var(--light-green);
+            border-radius: 16px;
+        }
+
+        .qr-option h3 {
+            color: var(--dark-green);
+            font-size: 19px;
+            margin-bottom: 10px;
+        }
+
+        .qr-option p {
+            color: var(--text-gray);
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .scan-btn {
+            display: inline-block;
+            width: 100%;
+            max-width: 340px;
+            min-height: 49px;
+            margin-top: 20px;
+            padding: 13px 20px;
+            border: none;
+            border-radius: 26px;
+            background-color: var(--dark-green);
+            color: white;
+            font-size: 14px;
             font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
         }
 
-        .chip.selected::before {
-            content: "✓ ";
+        .scan-btn:hover {
+            background-color: var(--dark-green-2);
             color: var(--lime);
         }
 
-        /* ALLERGY AND OTHER INPUT */
+        .scan-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
 
-        .extra-input {
+        #qr-reader {
             display: none;
             width: 100%;
-            margin-top: 14px;
-            padding: 12px;
-            border: 1px solid var(--border);
+            max-width: 380px;
+            margin: 22px auto 0;
+            overflow: hidden;
+            border-radius: 12px;
+            background: white;
+        }
+
+        #qr-reader video {
             border-radius: 10px;
+        }
+
+        #scan-status {
+            margin-top: 14px;
             font-size: 13px;
-            background: var(--white);
-            color: var(--text);
-            outline: none;
+            line-height: 1.6;
+            color: var(--dark-green);
+            overflow-wrap: anywhere;
         }
 
-        .extra-input:focus {
-            border-color: var(--green);
-        }
-
-        .extra-input.visible {
-            display: block;
-        }
-
-        /* =========================
-           BOTTOM ACTIONS
-        ========================= */
-
-        .footer-actions {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 18px;
-            margin-top: 28px;
-        }
-
-        .note {
-            color: var(--gray);
-            font-size: 13px;
-            line-height: 1.5;
-        }
-
-        .action-buttons {
-            display: flex;
-            gap: 12px;
-        }
-
-        .btn {
-            min-height: 48px;
-            padding: 0 22px;
-            border-radius: 28px;
+        .stop-btn {
+            display: inline-block;
+            margin-top: 14px;
+            padding: 10px 23px;
+            border: 1px solid var(--border);
+            border-radius: 25px;
+            background-color: white;
+            color: var(--dark-green);
             font-size: 13px;
             font-weight: bold;
             cursor: pointer;
+        }
+
+        .stop-btn:hover {
+            background-color: var(--light-orange);
+        }
+
+        .stop-btn[hidden] {
+            display: none;
+        }
+
+        /* SUCCESS / ERROR MESSAGE */
+
+        #joinMessage {
+            display: none;
+            margin-top: 22px;
+            padding: 16px;
+            background-color: var(--light-green);
+            border-left: 4px solid var(--dark-green);
+            border-radius: 8px;
+            color: var(--dark-green);
+            font-size: 14px;
+            line-height: 1.7;
+            overflow-wrap: anywhere;
+        }
+
+        #joinMessage.error {
+            background-color: var(--light-orange);
+            border-left-color: var(--orange);
+        }
+
+        /* BOTTOM CONTINUE BUTTON */
+
+        .bottom-progress {
+            width: 100%;
+            padding: 22px 5%;
+            margin-top: auto;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            background-color: var(--cream);
+        }
+
+        .continue-btn {
+            display: inline-block;
+            padding: 15px 28px;
+            background-color: var(--dark-green);
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 30px;
             transition: 0.2s;
         }
 
-        .btn-secondary {
-            background: var(--white);
-            color: var(--green);
-            border: 1px solid var(--border);
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--green);
-        }
-
-        .btn-primary {
-            background: var(--green);
-            color: var(--white);
-            border: 1px solid var(--green);
-        }
-
-        .btn-primary:hover {
-            background: var(--green-dark);
+        .continue-btn:hover {
+            background-color: var(--dark-green-2);
             color: var(--lime);
         }
 
-        /* FEEDBACK MESSAGE */
+        /* MOBILE RESPONSIVENESS */
 
-        .message {
-            display: none;
-            margin-top: 20px;
-            padding: 15px;
-            border-radius: 10px;
-            background: var(--light-green);
-            color: var(--green);
-            font-size: 13px;
-            line-height: 1.5;
-        }
-
-        .message.visible {
-            display: block;
-        }
-
-        /* =========================
-           TABLET
-        ========================= */
-
-        @media (max-width: 900px) {
+        @media (max-width: 600px) {
             .navbar {
-                padding: 16px 25px;
+                padding: 12px 18px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .logo-image {
+                width: 85px;
             }
 
             .nav-links {
-                gap: 18px;
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 14px;
             }
 
             .nav-links a {
-                font-size: 14px;
-            }
-
-            .container {
-                padding: 30px 24px 40px;
-            }
-
-            .page-heading h1 {
-                font-size: 29px;
-            }
-
-            .preference-card {
-                padding: 20px;
-            }
-        }
-
-        /* =========================
-           MOBILE
-        ========================= */
-
-        @media (max-width: 760px) {
-            .navbar {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 12px;
-            }
-
-            .nav-links {
-                flex-wrap: wrap;
-                gap: 17px;
-            }
-
-            .progress-bar {
-                gap: 7px;
-                padding: 10px 8px;
-                font-size: 11px;
-            }
-
-            .progress-step {
-                gap: 5px;
-                font-size: 11px;
-            }
-
-            .step-number {
-                width: 24px;
-                height: 24px;
-                font-size: 10px;
-            }
-
-            .progress-arrow {
-                font-size: 14px;
-            }
-
-            .page-heading {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .group-status {
-                width: 100%;
-            }
-
-            .preference-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-actions {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .action-buttons {
-                width: 100%;
-            }
-
-            .action-buttons .btn {
-                flex: 1;
-            }
-        }
-
-        @media (max-width: 430px) {
-            .logo img {
-                width: 80px;
-                height: 58px;
-            }
-
-            .container {
-                padding: 25px 16px 35px;
-            }
-
-            .page-heading h1 {
-                font-size: 27px;
-            }
-
-            .card-header {
-                flex-direction: column;
-            }
-
-            .priority-controls {
-                justify-content: flex-start;
-            }
-
-            .progress-bar {
-                gap: 4px;
-                padding: 9px 4px;
-            }
-
-            .progress-step {
-                gap: 3px;
-                font-size: 9px;
-            }
-
-            .step-number {
-                width: 21px;
-                height: 21px;
-                font-size: 9px;
-            }
-
-            .progress-arrow {
                 font-size: 12px;
             }
 
-            .action-buttons {
-                flex-direction: column;
+            .main-container {
+                padding: 38px 18px;
             }
 
-            .action-buttons .btn {
+            .page-header h1 {
+                font-size: 28px;
+            }
+
+            .page-header p {
+                font-size: 14px;
+            }
+
+            .join-card {
+                padding: 25px 20px;
+                border-radius: 17px;
+            }
+
+            .join-card h2 {
+                font-size: 21px;
+            }
+
+            .qr-option {
+                padding: 23px 15px;
+            }
+
+            .bottom-progress {
+                padding: 20px;
+            }
+
+            .continue-btn {
                 width: 100%;
-                flex: auto;
+                text-align: center;
             }
         }
     </style>
@@ -594,460 +405,343 @@
 
 <body>
 
-    <!-- TOP NAVIGATION -->
+    <!-- NAVIGATION -->
 
     <header class="navbar">
 
-        <a href="home.html" class="logo">
-            <img src="bitebuddy-logo.png" alt="BiteBuddy logo">
-        </a>
+        <div class="logo-area">
+            <a href="home.html">
+                <img
+                    src="bitebuddy-logo.png"
+                    class="logo-image"
+                    alt="BiteBuddy logo"
+                >
+            </a>
+        </div>
 
-        <nav class="nav-links" aria-label="Main navigation">
+        <nav class="nav-links">
             <a href="home.html">Home</a>
             <a href="Create-Group.html">Create Group</a>
-            <a href="join-group.html">Join Group</a>
+            <a href="join-group.html" class="active">Join Group</a>
             <a href="restaurants.html">Restaurants</a>
         </nav>
 
     </header>
 
-    <!-- PROGRESS BAR -->
+    <!-- MAIN CONTENT -->
 
-    <div class="progress-bar" aria-label="Dining group progress">
+    <main class="main-container">
 
-        <div class="progress-step completed">
-            <span class="step-number">1</span>
-            <span>Create group</span>
+        <div class="page-header">
+            <h1>Join a dining group</h1>
+            <p>Enter the invite code your friend shared with you.</p>
         </div>
 
-        <span class="progress-arrow" aria-hidden="true">→</span>
+        <!-- JOIN CARD -->
 
-        <div class="progress-step completed">
-            <span class="step-number">2</span>
-            <span>Invite friends</span>
-        </div>
+        <section class="join-card">
 
-        <span class="progress-arrow" aria-hidden="true">→</span>
+            <h2>Join your friends</h2>
 
-        <div class="progress-step current" aria-current="step">
-            <span class="step-number">3</span>
-            <span>Preferences</span>
-        </div>
-
-        <span class="progress-arrow" aria-hidden="true">→</span>
-
-        <div class="progress-step upcoming">
-            <span class="step-number">4</span>
-            <span>See matches</span>
-        </div>
-
-    </div>
-
-    <!-- MAIN PAGE -->
-
-    <main class="container">
-
-        <!-- PAGE HEADING -->
-
-        <div class="page-heading">
-
-            <div>
-                <h1>What works for you, <span id="userName">there</span>?</h1>
-                <p>Pick your options, then tell us what's essential.</p>
-            </div>
-
-            <div class="group-status">
-                <strong id="groupStatus">Your dining group</strong>
-
-                <div class="progress-track">
-                    <div class="progress-fill"></div>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- PREFERENCE CARDS -->
-
-        <div class="preference-grid">
-
-            <!-- CUISINE -->
-
-            <section class="preference-card" data-category="Cuisine">
-
-                <div class="card-header">
-
-                    <div>
-                        <h2>Cuisine</h2>
-                        <p>What sounds good?</p>
-                    </div>
-
-                    <div class="priority-controls">
-                        <button type="button"
-                                class="priority-btn must active"
-                                data-priority="must">
-                            Must-Have
-                        </button>
-
-                        <button type="button"
-                                class="priority-btn nice"
-                                data-priority="nice">
-                            Nice-to-Have
-                        </button>
-                    </div>
-
-                </div>
-
-                <strong class="options-heading">Choose your options</strong>
-
-                <div class="options">
-                    <button type="button" class="chip">American</button>
-                    <button type="button" class="chip">Italian</button>
-                    <button type="button" class="chip">Chinese</button>
-                    <button type="button" class="chip">Indian</button>
-                    <button type="button" class="chip">Mexican</button>
-                    <button type="button" class="chip">Thai</button>
-                    <button type="button" class="chip">Japanese</button>
-                </div>
-
-            </section>
-
-            <!-- BUDGET -->
-
-            <section class="preference-card" data-category="Budget">
-
-                <div class="card-header">
-
-                    <div>
-                        <h2>Budget</h2>
-                        <p>Per person, before tip</p>
-                    </div>
-
-                    <div class="priority-controls">
-                        <button type="button"
-                                class="priority-btn must active"
-                                data-priority="must">
-                            Must-Have
-                        </button>
-
-                        <button type="button"
-                                class="priority-btn nice"
-                                data-priority="nice">
-                            Nice-to-Have
-                        </button>
-                    </div>
-
-                </div>
-
-                <strong class="options-heading">Choose your budget</strong>
-
-                <div class="options">
-                    <button type="button" class="chip">Under $15</button>
-                    <button type="button" class="chip">$15–$25</button>
-                    <button type="button" class="chip">$25–$40</button>
-                    <button type="button" class="chip">$40+</button>
-                </div>
-
-            </section>
-
-            <!-- DIETARY NEEDS -->
-
-            <section class="preference-card" data-category="Dietary Needs">
-
-                <div class="card-header">
-
-                    <div>
-                        <h2>Dietary Needs</h2>
-                        <p>We'll prioritize safe, inclusive options.</p>
-                    </div>
-
-                    <div class="priority-controls">
-                        <button type="button"
-                                class="priority-btn must active"
-                                data-priority="must">
-                            Must-Have
-                        </button>
-
-                        <button type="button"
-                                class="priority-btn nice"
-                                data-priority="nice">
-                            Nice-to-Have
-                        </button>
-                    </div>
-
-                </div>
-
-                <strong class="options-heading">
-                    Choose your dietary options
-                </strong>
-
-                <div class="options">
-                    <button type="button" class="chip">Vegetarian</button>
-                    <button type="button" class="chip">Vegan</button>
-                    <button type="button" class="chip">Gluten-Free</button>
-                    <button type="button" class="chip">Halal</button>
-                    <button type="button" class="chip" id="allergyOption">
-                        Allergies
-                    </button>
-                    <button type="button" class="chip" id="otherOption">
-                        Other
-                    </button>
-                </div>
-
-                <input
-                    type="text"
-                    id="allergyInput"
-                    class="extra-input"
-                    placeholder="Enter allergies or dietary details"
-                    aria-label="Allergies or dietary details"
-                >
-
-            </section>
-
-            <!-- DISTANCE -->
-
-            <section class="preference-card" data-category="Distance">
-
-                <div class="card-header">
-
-                    <div>
-                        <h2>Distance</h2>
-                        <p>From UMass Boston</p>
-                    </div>
-
-                    <div class="priority-controls">
-                        <button type="button"
-                                class="priority-btn must active"
-                                data-priority="must">
-                            Must-Have
-                        </button>
-
-                        <button type="button"
-                                class="priority-btn nice"
-                                data-priority="nice">
-                            Nice-to-Have
-                        </button>
-                    </div>
-
-                </div>
-
-                <strong class="options-heading">Choose your distance</strong>
-
-                <div class="options">
-                    <button type="button" class="chip">Within 2 miles</button>
-                    <button type="button" class="chip">Within 5 miles</button>
-                    <button type="button" class="chip">Within 10 miles</button>
-                </div>
-
-            </section>
-
-        </div>
-
-        <!-- BOTTOM ACTIONS -->
-
-        <div class="footer-actions">
-
-            <p class="note">
-                ★ Must-Have choices are prioritized as essential preferences.
+            <p class="description">
+                Use the invite code from your group creator to join
+                the dining group and start sharing your preferences.
             </p>
 
-            <div class="action-buttons">
+            <!-- INVITE CODE -->
 
-                <button type="button"
-                        class="btn btn-secondary"
-                        id="saveLater">
-                    Save for later
+            <label for="inviteCode">Invite code</label>
+
+            <input
+                type="text"
+                id="inviteCode"
+                class="invite-input"
+                placeholder="Example: BITE-482"
+                maxlength="8"
+                autocomplete="off"
+                aria-describedby="joinMessage"
+            >
+
+            <!-- JOIN BUTTON -->
+
+            <button
+                type="button"
+                class="join-btn"
+                onclick="joinGroup()"
+            >
+                Join Group
+            </button>
+
+            <!-- DIVIDER -->
+
+            <div class="divider">OR</div>
+
+            <!-- LIVE QR SCANNER -->
+
+            <div class="qr-option">
+
+                <h3>Scan a QR code</h3>
+
+                <p>
+                    Scan your friend's BiteBuddy group QR code
+                    using your camera to enter the invite code automatically.
+                </p>
+
+                <button
+                    type="button"
+                    id="scan-btn"
+                    class="scan-btn"
+                    onclick="startQRScanner()"
+                >
+                    &#128247; Open Camera &amp; Scan
                 </button>
 
-                <button type="button"
-                        class="btn btn-primary"
-                        id="saveMatch">
-                    ✨ Save preferences &amp; match
+                <div id="qr-reader"></div>
+
+                <p id="scan-status" aria-live="polite"></p>
+
+                <button
+                    type="button"
+                    id="stop-scan-btn"
+                    class="stop-btn"
+                    onclick="stopQRScanner()"
+                    hidden
+                >
+                    Stop Scanner
                 </button>
 
             </div>
 
-        </div>
+            <!-- SUCCESS / ERROR MESSAGE -->
 
-        <div class="message"
-             id="message"
-             role="status"
-             aria-live="polite">
-        </div>
+            <div id="joinMessage" role="status" aria-live="polite"></div>
+
+        </section>
 
     </main>
+
+    <!-- CONTINUE TO PREFERENCES -->
+
+    <section class="bottom-progress">
+        <a href="preferences.html" class="continue-btn">
+            Continue to Preferences &rarr;
+        </a>
+    </section>
 
     <!-- JAVASCRIPT -->
 
     <script>
-        // Display optional user and group names.
+        let qrScanner = null;
+        let scannerRunning = false;
+        let scanCompleted = false;
 
-        document.getElementById("userName").textContent =
-            localStorage.getItem("bitebuddyUserName") || "there";
+        const inviteInput = document.getElementById("inviteCode");
+        const scanButton = document.getElementById("scan-btn");
+        const stopButton = document.getElementById("stop-scan-btn");
+        const scanStatus = document.getElementById("scan-status");
+        const qrReader = document.getElementById("qr-reader");
+        const joinMessage = document.getElementById("joinMessage");
 
-        document.getElementById("groupStatus").textContent =
-            localStorage.getItem("bitebuddyGroupName") || "Your dining group";
+        // Display a message to the user.
 
-        const allergyInput = document.getElementById("allergyInput");
-        const message = document.getElementById("message");
+        function showMessage(message, isError = false) {
+            joinMessage.textContent = message;
+            joinMessage.style.display = "block";
+            joinMessage.classList.toggle("error", isError);
+        }
 
-        // Select and unselect preference options.
+        // Read the invite code from a QR code.
+        // Accepts BITE-482 or a URL containing ?code=BITE-482.
 
-        document.querySelectorAll(".chip").forEach(chip => {
+        function extractInviteCode(decodedText) {
+            const text = decodedText.trim();
+            let code = text;
 
-            chip.addEventListener("click", () => {
-
-                chip.classList.toggle("selected");
-
-                if (
-                    chip.id === "allergyOption" ||
-                    chip.id === "otherOption"
-                ) {
-                    const allergySelected =
-                        document.getElementById("allergyOption")
-                            .classList.contains("selected");
-
-                    const otherSelected =
-                        document.getElementById("otherOption")
-                            .classList.contains("selected");
-
-                    allergyInput.classList.toggle(
-                        "visible",
-                        allergySelected || otherSelected
-                    );
-
-                    if (allergySelected) {
-                        allergyInput.placeholder =
-                            "Enter allergies or dietary details";
-                    } else if (otherSelected) {
-                        allergyInput.placeholder =
-                            "Describe your dietary needs";
-                    } else {
-                        allergyInput.value = "";
-                    }
+            if (/^https?:\/\//i.test(text)) {
+                try {
+                    const url = new URL(text);
+                    code = url.searchParams.get("code") || "";
+                } catch (error) {
+                    return null;
                 }
-
-                message.classList.remove("visible");
-            });
-
-        });
-
-        // Change category priority.
-
-        document.querySelectorAll(".priority-btn").forEach(button => {
-
-            button.addEventListener("click", () => {
-
-                const card = button.closest(".preference-card");
-
-                card.querySelectorAll(".priority-btn").forEach(item => {
-                    item.classList.remove("active");
-                });
-
-                button.classList.add("active");
-                message.classList.remove("visible");
-            });
-
-        });
-
-        // Collect selected preferences.
-
-        function collectPreferences() {
-
-            const preferences = {};
-
-            document.querySelectorAll(".preference-card").forEach(card => {
-
-                const category = card.dataset.category;
-
-                const activePriority =
-                    card.querySelector(".priority-btn.active").dataset.priority;
-
-                preferences[category] = {
-                    priority: activePriority,
-
-                    choices: [
-                        ...card.querySelectorAll(".chip.selected")
-                    ].map(chip => chip.textContent.trim())
-                };
-
-            });
-
-            preferences.extraDietaryDetails = allergyInput.value.trim();
-
-            return preferences;
-        }
-
-        // Show feedback.
-
-        function showMessage(text) {
-            message.textContent = text;
-            message.classList.add("visible");
-        }
-
-        // Save preferences in the current browser.
-
-        function savePreferences() {
-
-            try {
-
-                localStorage.setItem(
-                    "bitebuddyPreferences",
-                    JSON.stringify(collectPreferences())
-                );
-
-                return true;
-
-            } catch (error) {
-
-                showMessage(
-                    "Your browser could not save the preferences. Please try again."
-                );
-
-                return false;
-            }
-        }
-
-        // Save for later.
-
-        document.getElementById("saveLater").addEventListener("click", () => {
-
-            if (savePreferences()) {
-                showMessage(
-                    "Your preferences have been saved in this browser."
-                );
             }
 
-        });
+            code = code.trim().toUpperCase();
 
-        // Save preferences and show feedback.
+            return /^BITE-[A-Z0-9]{3}$/.test(code)
+                ? code
+                : null;
+        }
 
-        document.getElementById("saveMatch").addEventListener("click", () => {
+        // Start the live camera scanner.
 
-            const preferences = collectPreferences();
+        async function startQRScanner() {
+            if (scannerRunning) return;
 
-            const selectedCount = Object.values(preferences)
-                .filter(item => item && Array.isArray(item.choices))
-                .reduce((total, item) => total + item.choices.length, 0);
-
-            if (selectedCount === 0) {
-
-                showMessage(
-                    "Please select at least one option before continuing."
-                );
-
+            if (!window.isSecureContext) {
+                scanStatus.textContent =
+                    "Camera access requires a secure HTTPS website.";
                 return;
             }
 
-            if (savePreferences()) {
-
-                showMessage(
-                    "Your preferences have been saved! Restaurant matching is not connected yet."
-                );
-
+            if (typeof Html5Qrcode === "undefined") {
+                scanStatus.textContent =
+                    "The QR scanner could not load. Check your internet connection and refresh the page.";
+                return;
             }
 
-        });
+            scanCompleted = false;
+            scanButton.disabled = true;
+            scanStatus.textContent =
+                "Starting camera. Please allow camera access.";
 
+            qrReader.style.display = "block";
+            stopButton.hidden = false;
+
+            try {
+                qrScanner = new Html5Qrcode("qr-reader");
+
+                await qrScanner.start(
+                    { facingMode: "environment" },
+                    {
+                        fps: 10,
+                        qrbox: {
+                            width: 220,
+                            height: 220
+                        },
+                        aspectRatio: 1
+                    },
+                    async function(decodedText) {
+                        if (scanCompleted) return;
+
+                        const code = extractInviteCode(decodedText);
+
+                        if (!code) {
+                            scanStatus.textContent =
+                                "This QR code does not contain a valid BiteBuddy invite code.";
+                            return;
+                        }
+
+                        scanCompleted = true;
+                        inviteInput.value = code;
+
+                        scanStatus.textContent =
+                            "Invite code scanned successfully: " + code;
+
+                        await stopQRScanner(true);
+
+                        inviteInput.focus();
+                        showMessage(
+                            "QR code scanned! Your invite code is " +
+                            code +
+                            ". Click Join Group to continue."
+                        );
+                    },
+                    function(errorMessage) {
+                        // No action is needed for each unsuccessful scan frame.
+                    }
+                );
+
+                scannerRunning = true;
+                scanStatus.textContent =
+                    "Camera is active. Point it at your friend's QR code.";
+
+            } catch (error) {
+                qrReader.style.display = "none";
+                stopButton.hidden = true;
+                scanButton.disabled = false;
+                scannerRunning = false;
+
+                scanStatus.textContent =
+                    "Could not open the camera. Allow camera permission and try again.";
+
+                console.error("QR scanner error:", error);
+
+                if (qrScanner) {
+                    try {
+                        await qrScanner.clear();
+                    } catch (cleanupError) {
+                        console.error(cleanupError);
+                    }
+
+                    qrScanner = null;
+                }
+            }
+        }
+
+        // Stop the camera and clean up the scanner.
+
+        async function stopQRScanner(keepMessage = false) {
+            if (qrScanner) {
+                try {
+                    if (scannerRunning) {
+                        await qrScanner.stop();
+                    }
+                } catch (error) {
+                    console.error("Error stopping scanner:", error);
+                }
+
+                try {
+                    await qrScanner.clear();
+                } catch (error) {
+                    console.error("Error clearing scanner:", error);
+                }
+            }
+
+            qrScanner = null;
+            scannerRunning = false;
+            scanCompleted = false;
+
+            qrReader.style.display = "none";
+            stopButton.hidden = true;
+            scanButton.disabled = false;
+
+            if (!keepMessage) {
+                scanStatus.textContent = "Scanner stopped.";
+            }
+        }
+
+        // Validate the invite code.
+
+        function joinGroup() {
+            const code = inviteInput.value.trim().toUpperCase();
+
+            inviteInput.value = code;
+
+            if (code === "") {
+                showMessage(
+                    "Please enter an invite code or scan your friend's QR code.",
+                    true
+                );
+                inviteInput.focus();
+                return;
+            }
+
+            if (!/^BITE-[A-Z0-9]{3}$/.test(code)) {
+                showMessage(
+                    "Please enter a valid invite code, such as BITE-482.",
+                    true
+                );
+                inviteInput.focus();
+                return;
+            }
+
+            showMessage(
+                "Invite code " + code +
+                " passed the format check. Actual group membership requires a shared group database."
+            );
+
+            // This front-end demo does not verify that the group exists.
+            // Connect a backend or shared database to implement real membership.
+        }
+
+        // Allow Enter to submit the invite code.
+
+        inviteInput.addEventListener("keydown", function(event) {
+            if (event.key === "Enter") {
+                joinGroup();
+            }
+        });
     </script>
 
 </body>
