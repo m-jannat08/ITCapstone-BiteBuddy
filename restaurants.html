@@ -501,6 +501,7 @@ h1 {
     <a href="home.html">Home</a>
     <a href="Create-Group.html">Create Group</a>
     <a href="join-group.html">Join Group</a>
+    <a href="prefernces.html">Prefernces & Match </a>
     <a href="restaurants.html" class="active" aria-current="page">Restaurants</a>
   </nav>
 </header>
@@ -792,7 +793,39 @@ const restaurantData = {
       imageUrl: "224 Boston restaurant logo.jpeg",
       imageBackground: "#ffffff",
       imageAlt: "224 Boston restaurant photo"
-    }
+    },
+    {
+  id: "venezia",
+  name: "Venezia",
+  cuisines: ["Italian", "Italian-American", "Seafood"],
+  description: "Italian dining with outdoor seating, private dining, and cocktails.",
+  address: "20 Ericsson St, Boston, MA 02122",
+  menuUrl: "https://www.veneziaboston.com/menu-4",
+  price: { min: 20, max: 30, level: 3 },
+
+  dietary: {
+    vegetarian: "yes",
+    vegan: "limited",
+    glutenFree: "yes",
+    halal: "no",
+    nutFree: "yes",
+    soyFree: "unknown",
+    dairyFree: "unknown",
+    eggFree: "unknown",
+    peanutFree: "unknown",
+    shellfishFree: "unknown",
+    wheatFree: "unknown"
+  },
+
+  dietaryNote: "Vegetarian options are available. Vegan options are limited and may require modifications. Gluten-free and nut-free options are reported available, but ingredients and cross-contact risks must be confirmed directly with the restaurant. Not halal-certified; confirm meat and sauce ingredients with the restaurant.",
+
+  coordinates: null,
+  distanceMiles: 3.0,
+
+  imageUrl: "venezia.jpeg",
+  imageBackground: "#ffffff",
+  imageAlt: "Venezia Italian restaurant"
+},
   ]
 };
 
