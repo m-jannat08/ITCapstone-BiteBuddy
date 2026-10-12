@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#003D2E">
+<title>Finding Matches | BiteBuddy</title>
+
+<style>
+:root {
+  --dark-green: #003D2E;
+  --dark-green-2: #002F24;
+  --lime: #8AF23A;
+  --orange: #FF6B3D;
+  --cream: #F8F6EF;
+  --white: #FFFFFF;
+  --light-green: #E9F8D9;
+  --text-dark: #16352C;
+  --text-gray: #68766F;
+  --pale-yellow: #FFF4CC;
+  --pale-orange: #FCE4D9;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  padding: 24px;
+  background: #F4F4F4;
+  color: var(--text-dark);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+.page-label {
+  max-width: 1200px;
+  margin: 0 auto 8px;
+  color: var(--dark-green);
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.app {
+  width: 100%;
+  max-width: 1200px;
+  min-height: 580px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #FFFAF2;
+}
+
+/* NAVIGATION BAR */
+.navbar {
+  min-height: 76px;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  background-color: var(--dark-green);
+  border-bottom: 1px solid var(--dark-green-2);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.brand img {
+  display: block;
+  width: 110px;
+  height: 55px;
+  object-fit: contain;
+}
+
+.brand-fallback {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  color: var(--white);
+  font-size: 19px;
+  font-weight: 800;
+}
+
+.brand-dot {
+  width: 22px;
+  height: 22px;
+  background: var(--orange);
+  border-radius: 50%;
+}
+
+/* NAVIGATION LINKS: NO BOXES */
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.nav-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 14px;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  color: var(--white);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+/* Hover: text only */
+.nav-links a:hover {
+  background: transparent;
+  color: var(--lime);
+  font-weight: 800;
+}
+
+/* Selected page: text only */
+.nav-links a.active {
+  background: transparent;
+  color: var(--lime);
+  font-weight: 800;
+}
+
+/* Keyboard accessibility */
+.nav-links a:focus-visible {
+  outline: 2px solid var(--lime);
+  outline-offset: 3px;
+}
+
+/* STATUS BANNER */
+.status-banner {
+  min-height: 40px;
+  padding: 9px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--pale-yellow);
+  color: var(--dark-green);
+  font-size: 12px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  background: var(--orange);
+  border-radius: 50%;
+  animation: blink 1.4s infinite;
+}
+
+/* MAIN MATCHING AREA */
+main {
+  flex: 1;
+  min-height: 490px;
+  padding: 55px 20px 65px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.match-icon-wrap {
+  width: 112px;
+  height: 112px;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--pale-orange);
+  border-radius: 50%;
+}
+
+.match-icon {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #E9543F;
+  border-radius: 50%;
+  color: #E9543F;
+  animation: pulse 2.2s ease-in-out infinite;
+}
+
+.match-icon svg {
+  width: 38px;
+  height: 38px;
+}
+
+h1 {
+  margin-bottom: 8px;
+  color: #29251F;
+  font-size: clamp(22px, 3vw, 29px);
+  font-weight: 800;
+  letter-spacing: -0.7px;
+}
+
+.subtitle {
+  max-width: 480px;
+  margin-bottom: 23px;
+  color: #82786E;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* PROGRESS BAR */
+.progress-area {
+  width: min(100%, 460px);
+}
+
+.progress-track {
+  width: 100%;
+  height: 9px;
+  overflow: hidden;
+  background: #E9DED3;
+  border-radius: 30px;
+}
+
+.progress-fill {
+  width: 73%;
+  height: 100%;
+  background: var(--orange);
+  border-radius: 30px;
+  transition: width 0.5s ease;
+}
+
+.progress-caption {
+  margin-top: 17px;
+  color: #E44732;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* MATCHING STATUS CARD */
+.matching-card {
+  width: min(100%, 570px);
+  margin-top: 25px;
+  padding: 18px;
+  background: var(--white);
+  border: 1px solid #EEE3D7;
+  border-radius: 18px;
+  box-shadow: 0 7px 20px rgba(64, 45, 25, 0.07);
+}
+
+.status-pills {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 11px;
+  border: 1px solid #E8E1D8;
+  border-radius: 30px;
+  color: #6D665E;
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.pill.completed {
+  background: #E3F4E7;
+  border-color: #72B48A;
+  color: var(--dark-green);
+  font-weight: 700;
+}
+
+.pill.current {
+  background: #FFF1E9;
+  border-color: #F4B49E;
+  color: #A9432D;
+  font-weight: 700;
+}
+
+.card-message {
+  margin-top: 16px;
+  color: #877C72;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+/* ACTION BUTTONS */
+.actions {
+  margin-top: 22px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.actions[hidden] {
+  display: none;
+}
+
+.btn {
+  min-height: 42px;
+  padding: 12px 21px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--dark-green);
+  border-radius: 25px;
+  background: var(--dark-green);
+  color: var(--white);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.btn:hover {
+  background: var(--dark-green-2);
+  transform: translateY(-1px);
+}
+
+.btn.secondary {
+  background: transparent;
+  color: var(--dark-green);
+}
+
+.btn.secondary:hover {
+  background: var(--light-green);
+}
+
+footer {
+  padding: 14px 20px;
+  background: #FFFAF2;
+  color: #A49A8E;
+  text-align: center;
+  font-size: 10px;
+}
+
+/* ANIMATIONS */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(0.94); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+/* TABLET */
+@media (max-width: 850px) {
+  body {
+    padding: 12px;
+  }
+
+  .navbar {
+    padding: 15px 22px;
+    flex-wrap: wrap;
+  }
+
+  .nav-links {
+    gap: 6px;
+  }
+
+  main {
+    padding: 50px 18px;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 520px) {
+  .navbar {
+    justify-content: center;
+  }
+
+  .brand {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .brand img {
+    object-position: center;
+  }
+
+  .nav-links {
+    justify-content: center;
+    gap: 4px;
+  }
+
+  .nav-links a {
+    padding: 9px;
+    font-size: 11px;
+  }
+
+  main {
+    min-height: 500px;
+    padding: 40px 15px;
+  }
+
+  .match-icon-wrap {
+    width: 96px;
+    height: 96px;
+  }
+
+  .match-icon {
+    width: 70px;
+    height: 70px;
+  }
+
+  .matching-card {
+    padding: 16px 10px;
+  }
+
+  .status-pills {
+    gap: 8px;
+  }
+
+  .pill {
+    padding: 7px 9px;
+    font-size: 9px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="page-label">Finding matches</div>
+
+<div class="app">
+  <header class="navbar">
+    <a class="brand" href="home.html" aria-label="BiteBuddy home">
+      <img
+        src="bitebuddy-logo.png"
+        alt="BiteBuddy logo"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+      >
+      <span class="brand-fallback">
+        <span class="brand-dot"></span>
+        BiteBuddy
+      </span>
+    </a>
+
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="home.html">Home</a>
+      <a href="Create-Group.html">Create Group</a>
+      <a href="join-group.html">Join Group</a>
+      <a href="restaurants.html">Restaurants</a>
+    </nav>
+  </header>
+
+  <div class="status-banner" role="status" aria-live="polite">
+    <span class="status-dot"></span>
+    <span id="bannerText">All preferences are in · Matching now</span>
+  </div>
+
+  <main>
+    <div class="match-icon-wrap" aria-hidden="true">
+      <div class="match-icon">
+        <svg viewBox="0 0 40 40" fill="none">
+          <path
+            d="M20 3 L22.5 16.5 L36 20 L22.5 22.5 L20 37 L17.5 22.5 L4 20 L17.5 16.5 Z"
+            stroke="currentColor"
+            stroke-width="0.9"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
+    </div>
+
+    <h1 id="heading">Finding your group's best match...</h1>
+
+    <p class="subtitle" id="subtitle">
+      Comparing cuisine, budget, distance, and dietary needs.
+    </p>
+
+    <section class="progress-area" aria-label="Matching progress">
+      <div
+        class="progress-track"
+        role="progressbar"
+        aria-label="Finding restaurant matches"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        aria-valuenow="73"
+        id="progressBar"
+      >
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+
+      <p class="progress-caption" id="progressCaption">
+        73% · Checking 42 nearby restaurants
+      </p>
+    </section>
+
+    <section class="matching-card" aria-label="Matching status">
+      <div class="status-pills">
+        <span class="pill completed">✓ Preferences combined</span>
+        <span class="pill completed">✓ Must-haves verified</span>
+        <span class="pill current" id="rankingPill">● Ranking group fit</span>
+      </div>
+
+      <p class="card-message" id="cardMessage">
+        We're comparing the group's preferences to find restaurants everyone can enjoy.
+      </p>
+    </section>
+
+    <div class="actions" id="actions" hidden>
+      <a class="btn" href="restaurants.html">Explore restaurants →</a>
+      <a class="btn secondary" href="preferences.html">Edit preferences</a>
+    </div>
+  </main>
+
+  <footer>BiteBuddy · Better food decisions, together.</footer>
+</div>
+
+<script>
+"use strict";
+
+/* Front-end demonstration only.
+   Connect your actual matching algorithm to display real results. */
+
+const progressFill = document.getElementById("progressFill");
+const progressBar = document.getElementById("progressBar");
+const progressCaption = document.getElementById("progressCaption");
+const bannerText = document.getElementById("bannerText");
+const heading = document.getElementById("heading");
+const subtitle = document.getElementById("subtitle");
+const cardMessage = document.getElementById("cardMessage");
+const rankingPill = document.getElementById("rankingPill");
+const actions = document.getElementById("actions");
+
+let progress = 73;
+
+function updateProgress(value) {
+  progress = value;
+  progressFill.style.width = progress + "%";
+  progressBar.setAttribute("aria-valuenow", progress);
+
+  progressCaption.textContent = progress < 100
+    ? progress + "% · Checking 42 nearby restaurants"
+    : "100% · Matching demonstration complete";
+}
+
+const matchingDemo = setInterval(() => {
+  updateProgress(Math.min(progress + 1, 100));
+
+  if (progress >= 100) {
+    clearInterval(matchingDemo);
+
+    heading.textContent = "Your group's match is ready!";
+    subtitle.textContent =
+      "Explore the restaurant list to choose your next meal.";
+
+    bannerText.textContent = "Matching demonstration complete";
+
+    rankingPill.textContent = "✓ Ranking demonstration complete";
+    rankingPill.classList.add("completed");
+    rankingPill.classList.remove("current");
+
+    cardMessage.textContent =
+      "This is a front-end demo. Actual recommendations will appear when your matching algorithm is connected.";
+
+    actions.hidden = false;
+  }
+}, 120);
+</script>
+
+</body>
+</html>
