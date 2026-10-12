@@ -1,699 +1,344 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BiteBuddy - Create Group</title>
 
-
     <style>
-
-        /* =========================================
-           BITEBUDDY COLOR SYSTEM
-           ========================================= */
-
         :root {
-
             --dark-green: #003D2E;
             --dark-green-2: #002F24;
             --lime: #8AF23A;
             --orange: #FF6B3D;
-
             --cream: #F8F6EF;
             --white: #FFFFFF;
-
             --light-green: #E9F8D9;
             --light-orange: #FDE3D6;
-
             --text-dark: #16352C;
             --text-gray: #68766F;
-
             --border: #DDE9E1;
-
         }
-
-
-        /* =========================================
-           GENERAL
-           ========================================= */
 
         * {
-
             margin: 0;
             padding: 0;
-
             box-sizing: border-box;
-
         }
 
+        html {
+            min-height: 100%;
+        }
 
         body {
-
-            font-family: Arial, Helvetica, sans-serif;
-
-            background-color: var(--cream);
-
-            color: var(--text-dark);
-
-        }
-
-
-        /* =========================================
-           NAVIGATION
-           ========================================= */
-
-        .navbar {
-
-            height: 76px;
-
-            background-color: var(--dark-green);
-
+            min-height: 100vh;
             display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            padding: 0 50px;
-
+            flex-direction: column;
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--cream);
+            color: var(--text-dark);
         }
 
-
-        /* =========================================
-           LOGO
-           ========================================= */
+        /* NAVIGATION */
+        .navbar {
+            min-height: 76px;
+            background: var(--dark-green);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 50px;
+        }
 
         .logo-area {
-
             display: flex;
-
             align-items: center;
-
         }
-
 
         .logo-image {
-
             width: 105px;
-
             height: 55px;
-
             object-fit: contain;
-
             display: block;
-
         }
-
-
-        /* =========================================
-           NAVIGATION LINKS
-           ========================================= */
 
         .nav-links {
-
             display: flex;
-
             align-items: center;
-
             gap: 30px;
-
         }
-
 
         .nav-links a {
-
-            text-decoration: none;
-
             color: #DCE8E1;
-
+            text-decoration: none;
             font-size: 13px;
-
             transition: 0.2s;
-
         }
-
 
         .nav-links a:hover {
-
             color: var(--lime);
-
         }
-
 
         .nav-links .active {
-
             color: var(--lime);
-
             font-weight: bold;
-
         }
 
-
-        /* =========================================
-           PROFILE
-           ========================================= */
-
-        .profile {
-
-            width: 32px;
-
-            height: 32px;
-
-            border-radius: 50%;
-
-            background-color: var(--lime);
-
-            color: var(--dark-green);
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            font-size: 11px;
-
-            font-weight: bold;
-
-        }
-
-
-        /* =========================================
-           PROGRESS BAR
-           ========================================= */
-
+        /* PROGRESS BAR */
         .progress-bar {
-
-            height: 34px;
-
-            background-color: #FFF3CC;
-
+            min-height: 34px;
+            background: #FFF3CC;
             display: flex;
-
             align-items: center;
-
             justify-content: center;
-
             gap: 10px;
-
+            padding: 6px 12px;
             font-size: 11px;
-
             color: #665F55;
-
         }
-
 
         .progress-step {
-
             display: flex;
-
             align-items: center;
-
             gap: 6px;
-
             font-weight: bold;
-
         }
-
 
         .progress-step.active {
-
             color: var(--dark-green);
-
-            font-weight: bold;
-
         }
-
 
         .progress-number {
-
-            width: 20px;
-
-            height: 20px;
-
+            width: 22px;
+            height: 22px;
             border-radius: 50%;
-
             display: flex;
-
             align-items: center;
-
             justify-content: center;
-
-            background-color: #E4DED3;
-
+            background: #E4DED3;
             color: #777067;
-
             font-size: 9px;
-
             font-weight: bold;
-
+            flex-shrink: 0;
         }
-
 
         .progress-step.active .progress-number {
-
-            background-color: var(--lime);
-
+            background: var(--lime);
             color: var(--dark-green);
-
         }
-
 
         .arrow {
-
             color: #A49C91;
-
             font-size: 12px;
-
         }
 
-
-        /* =========================================
-           MAIN CONTENT
-           ========================================= */
+        /* MAIN PAGE LAYOUT */
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
 
         .main-container {
-
-            max-width: 1100px;
-
+            width: 100%;
+            max-width: 1160px;
             margin: 0 auto;
-
-            padding: 42px 30px 70px;
-
+            padding: 42px 30px 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
-
-
-        /* =========================================
-           PAGE HEADER
-           ========================================= */
 
         .page-header {
-
             margin-bottom: 24px;
-
         }
-
 
         .page-header h1 {
-
             font-size: 28px;
-
             line-height: 1.2;
-
             color: var(--dark-green);
-
             margin-bottom: 7px;
-
             letter-spacing: -0.5px;
-
         }
-
 
         .page-header p {
-
             font-size: 13px;
-
             color: var(--text-gray);
-
         }
 
-
-        /* =========================================
-           CONTENT GRID
-           ========================================= */
-
+        /* TWO CARDS */
         .content-grid {
-
             display: grid;
-
             grid-template-columns: 1fr 1fr;
-
             gap: 20px;
-
         }
-
-
-        /* =========================================
-           CARD
-           ========================================= */
 
         .card {
-
-            background-color: var(--white);
-
+            background: var(--white);
             border: 1px solid var(--border);
-
             border-radius: 17px;
-
             padding: 24px;
-
-            box-shadow:
-                0 8px 25px rgba(0, 61, 46, 0.05);
-
+            box-shadow: 0 8px 25px rgba(0, 61, 46, 0.05);
         }
-
-
-        /* =========================================
-           CARD TITLE
-           ========================================= */
 
         .card-title {
-
             font-size: 17px;
-
             color: var(--dark-green);
-
             margin-bottom: 20px;
-
         }
-
-
-        /* =========================================
-           FORM LABEL
-           ========================================= */
 
         label {
-
             display: block;
-
             font-size: 11px;
-
             font-weight: bold;
-
             color: var(--text-dark);
-
             margin-bottom: 8px;
-
         }
 
-
-        /* =========================================
-           TEXT INPUT
-           ========================================= */
-
+        /* TEAM NAME */
         .text-input {
-
             width: 100%;
-
-            height: 42px;
-
+            height: 46px;
             padding: 0 13px;
-
             border: 1px solid #D8DCD6;
-
             border-radius: 10px;
-
             outline: none;
-
-            font-size: 12px;
-
+            font-size: 13px;
             color: var(--text-dark);
-
-            background-color: white;
-
+            background: white;
         }
-
 
         .text-input:focus {
-
             border-color: var(--lime);
-
-            box-shadow:
-                0 0 0 3px rgba(138, 242, 58, 0.15);
-
+            box-shadow: 0 0 0 3px rgba(138, 242, 58, 0.15);
         }
 
-
-        /* =========================================
-           GROUP SIZE
-           ========================================= */
-
+        /* GROUP SIZE */
         .group-size {
-
             margin-top: 20px;
-
         }
-
 
         .size-options {
-
             display: flex;
-
             gap: 8px;
-
             flex-wrap: wrap;
-
         }
-
 
         .size-btn {
-
-            height: 34px;
-
-            padding: 0 14px;
-
-            background-color: white;
-
+            min-height: 38px;
+            padding: 0 15px;
+            background: white;
             border: 1px solid #D8DCD6;
-
-            border-radius: 18px;
-
-            font-size: 11px;
-
+            border-radius: 20px;
+            font-size: 12px;
             color: #6C756F;
-
             cursor: pointer;
-
             transition: 0.2s;
-
         }
-
 
         .size-btn:hover {
-
             border-color: var(--dark-green);
-
             color: var(--dark-green);
-
         }
-
-
-        /* SELECTED SIZE */
 
         .size-btn.selected {
-
-            background-color: var(--light-green);
-
+            background: var(--light-green);
             border-color: #72B94B;
-
             color: var(--dark-green);
-
             font-weight: bold;
-
         }
 
-
-        /* =========================================
-           GENERATE BUTTON
-           ========================================= */
-
+        /* GENERATE INVITE */
         .generate-btn {
-
-            margin-top: 22px;
-
-            height: 42px;
-
-            padding: 0 20px;
-
+            margin-top: 24px;
+            min-height: 44px;
+            padding: 0 22px;
             border: none;
-
-            border-radius: 22px;
-
-            background-color: var(--orange);
-
+            border-radius: 24px;
+            background: var(--orange);
             color: white;
-
-            font-size: 11px;
-
+            font-size: 12px;
             font-weight: bold;
-
             cursor: pointer;
-
             transition: 0.2s;
-
         }
-
 
         .generate-btn:hover {
-
-            background-color: #E95C35;
-
+            background: #E95C35;
             transform: translateY(-1px);
-
         }
 
-
-        /* =========================================
-           INVITE HEADER
-           ========================================= */
-
+        /* INVITE CARD */
         .invite-header {
-
             display: flex;
-
             align-items: center;
-
             justify-content: space-between;
-
             gap: 10px;
-
-            margin-bottom: 17px;
-
+            margin-bottom: 20px;
         }
-
 
         .invite-header h2 {
-
             font-size: 17px;
-
             color: var(--dark-green);
-
         }
-
-
-        /* =========================================
-           ACTIVE BADGE
-           ========================================= */
 
         .active-badge {
-
-            background-color: var(--light-green);
-
+            background: var(--light-green);
             color: var(--dark-green);
-
             border: 1px solid #78B85A;
-
             border-radius: 20px;
-
-            padding: 6px 10px;
-
+            padding: 7px 11px;
             font-size: 9px;
-
             font-weight: bold;
-
             white-space: nowrap;
-
         }
-
-
-        /* =========================================
-           INVITE CODE
-           ========================================= */
 
         .invite-code {
-
-            background-color: var(--light-orange);
-
+            background: var(--light-orange);
             border-radius: 12px;
-
-            padding: 18px;
-
+            padding: 20px;
             text-align: center;
-
-            margin-bottom: 18px;
-
+            margin-bottom: 20px;
         }
-
 
         .invite-code small {
-
             display: block;
-
             color: var(--orange);
-
-            font-size: 9px;
-
+            font-size: 10px;
             font-weight: bold;
-
             letter-spacing: 0.08em;
-
             margin-bottom: 6px;
-
         }
-
 
         .invite-code strong {
-
             font-size: 27px;
-
             color: var(--dark-green);
-
             letter-spacing: 2px;
-
         }
 
-
-        /* =========================================
-           QR SECTION
-           ========================================= */
-
+        /* QR AREA */
         .qr-section {
-
             display: flex;
-
             align-items: center;
-
             gap: 18px;
-
         }
-
-
-        /* =========================================
-           QR PLACEHOLDER
-           ========================================= */
 
         .qr-code {
-
             width: 95px;
-
             height: 95px;
-
             flex-shrink: 0;
-
-            background-color: white;
-
+            background: white;
             border: 1px solid #E2E2E2;
-
             border-radius: 8px;
-
             display: flex;
-
             align-items: center;
-
             justify-content: center;
-
-            position: relative;
-
-            overflow: hidden;
-
         }
 
-
         .qr-pattern {
-
             width: 67px;
-
             height: 67px;
-
             background:
-
                 linear-gradient(
                     90deg,
                     var(--dark-green) 10px,
@@ -704,7 +349,6 @@
                     transparent 43px 50px,
                     var(--dark-green) 50px 67px
                 ),
-
                 linear-gradient(
                     var(--dark-green) 10px,
                     transparent 10px 17px,
@@ -714,739 +358,376 @@
                     transparent 48px 55px,
                     var(--dark-green) 55px 67px
                 );
-
             border: 5px solid var(--dark-green);
-
         }
-
-
-        /* =========================================
-           INVITE INFORMATION
-           ========================================= */
 
         .invite-info {
-
             flex: 1;
-
+            min-width: 0;
         }
-
 
         .invite-info p {
-
-            font-size: 11px;
-
+            font-size: 12px;
             line-height: 1.6;
-
             color: var(--text-gray);
-
             margin-bottom: 12px;
-
         }
-
-
-        /* =========================================
-           SECONDARY BUTTON
-           ========================================= */
 
         .secondary-btn {
-
-            height: 34px;
-
-            padding: 0 13px;
-
-            border-radius: 18px;
-
-            background-color: white;
-
+            min-height: 36px;
+            padding: 0 14px;
+            border-radius: 20px;
+            background: white;
             border: 1px solid #D8DCD6;
-
-            font-size: 10px;
-
+            font-size: 11px;
             font-weight: bold;
-
             color: var(--dark-green);
-
             cursor: pointer;
-
             margin-right: 5px;
-
             margin-bottom: 6px;
-
             transition: 0.2s;
-
         }
-
 
         .secondary-btn:hover {
-
-            background-color: var(--light-green);
-
+            background: var(--light-green);
             border-color: var(--lime);
-
         }
 
-
-        /* =========================================
-           TEAM NOTE
-           ========================================= */
-
-        .team-note {
-
-            margin-top: 18px;
-
-            padding: 12px 14px;
-
-            background-color: #F1F7F1;
-
-            border-left: 3px solid var(--lime);
-
-            border-radius: 7px;
-
-            font-size: 10px;
-
-            color: var(--text-gray);
-
-            line-height: 1.5;
-
+        /* CONTINUE BUTTON AREA */
+        .continue-section {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: auto;
+            padding-top: 35px;
+            padding-bottom: 10px;
         }
 
-
-        .team-note strong {
-
-            color: var(--dark-green);
-
+        .continue-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 54px;
+            padding: 0 30px;
+            background: var(--dark-green);
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 30px;
+            transition: 0.2s;
         }
 
+        .continue-btn:hover {
+            background: var(--dark-green-2);
+            transform: translateY(-2px);
+        }
 
-        /* =========================================
-           RESPONSIVE
-           ========================================= */
-
+        /* RESPONSIVE DESIGN */
         @media (max-width: 850px) {
-
             .navbar {
-
-                padding: 0 25px;
-
+                padding: 10px 25px;
             }
-
 
             .nav-links {
-
                 gap: 15px;
-
             }
-
 
             .content-grid {
-
                 grid-template-columns: 1fr;
-
             }
-
 
             .main-container {
-
-                padding: 35px 25px 60px;
-
+                padding: 35px 25px 20px;
             }
 
+            .continue-section {
+                margin-top: 25px;
+            }
         }
 
-
         @media (max-width: 600px) {
+            .navbar {
+                padding: 10px 15px;
+            }
+
+            .logo-image {
+                width: 75px;
+            }
+
+            .nav-links {
+                gap: 10px;
+            }
 
             .nav-links a {
-
-                display: none;
-
+                font-size: 11px;
             }
-
-
-            .profile {
-
-                display: none;
-
-            }
-
 
             .progress-bar {
-
                 font-size: 9px;
-
                 gap: 5px;
-
             }
 
+            .progress-step {
+                gap: 4px;
+            }
 
             .progress-step:nth-of-type(2),
             .progress-step:nth-of-type(3),
             .progress-step:nth-of-type(4) {
-
                 display: none;
-
             }
-
 
             .page-header h1 {
-
                 font-size: 24px;
-
             }
 
+            .main-container {
+                padding: 30px 16px 20px;
+            }
+
+            .card {
+                padding: 20px;
+            }
 
             .qr-section {
-
                 align-items: flex-start;
-
                 flex-direction: column;
-
             }
 
-
-            .size-options {
-
-                gap: 6px;
-
+            .continue-section {
+                justify-content: stretch;
             }
 
+            .continue-btn {
+                width: 100%;
+            }
         }
-
     </style>
-
 </head>
-
 
 <body>
 
-
-    <!-- =========================================
-         NAVIGATION
-         ========================================= -->
-
+    <!-- NAVIGATION -->
     <header class="navbar">
-
-
-        <!-- LOGO -->
-
         <div class="logo-area">
-
-            <!-- CLICK LOGO TO RETURN HOME -->
-
-            <a href="home.html">
-
+            <a href="index.html">
                 <img
                     src="bitebuddy-logo.png"
                     class="logo-image"
                     alt="BiteBuddy logo"
                 >
-
             </a>
-
         </div>
-
-
-        <!-- NAVIGATION LINKS -->
 
         <nav class="nav-links">
-
-
-            <!-- HOME -->
-
-            <a href="home.html">
-                Home
-            </a>
-
-
-            <!-- CREATE GROUP -->
-
-            <a
-                href="Create-Group.html"
-                class="active"
-            >
-                Create Group
-            </a>
-
-
-            <!-- JOIN GROUP -->
-
-            <a href="./join-group.html">
-                Join Group
-            </a>
-
-
-            <!-- RESTAURANTS -->
-
-            <a href="restaurents.html">
-                Restaurants
-            </a>
-
-
+            <a href="index.html">Home</a>
+            <a href="Create-Group.html" class="active">Create Group</a>
+            <a href="join-group.html">Join Group</a>
+            <a href="restaurants.html">Restaurants</a>
         </nav>
-
     </header>
 
-
-
-    <!-- =========================================
-         PROGRESS BAR
-         ========================================= -->
-
+    <!-- PROGRESS BAR -->
     <div class="progress-bar">
-
-
         <div class="progress-step active">
-
-            <div class="progress-number">
-                1
-            </div>
-
+            <div class="progress-number">1</div>
             Create group
-
         </div>
 
-
-        <div class="arrow">
-            →
-        </div>
-
+        <div class="arrow">→</div>
 
         <div class="progress-step">
-
-            <div class="progress-number">
-                2
-            </div>
-
+            <div class="progress-number">2</div>
             Invite friends
-
         </div>
 
-
-        <div class="arrow">
-            →
-        </div>
-
+        <div class="arrow">→</div>
 
         <div class="progress-step">
-
-            <div class="progress-number">
-                3
-            </div>
-
+            <div class="progress-number">3</div>
             Preferences
-
         </div>
 
-
-        <div class="arrow">
-            →
-        </div>
-
+        <div class="arrow">→</div>
 
         <div class="progress-step">
-
-            <div class="progress-number">
-                4
-            </div>
-
+            <div class="progress-number">4</div>
             See matches
-
         </div>
-
-
     </div>
 
+    <!-- MAIN CONTENT -->
+    <main>
+        <div class="main-container">
 
+            <div class="page-header">
+                <h1>Create your dining group</h1>
+                <p>Set up your group, then invite everyone to join.</p>
+            </div>
 
-    <!-- =========================================
-         MAIN CONTENT
-         ========================================= -->
+            <div class="content-grid">
 
-    <main class="main-container">
+                <!-- GROUP DETAILS CARD -->
+                <section class="card">
+                    <h2 class="card-title">Group details</h2>
 
+                    <label for="groupName">Team name</label>
+                    <input
+                        type="text"
+                        id="groupName"
+                        class="text-input"
+                        placeholder="Enter your team name. Example: Ctrl + Alt + Eat"
+                        value="Ctrl + Alt + Eat"
+                    >
 
-        <!-- PAGE HEADER -->
+                    <div class="group-size">
+                        <label>Group size</label>
 
-        <div class="page-header">
+                        <div class="size-options">
+                            <button type="button" class="size-btn"
+                                onclick="selectSize(this)">2 people</button>
 
-            <h1>
-                Create your dining group
-            </h1>
+                            <button type="button" class="size-btn"
+                                onclick="selectSize(this)">3 people</button>
 
-            <p>
-                Set up your group, then invite everyone to join.
-            </p>
+                            <button type="button" class="size-btn"
+                                onclick="selectSize(this)">4 people</button>
 
-        </div>
+                            <button type="button" class="size-btn selected"
+                                onclick="selectSize(this)">5 people</button>
 
-
-
-        <!-- =========================================
-             TWO COLUMN CARDS
-             ========================================= -->
-
-        <div class="content-grid">
-
-
-            <!-- =====================================
-                 LEFT CARD: GROUP DETAILS
-                 ===================================== -->
-
-            <div class="card">
-
-
-                <h2 class="card-title">
-                    Group details
-                </h2>
-
-
-                <!-- TEAM NAME -->
-
-                <label for="groupName">
-                    Team name
-                </label>
-
-
-                <input
-                    type="text"
-                    id="groupName"
-                    class="text-input"
-                    value="Enter your team name. Example:Ctrl + Alt + Eat"
-                >
-
-
-                <!-- GROUP SIZE -->
-
-                <div class="group-size">
-
-
-                    <label>
-                        Group size
-                    </label>
-
-
-                    <div class="size-options">
-
-
-                        <!-- 2 -->
-
-                        <button
-                            type="button"
-                            class="size-btn"
-                            onclick="selectSize(this)"
-                        >
-                            2 people
-                        </button>
-
-
-                        <!-- 3 -->
-
-                        <button
-                            type="button"
-                            class="size-btn"
-                            onclick="selectSize(this)"
-                        >
-                            3 people
-                        </button>
-
-
-                        <!-- 4 -->
-
-                        <button
-                            type="button"
-                            class="size-btn"
-                            onclick="selectSize(this)"
-                        >
-                            4 people
-                        </button>
-
-
-                        <!-- 5 SELECTED -->
-
-                        <button
-                            type="button"
-                            class="size-btn selected"
-                            onclick="selectSize(this)"
-                        >
-                            5 people
-                        </button>
-
-
-                        <!-- 6 -->
-
-                        <button
-                            type="button"
-                            class="size-btn"
-                            onclick="selectSize(this)"
-                        >
-                            6 people
-                        </button>
-
-
+                            <button type="button" class="size-btn"
+                                onclick="selectSize(this)">6 people</button>
+                        </div>
                     </div>
 
-                </div>
+                    <button
+                        type="button"
+                        class="generate-btn"
+                        onclick="generateInvite()"
+                    >
+                        ✨ Generate Invite
+                    </button>
+                </section>
 
-
-
-                <!-- GENERATE INVITE -->
-
-                <button
-                    type="button"
-                    class="generate-btn"
-                    onclick="generateInvite()"
-                >
-                    ✨ Generate Invite
-                </button>
-
-
-
-                
-                </div>
-
-
-
-            <!-- =====================================
-                 RIGHT CARD: INVITE
-                 ===================================== -->
-
-            <div class="card">
-
-
-                <!-- HEADER -->
-
-                <div class="invite-header">
-
-                    <h2>
-                        Your invite is ready!
-                    </h2>
-
-
-                    <span class="active-badge">
-                        Active for 24 hours
-                    </span>
-
-                </div>
-
-
-
-                <!-- INVITE CODE -->
-
-                <div class="invite-code">
-
-                    <small>
-                        INVITE CODE
-                    </small>
-
-
-                    <strong id="inviteCode">
-                        BITE-482
-                    </strong>
-
-                </div>
-
-
-
-                <!-- QR + INFORMATION -->
-
-                <div class="qr-section">
-
-
-                    <!-- QR -->
-
-                    <div class="qr-code">
-
-                        <div class="qr-pattern"></div>
-
+                <!-- INVITE CARD -->
+                <section class="card">
+                    <div class="invite-header">
+                        <h2>Your invite is ready!</h2>
+                        <span class="active-badge">Active for 24 hours</span>
                     </div>
 
-
-                    <!-- INFORMATION -->
-
-                    <div class="invite-info">
-
-                        <p id="inviteMessage">
-
-                            Friends can enter the code or scan
-                            the QR code to join
-                            <strong>The Five Hungry Bytes</strong>.
-
-                        </p>
-
-
-                        <!-- COPY -->
-
-                        <button
-                            type="button"
-                            class="secondary-btn"
-                            onclick="copyInvite()"
-                        >
-                            Copy invite link
-                        </button>
-
-
-                        <!-- QR -->
-
-                        <button
-                            type="button"
-                            class="secondary-btn"
-                            onclick="downloadQR()"
-                        >
-                            Download QR code
-                        </button>
-
+                    <div class="invite-code">
+                        <small>INVITE CODE</small>
+                        <strong id="inviteCode">BITE-482</strong>
                     </div>
 
-                </div>
+                    <div class="qr-section">
+                        <div class="qr-code" aria-label="QR code placeholder">
+                            <div class="qr-pattern"></div>
+                        </div>
 
+                        <div class="invite-info">
+                            <p id="inviteMessage">
+                                Friends can enter the code or scan the QR
+                                code to join <strong>Ctrl + Alt + Eat</strong>.
+                            </p>
+
+                            <button
+                                type="button"
+                                class="secondary-btn"
+                                onclick="copyInvite()"
+                            >
+                                Copy invite link
+                            </button>
+
+                            <button
+                                type="button"
+                                class="secondary-btn"
+                                onclick="downloadQR()"
+                            >
+                                Download QR code
+                            </button>
+                        </div>
+                    </div>
+                </section>
 
             </div>
 
+            <!-- THIS BUTTON STAYS AT THE BOTTOM -->
+            <div class="continue-section">
+                <a href="join-group.html" class="continue-btn">
+                    Continue to Join Group →
+                </a>
+            </div>
 
         </div>
-
-
     </main>
 
-
-
-    <!-- =========================================
-         JAVASCRIPT
-         ========================================= -->
-
+    <!-- JAVASCRIPT -->
     <script>
-
-
-        /* =========================================
-           SELECT GROUP SIZE
-           ========================================= */
+        let selectedGroupSize = 5;
 
         function selectSize(button) {
-
-            const buttons =
-                document.querySelectorAll(".size-btn");
-
-
-            buttons.forEach(function(btn) {
-
+            document.querySelectorAll(".size-btn").forEach(function (btn) {
                 btn.classList.remove("selected");
-
             });
-
 
             button.classList.add("selected");
 
+            selectedGroupSize = parseInt(button.textContent, 10);
         }
-
-
-
-        /* =========================================
-           GENERATE INVITE
-           ========================================= */
 
         function generateInvite() {
-
-
-            const teamName =
-                document
-                    .getElementById("groupName")
-                    .value
-                    .trim();
-
+            const teamName = document
+                .getElementById("groupName")
+                .value
+                .trim();
 
             if (teamName === "") {
-
                 alert("Please enter a team name.");
-
+                document.getElementById("groupName").focus();
                 return;
-
             }
 
+            const randomNumber = Math.floor(100 + Math.random() * 900);
+            const inviteCode = "BITE-" + randomNumber;
 
-            /* Generate a simple invite code */
+            document.getElementById("inviteCode").textContent = inviteCode;
 
-            const randomNumber =
-                Math.floor(100 + Math.random() * 900);
-
-
-            const inviteCode =
-                "BITE-" + randomNumber;
-
-
-            document
-                .getElementById("inviteCode")
-                .textContent = inviteCode;
-
-
-            document
-                .getElementById("inviteMessage")
-                .innerHTML =
-                "Friends can enter the code or scan the QR code to join <strong>"
-                + teamName
-                + "</strong>.";
-
+            document.getElementById("inviteMessage").textContent =
+                "Friends can enter the code or scan the QR code to join "
+                + teamName + ".";
 
             alert(
-                "Invite created for " + teamName + "!"
+                "Invite created for " + teamName
+                + "!\nGroup size: " + selectedGroupSize + " people"
+                + "\nInvite code: " + inviteCode
             );
-
         }
 
+        async function copyInvite() {
+            const code = document.getElementById("inviteCode").textContent;
 
+            // Replace this with your published join page URL if needed.
+            const inviteLink = new URL("join-group.html", window.location.href).href
+                + "?code=" + encodeURIComponent(code);
 
-        /* =========================================
-           COPY INVITE LINK
-           ========================================= */
-
-        function copyInvite() {
-
-
-            const code =
-                document
-                    .getElementById("inviteCode")
-                    .textContent;
-
-
-            const inviteLink =
-                "https://bitebuddy.com/join/" + code;
-
-
-            navigator.clipboard
-                .writeText(inviteLink)
-
-                .then(function() {
-
-                    alert("Invite link copied!");
-
-                })
-
-                .catch(function() {
-
-                    alert(
-                        "Your invite code is: " + code
-                    );
-
-                });
-
+            try {
+                await navigator.clipboard.writeText(inviteLink);
+                alert("Invite link copied!");
+            } catch (error) {
+                alert("Your invite code is: " + code);
+            }
         }
-
-
-
-        /* =========================================
-           DOWNLOAD QR
-           ========================================= */
 
         function downloadQR() {
-
             alert(
-                "QR code download will be added in the next version."
+                "A working QR code image will need to be generated "
+                + "before it can be downloaded."
             );
-
         }
-
     </script>
 
-
 </body>
-
 </html>
