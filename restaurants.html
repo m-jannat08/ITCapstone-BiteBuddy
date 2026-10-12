@@ -549,6 +549,7 @@ h1 {
         <option value="1">Within 1 mile</option>
         <option value="2">Within 2 miles</option>
         <option value="5">Within 5 miles</option>
+        <option value="5">Within 10 miles</option>
       </select>
     </div>
 
@@ -764,6 +765,26 @@ const restaurantData = {
 
       imageBackground: "#fff9ee",
       imageAlt: "Just Thai Kitchen restaurant logo"
+    },
+    {
+      id: "224-boston",
+      name: "224 Boston",
+      cuisines: ["Italian", "Italian-American", "Steakhouse", "Seafood"],
+      description: "Italian-American comfort food, steaks, and seafood.",
+      address: "224 Boston St, Dorchester, MA 02125",
+      menuUrl: "https://www.224boston.com/menu",
+      price: { min: 20, max: 30, level: 3 },
+      dietary: {
+        vegetarian: "yes",
+        vegan: "unknown",
+        glutenFree: "unknown",
+        halal: "unknown"
+      },
+      coordinates: null,
+      distanceMiles: 1.7,
+      imageUrl: "224 Boston restaurant logo.jpeg",
+      imageBackground: "#ffffff",
+      imageAlt: "224 Boston restaurant photo"
     }
   ]
 };
