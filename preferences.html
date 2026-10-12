@@ -1,9 +1,11 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>BiteBuddy - Preferences</title>
 
     <style>
@@ -18,6 +20,7 @@
             --gray: #68766F;
             --border: #E5DDD3;
             --yellow: #FFF3CC;
+            --inactive-circle: #E5E0D5;
         }
 
         * {
@@ -37,11 +40,14 @@
             font-family: inherit;
         }
 
-        /* TOP NAVIGATION: DARK GREEN */
+        /* =========================
+           TOP NAVIGATION
+        ========================= */
+
         .navbar {
             width: 100%;
-            min-height: 96px;
-            padding: 0 5%;
+            min-height: 91px;
+            padding: 8px 6%;
             background: var(--green);
             display: flex;
             justify-content: space-between;
@@ -59,7 +65,7 @@
 
         .logo img {
             width: 85px;
-            height: 68px;
+            height: 70px;
             object-fit: contain;
             display: block;
         }
@@ -75,6 +81,7 @@
             text-decoration: none;
             font-size: 16px;
             font-weight: normal;
+            transition: color 0.2s;
         }
 
         .nav-links a:hover,
@@ -83,32 +90,96 @@
             font-weight: bold;
         }
 
-        /* PROGRESS BAR */
+        /* =========================
+           PROGRESS BAR
+           LIGHT YELLOW BACKGROUND
+        ========================= */
+
         .progress-bar {
             width: 100%;
-            min-height: 50px;
-            padding: 12px 5%;
-            background: var(--green);
+            min-height: 43px;
+            padding: 8px 20px;
+            background: var(--yellow);
             display: flex;
-            flex-wrap: wrap;
             justify-content: center;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             font-size: 13px;
-            color: var(--white);
-            border-top: 1px solid rgba(255, 255, 255, 0.12);
+            color: var(--text);
         }
 
-        .progress-bar span {
-            color: var(--white);
+        .progress-step {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gray);
+            font-weight: normal;
+            white-space: nowrap;
         }
 
-        .progress-bar .current {
-            color: var(--lime);
+        .step-number {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--inactive-circle);
+            color: var(--gray);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+            font-weight: normal;
+            flex-shrink: 0;
+        }
+
+        /* COMPLETED STEPS */
+
+        .progress-step.completed {
+            color: var(--green);
             font-weight: bold;
         }
 
-        /* MAIN PAGE */
+        .progress-step.completed .step-number {
+            background: var(--lime);
+            color: var(--green);
+            font-weight: bold;
+        }
+
+        /* ACTIVE STEP: BOLD DARK GREEN */
+
+        .progress-step.current {
+            color: var(--green);
+            font-weight: bold;
+        }
+
+        .progress-step.current .step-number {
+            background: var(--lime);
+            color: var(--green);
+            font-weight: bold;
+        }
+
+        /* INACTIVE STEPS */
+
+        .progress-step.upcoming {
+            color: var(--gray);
+            font-weight: normal;
+        }
+
+        .progress-step.upcoming .step-number {
+            background: var(--inactive-circle);
+            color: var(--gray);
+        }
+
+        .progress-arrow {
+            color: #A9A398;
+            font-size: 19px;
+            font-weight: normal;
+            flex-shrink: 0;
+        }
+
+        /* =========================
+           MAIN PAGE
+        ========================= */
+
         .container {
             max-width: 1320px;
             margin: 0 auto;
@@ -157,7 +228,10 @@
             border-radius: 10px;
         }
 
-        /* PREFERENCE CARDS */
+        /* =========================
+           PREFERENCE CARDS
+        ========================= */
+
         .preference-grid {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -194,6 +268,7 @@
         }
 
         /* MUST-HAVE AND NICE-TO-HAVE */
+
         .priority-controls {
             display: flex;
             flex-wrap: wrap;
@@ -228,6 +303,7 @@
         }
 
         /* OPTION TITLES */
+
         .options-heading {
             display: block;
             color: var(--text);
@@ -237,13 +313,13 @@
         }
 
         /* OPTION BUTTONS */
+
         .options {
             display: flex;
             flex-wrap: wrap;
             gap: 9px;
         }
 
-        /* UNSELECTED OPTIONS: PLAIN */
         .chip {
             background: var(--white);
             border: 1px solid #E9DED3;
@@ -253,13 +329,15 @@
             font-size: 13px;
             font-weight: normal;
             cursor: pointer;
+            transition: 0.2s;
         }
 
         .chip:hover {
             border-color: var(--green);
         }
 
-        /* SELECTED OPTIONS: DARK GREEN */
+        /* SELECTED OPTIONS */
+
         .chip.selected {
             background: var(--green);
             border-color: var(--green);
@@ -273,6 +351,7 @@
         }
 
         /* ALLERGY AND OTHER INPUT */
+
         .extra-input {
             display: none;
             width: 100%;
@@ -294,7 +373,10 @@
             display: block;
         }
 
-        /* BOTTOM ACTIONS */
+        /* =========================
+           BOTTOM ACTIONS
+        ========================= */
+
         .footer-actions {
             display: flex;
             justify-content: space-between;
@@ -321,9 +403,9 @@
             font-size: 13px;
             font-weight: bold;
             cursor: pointer;
+            transition: 0.2s;
         }
 
-        /* SAVE FOR LATER */
         .btn-secondary {
             background: var(--white);
             color: var(--green);
@@ -334,7 +416,6 @@
             border-color: var(--green);
         }
 
-        /* SAVE PREFERENCES AND MATCH */
         .btn-primary {
             background: var(--green);
             color: var(--white);
@@ -347,6 +428,7 @@
         }
 
         /* FEEDBACK MESSAGE */
+
         .message {
             display: none;
             margin-top: 20px;
@@ -362,7 +444,10 @@
             display: block;
         }
 
-        /* TABLET */
+        /* =========================
+           TABLET
+        ========================= */
+
         @media (max-width: 900px) {
             .navbar {
                 padding: 16px 25px;
@@ -389,7 +474,10 @@
             }
         }
 
-        /* MOBILE */
+        /* =========================
+           MOBILE
+        ========================= */
+
         @media (max-width: 760px) {
             .navbar {
                 flex-direction: column;
@@ -404,7 +492,23 @@
 
             .progress-bar {
                 gap: 7px;
+                padding: 10px 8px;
                 font-size: 11px;
+            }
+
+            .progress-step {
+                gap: 5px;
+                font-size: 11px;
+            }
+
+            .step-number {
+                width: 24px;
+                height: 24px;
+                font-size: 10px;
+            }
+
+            .progress-arrow {
+                font-size: 14px;
             }
 
             .page-heading {
@@ -456,6 +560,26 @@
                 justify-content: flex-start;
             }
 
+            .progress-bar {
+                gap: 4px;
+                padding: 9px 4px;
+            }
+
+            .progress-step {
+                gap: 3px;
+                font-size: 9px;
+            }
+
+            .step-number {
+                width: 21px;
+                height: 21px;
+                font-size: 9px;
+            }
+
+            .progress-arrow {
+                font-size: 12px;
+            }
+
             .action-buttons {
                 flex-direction: column;
             }
@@ -471,7 +595,9 @@
 <body>
 
     <!-- TOP NAVIGATION -->
+
     <header class="navbar">
+
         <a href="home.html" class="logo">
             <img src="bitebuddy-logo.png" alt="BiteBuddy logo">
         </a>
@@ -482,23 +608,49 @@
             <a href="join-group.html">Join Group</a>
             <a href="restaurants.html">Restaurants</a>
         </nav>
+
     </header>
 
     <!-- PROGRESS BAR -->
-    <div class="progress-bar">
-        <span>1 Create group</span>
-        <span>→</span>
-        <span>2 Invite friends</span>
-        <span>→</span>
-        <span class="current">3 Add preferences</span>
-        <span>→</span>
-        <span>4 See matches</span>
+
+    <div class="progress-bar" aria-label="Dining group progress">
+
+        <div class="progress-step completed">
+            <span class="step-number">1</span>
+            <span>Create group</span>
+        </div>
+
+        <span class="progress-arrow" aria-hidden="true">→</span>
+
+        <div class="progress-step completed">
+            <span class="step-number">2</span>
+            <span>Invite friends</span>
+        </div>
+
+        <span class="progress-arrow" aria-hidden="true">→</span>
+
+        <div class="progress-step current" aria-current="step">
+            <span class="step-number">3</span>
+            <span>Preferences</span>
+        </div>
+
+        <span class="progress-arrow" aria-hidden="true">→</span>
+
+        <div class="progress-step upcoming">
+            <span class="step-number">4</span>
+            <span>See matches</span>
+        </div>
+
     </div>
+
+    <!-- MAIN PAGE -->
 
     <main class="container">
 
         <!-- PAGE HEADING -->
+
         <div class="page-heading">
+
             <div>
                 <h1>What works for you, <span id="userName">there</span>?</h1>
                 <p>Pick your options, then tell us what's essential.</p>
@@ -506,28 +658,43 @@
 
             <div class="group-status">
                 <strong id="groupStatus">Your dining group</strong>
+
                 <div class="progress-track">
                     <div class="progress-fill"></div>
                 </div>
             </div>
+
         </div>
+
+        <!-- PREFERENCE CARDS -->
 
         <div class="preference-grid">
 
             <!-- CUISINE -->
+
             <section class="preference-card" data-category="Cuisine">
+
                 <div class="card-header">
+
                     <div>
                         <h2>Cuisine</h2>
                         <p>What sounds good?</p>
                     </div>
 
                     <div class="priority-controls">
-                        <button type="button" class="priority-btn must active"
-                            data-priority="must">Must-Have</button>
-                        <button type="button" class="priority-btn nice"
-                            data-priority="nice">Nice-to-Have</button>
+                        <button type="button"
+                                class="priority-btn must active"
+                                data-priority="must">
+                            Must-Have
+                        </button>
+
+                        <button type="button"
+                                class="priority-btn nice"
+                                data-priority="nice">
+                            Nice-to-Have
+                        </button>
                     </div>
+
                 </div>
 
                 <strong class="options-heading">Choose your options</strong>
@@ -541,22 +708,34 @@
                     <button type="button" class="chip">Thai</button>
                     <button type="button" class="chip">Japanese</button>
                 </div>
+
             </section>
 
             <!-- BUDGET -->
+
             <section class="preference-card" data-category="Budget">
+
                 <div class="card-header">
+
                     <div>
                         <h2>Budget</h2>
                         <p>Per person, before tip</p>
                     </div>
 
                     <div class="priority-controls">
-                        <button type="button" class="priority-btn must active"
-                            data-priority="must">Must-Have</button>
-                        <button type="button" class="priority-btn nice"
-                            data-priority="nice">Nice-to-Have</button>
+                        <button type="button"
+                                class="priority-btn must active"
+                                data-priority="must">
+                            Must-Have
+                        </button>
+
+                        <button type="button"
+                                class="priority-btn nice"
+                                data-priority="nice">
+                            Nice-to-Have
+                        </button>
                     </div>
+
                 </div>
 
                 <strong class="options-heading">Choose your budget</strong>
@@ -567,33 +746,51 @@
                     <button type="button" class="chip">$25–$40</button>
                     <button type="button" class="chip">$40+</button>
                 </div>
+
             </section>
 
             <!-- DIETARY NEEDS -->
+
             <section class="preference-card" data-category="Dietary Needs">
+
                 <div class="card-header">
+
                     <div>
                         <h2>Dietary Needs</h2>
                         <p>We'll prioritize safe, inclusive options.</p>
                     </div>
 
                     <div class="priority-controls">
-                        <button type="button" class="priority-btn must active"
-                            data-priority="must">Must-Have</button>
-                        <button type="button" class="priority-btn nice"
-                            data-priority="nice">Nice-to-Have</button>
+                        <button type="button"
+                                class="priority-btn must active"
+                                data-priority="must">
+                            Must-Have
+                        </button>
+
+                        <button type="button"
+                                class="priority-btn nice"
+                                data-priority="nice">
+                            Nice-to-Have
+                        </button>
                     </div>
+
                 </div>
 
-                <strong class="options-heading">Choose your dietary options</strong>
+                <strong class="options-heading">
+                    Choose your dietary options
+                </strong>
 
                 <div class="options">
                     <button type="button" class="chip">Vegetarian</button>
                     <button type="button" class="chip">Vegan</button>
                     <button type="button" class="chip">Gluten-Free</button>
                     <button type="button" class="chip">Halal</button>
-                    <button type="button" class="chip" id="allergyOption">Allergies</button>
-                    <button type="button" class="chip" id="otherOption">Other</button>
+                    <button type="button" class="chip" id="allergyOption">
+                        Allergies
+                    </button>
+                    <button type="button" class="chip" id="otherOption">
+                        Other
+                    </button>
                 </div>
 
                 <input
@@ -603,22 +800,34 @@
                     placeholder="Enter allergies or dietary details"
                     aria-label="Allergies or dietary details"
                 >
+
             </section>
 
             <!-- DISTANCE -->
+
             <section class="preference-card" data-category="Distance">
+
                 <div class="card-header">
+
                     <div>
                         <h2>Distance</h2>
                         <p>From UMass Boston</p>
                     </div>
 
                     <div class="priority-controls">
-                        <button type="button" class="priority-btn must active"
-                            data-priority="must">Must-Have</button>
-                        <button type="button" class="priority-btn nice"
-                            data-priority="nice">Nice-to-Have</button>
+                        <button type="button"
+                                class="priority-btn must active"
+                                data-priority="must">
+                            Must-Have
+                        </button>
+
+                        <button type="button"
+                                class="priority-btn nice"
+                                data-priority="nice">
+                            Nice-to-Have
+                        </button>
                     </div>
+
                 </div>
 
                 <strong class="options-heading">Choose your distance</strong>
@@ -628,33 +837,50 @@
                     <button type="button" class="chip">Within 5 miles</button>
                     <button type="button" class="chip">Within 10 miles</button>
                 </div>
+
             </section>
 
         </div>
 
         <!-- BOTTOM ACTIONS -->
+
         <div class="footer-actions">
+
             <p class="note">
                 ★ Must-Have choices are prioritized as essential preferences.
             </p>
 
             <div class="action-buttons">
-                <button type="button" class="btn btn-secondary" id="saveLater">
+
+                <button type="button"
+                        class="btn btn-secondary"
+                        id="saveLater">
                     Save for later
                 </button>
 
-                <button type="button" class="btn btn-primary" id="saveMatch">
+                <button type="button"
+                        class="btn btn-primary"
+                        id="saveMatch">
                     ✨ Save preferences &amp; match
                 </button>
+
             </div>
+
         </div>
 
-        <div class="message" id="message" role="status" aria-live="polite"></div>
+        <div class="message"
+             id="message"
+             role="status"
+             aria-live="polite">
+        </div>
 
     </main>
 
+    <!-- JAVASCRIPT -->
+
     <script>
-        // Display optional user and group names from localStorage.
+        // Display optional user and group names.
+
         document.getElementById("userName").textContent =
             localStorage.getItem("bitebuddyUserName") || "there";
 
@@ -664,14 +890,18 @@
         const allergyInput = document.getElementById("allergyInput");
         const message = document.getElementById("message");
 
-        // Options intentionally start unselected on every page load.
+        // Select and unselect preference options.
 
-        // Select or unselect preference options.
         document.querySelectorAll(".chip").forEach(chip => {
+
             chip.addEventListener("click", () => {
+
                 chip.classList.toggle("selected");
 
-                if (chip.id === "allergyOption" || chip.id === "otherOption") {
+                if (
+                    chip.id === "allergyOption" ||
+                    chip.id === "otherOption"
+                ) {
                     const allergySelected =
                         document.getElementById("allergyOption")
                             .classList.contains("selected");
@@ -698,11 +928,15 @@
 
                 message.classList.remove("visible");
             });
+
         });
 
-        // Set each category's priority.
+        // Change category priority.
+
         document.querySelectorAll(".priority-btn").forEach(button => {
+
             button.addEventListener("click", () => {
+
                 const card = button.closest(".preference-card");
 
                 card.querySelectorAll(".priority-btn").forEach(item => {
@@ -712,22 +946,30 @@
                 button.classList.add("active");
                 message.classList.remove("visible");
             });
+
         });
 
-        // Collect all selected preferences.
+        // Collect selected preferences.
+
         function collectPreferences() {
+
             const preferences = {};
 
             document.querySelectorAll(".preference-card").forEach(card => {
+
                 const category = card.dataset.category;
+
                 const activePriority =
                     card.querySelector(".priority-btn.active").dataset.priority;
 
                 preferences[category] = {
                     priority: activePriority,
-                    choices: [...card.querySelectorAll(".chip.selected")]
-                        .map(chip => chip.textContent.trim())
+
+                    choices: [
+                        ...card.querySelectorAll(".chip.selected")
+                    ].map(chip => chip.textContent.trim())
                 };
+
             });
 
             preferences.extraDietaryDetails = allergyInput.value.trim();
@@ -735,38 +977,52 @@
             return preferences;
         }
 
+        // Show feedback.
+
         function showMessage(text) {
             message.textContent = text;
             message.classList.add("visible");
         }
 
-        // Save preferences in the current browser only.
+        // Save preferences in the current browser.
+
         function savePreferences() {
+
             try {
+
                 localStorage.setItem(
                     "bitebuddyPreferences",
                     JSON.stringify(collectPreferences())
                 );
+
                 return true;
+
             } catch (error) {
+
                 showMessage(
                     "Your browser could not save the preferences. Please try again."
                 );
+
                 return false;
             }
         }
 
         // Save for later.
+
         document.getElementById("saveLater").addEventListener("click", () => {
+
             if (savePreferences()) {
                 showMessage(
                     "Your preferences have been saved in this browser."
                 );
             }
+
         });
 
-        // Save preferences and show front-end feedback.
+        // Save preferences and show feedback.
+
         document.getElementById("saveMatch").addEventListener("click", () => {
+
             const preferences = collectPreferences();
 
             const selectedCount = Object.values(preferences)
@@ -774,24 +1030,24 @@
                 .reduce((total, item) => total + item.choices.length, 0);
 
             if (selectedCount === 0) {
+
                 showMessage(
                     "Please select at least one option before continuing."
                 );
+
                 return;
             }
 
             if (savePreferences()) {
+
                 showMessage(
                     "Your preferences have been saved! Restaurant matching is not connected yet."
                 );
+
             }
+
         });
 
-        // Front-end placeholder for the Restaurants link.
-        document.getElementById("restaurantsLink").addEventListener("click", event => {
-            event.preventDefault();
-            showMessage("The Restaurants page is coming soon.");
-        });
     </script>
 
 </body>
