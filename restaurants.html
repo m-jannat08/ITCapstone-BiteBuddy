@@ -532,22 +532,15 @@ h1 {
     </div>
 
     <div class="filter">
-  <label for="dietaryFilter">Dietary options & allergies</label>
-  <select id="dietaryFilter">
-    <option value="">All options</option>
-    <option value="vegetarian">Vegetarian</option>
-    <option value="vegan">Vegan</option>
-    <option value="glutenFree">Gluten-free</option>
-    <option value="halal">Halal</option>
-    <option value="nutfree">Nut-free</option>
-    <option value="peanutFree">Peanut-free</option>
-    <option value="dairyFree">Dairy-free</option>
-    <option value="eggFree">Egg-free</option>
-    <option value="soyFree">Soy-free</option>
-    <option value="wheatFree">Wheat-free</option>
-    <option value="shellfishFree">Shellfish-free</option>
-  </select>
-</div>
+      <label for="dietaryFilter">Dietary options</label>
+      <select id="dietaryFilter">
+        <option value="">All options</option>
+        <option value="vegetarian">Vegetarian</option>
+        <option value="vegan">Vegan</option>
+        <option value="glutenFree">Gluten-free</option>
+        <option value="halal">Halal</option>
+      </select>
+    </div>
 
     <div class="filter">
       <label for="distanceFilter">Distance</label>
@@ -556,7 +549,6 @@ h1 {
         <option value="1">Within 1 mile</option>
         <option value="2">Within 2 miles</option>
         <option value="5">Within 5 miles</option>
-         <option value="5">Within 10 miles</option>
       </select>
     </div>
 
@@ -748,30 +740,7 @@ const restaurantData = {
       imageBackground: "#ffffff",
       imageAlt: "The Great Wok logo"
     },
-    
-{
-  "id": "224-boston",
-  "name": "224 Boston",
-  "address": "224 Boston St, Dorchester, MA 02125",
-  "phone": "(617) 265-1217",
-  "website": "https://www.224boston.com/",
-  "cuisine": [
-    "Italian",
-    "Italian-American",
-    "Steakhouse",
-    "Seafood"
-  ],
-  "priceCategory": "$20–30 per person",
-  "distanceFromUmassMiles": null,
-  "openingHours": "",
-  "lunchHours": "",
-  "dietaryOptions": [
-    "vegetarian"
-  ],
-  "menuUrl": "https://www.224boston.com/menu",
-  "latitude": null,
-  "longitude": 1.7
-}
+
     {
       id: "just-thai-kitchen",
       name: "Just Thai Kitchen",
@@ -788,7 +757,7 @@ const restaurantData = {
       },
       dietaryNote: "According to your supplied spreadsheet, vegetarian, vegan, and gluten-free dishes may be available with ingredient or preparation changes. This restaurant is listed as not halal. Confirm ingredients, sauces, and preparation directly with the restaurant.",
       coordinates: null,
-      distanceMiles: 2.5,
+      distanceMiles: null,
 
       /* Logo uploaded to the same folder as restaurants.html */
       imageUrl: "just-thai-kitchen.png",
