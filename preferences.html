@@ -589,6 +589,41 @@
                 flex: auto;
             }
         }
+       
+.preferences-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    margin-top: 30px;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.continue-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 24px;
+    background-color: #003D2E;
+    color: #FFFFFF;
+    border: 1px solid #003D2E;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.continue-btn:hover {
+    background-color: #002F24;
+    color: #8AF23A;
+}
+
+
+
     </style>
 </head>
 
@@ -873,6 +908,17 @@
              role="status"
              aria-live="polite">
         </div>
+            <div class="footer-actions">
+
+        <!-- Keep your existing buttons here -->
+
+        <div class="preferences-actions">
+    <a href="finding-matches.html" class="continue-btn">
+        Continue to Find Matches →
+    </a>
+</div>
+
+</main>
 
     </main>
 
