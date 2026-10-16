@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -625,6 +624,10 @@
 
 
     </style>
+<style>[hidden]{display:none !important}</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script src="bitebuddy-backend.js"></script>
 </head>
 
 <body>
@@ -913,7 +916,7 @@
         <!-- Keep your existing buttons here -->
 
         <div class="preferences-actions">
-    <a href="finding-matches.html" class="continue-btn">
+    <a href="finding-matches.html" id="continueFromPreferences" class="continue-btn" hidden>
         Continue to Find Matches →
     </a>
 </div>
@@ -925,176 +928,93 @@
     <!-- JAVASCRIPT -->
 
     <script>
-        // Display optional user and group names.
-
-        document.getElementById("userName").textContent =
-            localStorage.getItem("bitebuddyUserName") || "there";
-
-        document.getElementById("groupStatus").textContent =
-            localStorage.getItem("bitebuddyGroupName") || "Your dining group";
-
-        const allergyInput = document.getElementById("allergyInput");
-        const message = document.getElementById("message");
-
-        // Select and unselect preference options.
-
-        document.querySelectorAll(".chip").forEach(chip => {
-
-            chip.addEventListener("click", () => {
-
-                chip.classList.toggle("selected");
-
-                if (
-                    chip.id === "allergyOption" ||
-                    chip.id === "otherOption"
-                ) {
-                    const allergySelected =
-                        document.getElementById("allergyOption")
-                            .classList.contains("selected");
-
-                    const otherSelected =
-                        document.getElementById("otherOption")
-                            .classList.contains("selected");
-
-                    allergyInput.classList.toggle(
-                        "visible",
-                        allergySelected || otherSelected
-                    );
-
-                    if (allergySelected) {
-                        allergyInput.placeholder =
-                            "Enter allergies or dietary details";
-                    } else if (otherSelected) {
-                        allergyInput.placeholder =
-                            "Describe your dietary needs";
-                    } else {
-                        allergyInput.value = "";
-                    }
-                }
-
-                message.classList.remove("visible");
-            });
-
-        });
-
-        // Change category priority.
-
-        document.querySelectorAll(".priority-btn").forEach(button => {
-
-            button.addEventListener("click", () => {
-
-                const card = button.closest(".preference-card");
-
-                card.querySelectorAll(".priority-btn").forEach(item => {
-                    item.classList.remove("active");
-                });
-
-                button.classList.add("active");
-                message.classList.remove("visible");
-            });
-
-        });
-
-        // Collect selected preferences.
-
-        function collectPreferences() {
-
-            const preferences = {};
-
-            document.querySelectorAll(".preference-card").forEach(card => {
-
-                const category = card.dataset.category;
-
-                const activePriority =
-                    card.querySelector(".priority-btn.active").dataset.priority;
-
-                preferences[category] = {
-                    priority: activePriority,
-
-                    choices: [
-                        ...card.querySelectorAll(".chip.selected")
-                    ].map(chip => chip.textContent.trim())
-                };
-
-            });
-
-            preferences.extraDietaryDetails = allergyInput.value.trim();
-
-            return preferences;
-        }
-
-        // Show feedback.
-
-        function showMessage(text) {
-            message.textContent = text;
-            message.classList.add("visible");
-        }
-
-        // Save preferences in the current browser.
-
-        function savePreferences() {
-
-            try {
-
-                localStorage.setItem(
-                    "bitebuddyPreferences",
-                    JSON.stringify(collectPreferences())
-                );
-
-                return true;
-
-            } catch (error) {
-
-                showMessage(
-                    "Your browser could not save the preferences. Please try again."
-                );
-
-                return false;
-            }
-        }
-
-        // Save for later.
-
-        document.getElementById("saveLater").addEventListener("click", () => {
-
-            if (savePreferences()) {
-                showMessage(
-                    "Your preferences have been saved in this browser."
-                );
-            }
-
-        });
-
-        // Save preferences and show feedback.
-
-        document.getElementById("saveMatch").addEventListener("click", () => {
-
-            const preferences = collectPreferences();
-
-            const selectedCount = Object.values(preferences)
-                .filter(item => item && Array.isArray(item.choices))
-                .reduce((total, item) => total + item.choices.length, 0);
-
-            if (selectedCount === 0) {
-
-                showMessage(
-                    "Please select at least one option before continuing."
-                );
-
-                return;
-            }
-
-            if (savePreferences()) {
-
-                showMessage(
-                    "Your preferences have been saved! Restaurant matching is not connected yet."
-                );
-
-            }
-
-        });
-
-    </script>
+'use strict';
+const allergyInput = document.getElementById('allergyInput');
+const message = document.getElementById('message');
+const continueLink = document.getElementById('continueFromPreferences');
+let saving = false;
+function showMessage(text) { message.textContent = text; message.classList.add('visible'); }
+function updateAllergyInput() {
+  const allergySelected = document.getElementById('allergyOption').classList.contains('selected');
+  const otherSelected = document.getElementById('otherOption').classList.contains('selected');
+  allergyInput.classList.toggle('visible', allergySelected || otherSelected);
+  if (allergySelected) allergyInput.placeholder = 'Enter allergies or dietary details';
+  else if (otherSelected) allergyInput.placeholder = 'Describe your dietary needs';
+  else allergyInput.value = '';
+}
+document.querySelectorAll('.chip').forEach(chip => chip.addEventListener('click', () => {
+  chip.classList.toggle('selected');
+  if (chip.id === 'allergyOption' || chip.id === 'otherOption') updateAllergyInput();
+  continueLink.hidden = true;
+  message.classList.remove('visible');
+}));
+document.querySelectorAll('.priority-btn').forEach(button => button.addEventListener('click', () => {
+  const card = button.closest('.preference-card');
+  card.querySelectorAll('.priority-btn').forEach(other => other.classList.remove('active'));
+  button.classList.add('active');
+  continueLink.hidden = true;
+  message.classList.remove('visible');
+}));
+function collectPreferences() {
+  const data = {};
+  document.querySelectorAll('.preference-card').forEach(card => {
+    const active = card.querySelector('.priority-btn.active');
+    data[card.dataset.category] = {
+      priority: active?.dataset.priority || 'nice',
+      choices: [...card.querySelectorAll('.chip.selected')].map(c => c.textContent.trim())
+    };
+  });
+  data.extraDietaryDetails = allergyInput.value.trim();
+  return data;
+}
+function restorePreferences(data) {
+  document.querySelectorAll('.preference-card').forEach(card => {
+    const category = data?.[card.dataset.category];
+    if (!category) return;
+    card.querySelectorAll('.priority-btn').forEach(b => b.classList.toggle('active', b.dataset.priority === category.priority));
+    card.querySelectorAll('.chip').forEach(c => c.classList.toggle('selected', (category.choices || []).includes(c.textContent.trim())));
+  });
+  updateAllergyInput();
+  if (data?.extraDietaryDetails) allergyInput.value = data.extraDietaryDetails;
+}
+async function savePreferences(goToMatches = false) {
+  if (saving) return;
+  const data = collectPreferences();
+  const selectedCount = Object.values(data).filter(c => c && Array.isArray(c.choices))
+    .reduce((sum, c) => sum + c.choices.length, 0);
+  if (goToMatches && !selectedCount) { showMessage('Please select at least one option before continuing.'); return; }
+  saving = true;
+  document.getElementById('saveLater').disabled = true;
+  document.getElementById('saveMatch').disabled = true;
+  showMessage('Saving your preferences to Supabase…');
+  try {
+    await BiteBuddy.savePreferences(data);
+    continueLink.hidden = false;
+    showMessage('Preferences saved for your group! Other members can now include them in the match.');
+    if (goToMatches) window.location.href = 'finding-matches.html';
+  } catch (error) {
+    console.error(error);
+    showMessage('Could not save preferences: ' + error.message);
+  } finally {
+    saving = false;
+    document.getElementById('saveLater').disabled = false;
+    document.getElementById('saveMatch').disabled = false;
+  }
+}
+document.getElementById('saveLater').addEventListener('click', () => savePreferences(false));
+document.getElementById('saveMatch').addEventListener('click', () => savePreferences(true));
+(async () => {
+  try {
+    const group = await BiteBuddy.requireGroup();
+    document.getElementById('groupStatus').textContent = group.name;
+    document.getElementById('userName').textContent = localStorage.getItem('bitebuddyGuestName') || 'friend';
+    const data = await BiteBuddy.loadMyPreferences();
+    if (data) { restorePreferences(data); continueLink.hidden = false; }
+  } catch (error) {
+    showMessage('To save preferences, create or join a group first. ' + error.message);
+  }
+})();
+</script>
 
 </body>
 </html>

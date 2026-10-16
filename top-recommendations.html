@@ -7,7 +7,7 @@
 <title>Top Recommendations | BiteBuddy</title>
 <style>
 :root{--green:#003D2E;--deep:#002F24;--lime:#8AF23A;--orange:#FF6B3D;--cream:#F8F6EF;--white:#fff;--ink:#16352C;--muted:#68766F;--line:#E9DED3;--soft:#E9F8D9;--yellow:#FFF4CC}
-*{box-sizing:border-box}body{margin:0;background:#f3f3f3;color:var(--ink);font:14px/1.5 Arial,Helvetica,sans-serif}a{text-decoration:none}button{font:inherit}.page-label{max-width:1240px;margin:0 auto;padding:10px 8px;color:#bdbdbd;font-size:15px;font-weight:700}.app{width:calc(100% - 12px);max-width:1240px;min-height:calc(100vh - 48px);margin:0 auto;background:var(--cream);display:flex;flex-direction:column}.navbar{min-height:76px;padding:10px 5%;display:flex;align-items:center;justify-content:space-between;gap:20px;background:var(--green)}.brand img{width:100px;height:55px;object-fit:contain;display:block}.nav-links{display:flex;align-items:center;gap:26px;flex-wrap:wrap}.nav-links a{color:#fff;font-size:12px}.nav-links a:hover,.nav-links a.active{color:var(--lime);font-weight:700}.group-banner{padding:9px 5%;background:var(--yellow);font-size:11px}.group-banner strong{margin-right:4px}main{flex:1;padding:34px 5% 55px}.heading{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:22px}.heading h1{font-size:clamp(24px,3vw,30px);line-height:1.2;letter-spacing:-.5px;margin:0 0 6px;color:#29251f}.heading p{font-size:12px;color:var(--muted)}.timer{white-space:nowrap;padding:7px 11px;border:1px solid #f0c64d;border-radius:22px;background:var(--yellow);font-size:10px;font-weight:700}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:stretch}.card{min-width:0;display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:17px;overflow:hidden;box-shadow:0 7px 20px #3728140d}.card.selected{border:2px solid var(--orange)}.photo{width:100%;height:145px;object-fit:cover;display:block;background:#eee}.content{padding:13px;display:flex;flex-direction:column;flex:1}.topline{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:7px;margin-bottom:8px}.rank,.score{padding:5px 8px;border-radius:20px;font-size:10px;white-space:nowrap}.rank{border:1px solid var(--line);color:var(--muted)}.score{border:1px solid #82b995;background:var(--soft);color:var(--green);font-weight:700}.name{font-size:16px;color:#171717;margin:0 0 5px;line-height:1.3}.cuisine{color:var(--muted);font-size:11px;margin-bottom:8px}.facts{display:flex;flex-wrap:wrap;gap:5px;font-size:10px;font-weight:700;margin-bottom:8px}.diet{font-size:9px;color:#438764;line-height:1.5;margin-bottom:9px}.reason{padding:9px;border-radius:7px;background:#f6f0e8;color:#81776c;font-size:10px;line-height:1.5;margin-bottom:9px;min-height:48px}.bottom{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:auto}.vote-status{font-size:10px;font-weight:700;color:#29251f}.vote{min-height:34px;padding:8px 14px;border:1px solid var(--line);border-radius:22px;background:#fff;font-size:10px;font-weight:700;cursor:pointer}.vote:hover{border-color:var(--green)}.vote.selected{background:#e9543f;color:#fff;border-color:#e9543f}.vote:disabled{opacity:.65;cursor:not-allowed}.empty{grid-column:1/-1;padding:30px;background:#fff;border:1px dashed var(--line);border-radius:16px;text-align:center}.empty h2{margin:0 0 8px}.empty p{color:var(--muted)}.voting{margin-top:22px;padding:18px;display:flex;align-items:center;justify-content:space-between;gap:18px;background:#fff;border:1px solid var(--line);border-radius:15px}.voting h2{margin:0 0 5px;color:var(--green);font-size:16px}.voting p{font-size:12px;color:var(--muted);line-height:1.6}.actions{display:flex;flex-wrap:wrap;gap:9px}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:10px 17px;border:1px solid var(--green);border-radius:24px;background:var(--green);color:#fff;font-size:11px;font-weight:700;cursor:pointer}.btn:hover{background:var(--deep)}.btn.secondary{background:#fff;color:var(--green)}.btn.secondary:hover{background:var(--soft)}.message{display:none;margin-top:14px;padding:12px 14px;background:var(--soft);border-radius:9px;color:var(--green);font-size:12px}.message.visible{display:block}footer{text-align:center;padding:17px;color:#a49a8e;font-size:10px}
+*{box-sizing:border-box}body{margin:0;background:#f3f3f3;color:var(--ink);font:14px/1.5 Arial,Helvetica,sans-serif}a{text-decoration:none}button{font:inherit}.page-label{max-width:1240px;margin:0 auto;padding:10px 8px;color:#bdbdbd;font-size:15px;font-weight:700}.app{width:calc(100% - 12px);max-width:1240px;min-height:calc(100vh - 48px);margin:0 auto;background:var(--cream);display:flex;flex-direction:column}.navbar{min-height:76px;padding:10px 5%;display:flex;align-items:center;justify-content:space-between;gap:20px;background:var(--green)}.brand img{width:100px;height:55px;object-fit:contain;display:block}.nav-links{display:flex;align-items:center;gap:26px;flex-wrap:wrap}.nav-links a{color:#fff;font-size:12px}.nav-links a:hover,.nav-links a.active{color:var(--lime);font-weight:700}.group-banner{padding:9px 5%;background:var(--yellow);font-size:11px}.group-banner strong{margin-right:4px}main{flex:1;padding:34px 5% 55px}.heading{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:22px}.heading h1{font-size:clamp(24px,3vw,30px);line-height:1.2;letter-spacing:-.5px;margin:0 0 6px;color:#29251f}.heading p{font-size:12px;color:var(--muted)}.timer{white-space:nowrap;padding:7px 11px;border:1px solid #f0c64d;border-radius:22px;background:var(--yellow);font-size:10px;font-weight:700}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:stretch}.card{min-width:0;display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:17px;overflow:hidden;box-shadow:0 7px 20px #3728140d}.card.selected{border:2px solid var(--orange)}.photo{width:100%;height:145px;object-fit:cover;display:block;background:#eee}.content{padding:13px;display:flex;flex-direction:column;flex:1}.topline{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:7px;margin-bottom:8px}.rank,.score{padding:5px 8px;border-radius:20px;font-size:10px;white-space:nowrap}.rank{border:1px solid var(--line);color:var(--muted)}.score{border:1px solid #82b995;background:var(--soft);color:var(--green);font-weight:700}.name{font-size:16px;color:#171717;margin:0 0 5px;line-height:1.3}.cuisine{color:var(--muted);font-size:11px;margin-bottom:8px}.facts{display:flex;flex-wrap:wrap;gap:5px;font-size:10px;font-weight:700;margin-bottom:8px}.diet{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:9px}.diet-tag{display:inline-block;padding:5px 9px;border:1px solid #9accae;border-radius:18px;background:var(--soft);font-size:10px;font-weight:700;color:var(--green)}.diet-tag.limited{background:#fff4cc;border-color:#e5c66a;color:#755c19}.reason{padding:9px;border-radius:7px;background:#f6f0e8;color:#81776c;font-size:10px;line-height:1.5;margin-bottom:9px;min-height:48px}.bottom{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:auto}.vote-status{font-size:10px;font-weight:700;color:#29251f}.vote{min-height:34px;padding:8px 14px;border:1px solid var(--line);border-radius:22px;background:#fff;font-size:10px;font-weight:700;cursor:pointer}.vote:hover{border-color:var(--green)}.vote.selected{background:#e9543f;color:#fff;border-color:#e9543f}.vote:disabled{opacity:.65;cursor:not-allowed}.empty{grid-column:1/-1;padding:30px;background:#fff;border:1px dashed var(--line);border-radius:16px;text-align:center}.empty h2{margin:0 0 8px}.empty p{color:var(--muted)}.voting{margin-top:22px;padding:18px;display:flex;align-items:center;justify-content:space-between;gap:18px;background:#fff;border:1px solid var(--line);border-radius:15px}.voting h2{margin:0 0 5px;color:var(--green);font-size:16px}.voting p{font-size:12px;color:var(--muted);line-height:1.6}.actions{display:flex;flex-wrap:wrap;gap:9px}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:10px 17px;border:1px solid var(--green);border-radius:24px;background:var(--green);color:#fff;font-size:11px;font-weight:700;cursor:pointer}.btn:hover{background:var(--deep)}.btn.secondary{background:#fff;color:var(--green)}.btn.secondary:hover{background:var(--soft)}.message{display:none;margin-top:14px;padding:12px 14px;background:var(--soft);border-radius:9px;color:var(--green);font-size:12px}.message.visible{display:block}footer{text-align:center;padding:17px;color:#a49a8e;font-size:10px}
 @media(max-width:900px){.navbar{padding:12px 4%}.nav-links{gap:14px}main{padding:30px 4% 45px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.photo{height:175px}}
 @media(max-width:600px){.app{width:100%}.navbar{flex-direction:column;justify-content:center}.brand img{width:80px}.nav-links{justify-content:center;gap:14px}.nav-links a{font-size:11px}.heading{align-items:flex-start;flex-direction:column}.grid{grid-template-columns:1fr}.photo{height:210px}.voting{align-items:flex-start;flex-direction:column}.actions{width:100%}.actions .btn{flex:1}}
 </style>
@@ -23,386 +23,105 @@
 </header>
 <div class="group-banner"><strong id="groupName">Your dining group</strong> · Voting open · <span id="voteSummary">Choose your favorite restaurant</span></div>
 <main>
-  <section class="heading"><div><h1>Your top 3 recommendations</h1><p id="subtitle">Ranked using the preferences you selected.</p></div><div class="timer" id="timer">Voting closes in 18:00</div></section>
+  <section class="heading"><div><h1>Your top 3 recommendations</h1><p id="subtitle">Ranked using the preferences you selected.</p></div><div class="timer" id="timer">Group matching</div></section>
   <section class="grid" id="recommendationGrid" aria-live="polite"></section>
-  <section class="voting"><div><h2>Help your group decide</h2><p id="votingMessage">Choose one restaurant. Your selection is saved in this browser.</p></div><div class="actions"><button class="btn secondary" type="button" id="changeVote">Change vote</button><button class="btn" type="button" id="finishVoting">Finish voting →</button></div></section>
+  <section class="voting" id="votingPanel" hidden><div><h2>Private group voting</h2><p id="votingMessage">Waiting for the host to start voting.</p></div><div class="actions"><button class="btn" type="button" id="startVoting" hidden>Start voting</button></div></section>
   <div class="message" id="message" role="status" aria-live="polite"></div>
 </main>
 <footer>BiteBuddy · Better food decisions, together.</footer>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script src="bitebuddy-backend.js"></script>
+<script src="matching-adapter.js"></script>
 <script>
-"use strict";
-const restaurantData = {
-  origin: {
-    lat: 42.3129045,
-    lng: -71.0365247
-  },
-
-  restaurants: [
-    {
-      id: "thelo-mediterranean",
-      name: "Thelo Mediterranean",
-      cuisines: ["Greek", "Mediterranean"],
-      description: "Greek pitas, Mediterranean bowls, and grilled platters on Dorchester Avenue.",
-      address: "860 Dorchester Ave, Dorchester, MA 02125",
-      menuUrl: "https://thelomediterranean.com/",
-      price: { min: 13.99, max: 24.99, level: 2 },
-      dietary: {
-        vegetarian: "yes",
-        vegan: "limited",
-        glutenFree: "limited",
-        halal: "no"
-      },
-      coordinates: {
-        lat: 42.321469635618,
-        lng: -71.056700848418
-      },
-      distanceMiles: 1.1886,
-      imageUrl: "https://cdn01.s4shops.com/skytabweb/uploads/aba7f03c-f689-f111-b337-000d3a7b73be/15c0c960-43b5-f111-a6a7-000d3a7d7da5.png",
-      imageBackground: "#162f26",
-      imageAlt: "Thelo Mediterranean restaurant logo"
-    },
-
-    {
-      id: "dora-taqueria",
-      name: "Dora Taqueria",
-      cuisines: ["Mexican"],
-      description: "A Dorchester taqueria serving burritos, taco plates, and birria.",
-      address: "112 Stoughton St, Dorchester, MA 02125",
-      menuUrl: "https://dorataqueria.online/locations/dorchester",
-      price: { min: 10.99, max: 15.99, level: 1 },
-      dietary: {
-        vegetarian: "yes",
-        vegan: "limited",
-        glutenFree: "limited",
-        halal: "no"
-      },
-      coordinates: {
-        lat: 42.315322728933,
-        lng: -71.061158734802
-      },
-      distanceMiles: 1.2696,
-      imageUrl: "https://dorataqueria.online/assets/dora/logo.png",
-      imageBackground: "#202a28",
-      imageAlt: "Dora Taqueria logo"
-    },
-
-    {
-      id: "the-chester-tavern",
-      name: "The Chester Tavern",
-      cuisines: ["American"],
-      description: "American tavern cooking with burgers, bowls, pasta, and larger dinner entrées.",
-      address: "1119 Dorchester Ave, Dorchester, MA 02125",
-      menuUrl: "https://www.thechestertavern.com/menus/",
-      price: { min: 17, max: 32, level: 3 },
-      dietary: {
-        vegetarian: "yes",
-        vegan: "limited",
-        glutenFree: "limited",
-        halal: "no"
-      },
-      coordinates: {
-        lat: 42.312443189258,
-        lng: -71.057401633214
-      },
-      distanceMiles: 1.0671,
-      imageUrl: "https://images.getbento.com/accounts/e3e915f130a577ffbbc56b024fa61cc8/media/images/85696TheChester-Logo-Circle-dark.png?w=1000&fit=max&auto=compress,format&cs=origin&h=1000",
-      imageBackground: "#f4f0e7",
-      imageAlt: "The Chester Tavern logo"
-    },
-
-    {
-      id: "halal-fusion",
-      name: "The Halal Fusion",
-      cuisines: ["Fusion", "Mediterranean", "American"],
-      description: "Build-your-own bowls, falafel pitas, and chicken meals at the Boston location in Mattapan.",
-      address: "686 Morton St, Mattapan, MA 02126",
-      menuUrl: "https://www.clover.com/online-ordering/the-halal-fusion-boston",
-      price: { min: 13.98, max: 17.98, level: 2 },
-      dietary: {
-        vegetarian: "yes",
-        vegan: "no",
-        glutenFree: "unknown",
-        halal: "yes"
-      },
-      coordinates: {
-        lat: 42.284707241568,
-        lng: -71.092341984036
-      },
-      distanceMiles: 3.4543,
-      imageUrl: "https://thehalalfusionboston.com/wp-content/uploads/2025/11/WhatsApp-Image-2025-10-10-at-18.55.02_7f81a0a1-e1763625475120.png",
-      imageBackground: "#fff9ee",
-      imageAlt: "The Halal Fusion logo"
-    },
-
-    {
-      id: "shanti-dorchester",
-      name: "Shanti — Dorchester",
-      cuisines: ["Indian"],
-      description: "Indian curries, biryani, and tandoori dishes with a broad selection of vegetable entrées.",
-      address: "1111 Dorchester Avenue, Boston, MA 02125",
-      menuUrl: "https://www.shantiboston.com/dorchester-menu",
-      price: { min: 15, max: 20, level: 2 },
-      dietary: {
-        vegetarian: "yes",
-        vegan: "yes",
-        glutenFree: "yes",
-        halal: "yes"
-      },
-      coordinates: {
-        lat: 42.31266,
-        lng: -71.057461
-      },
-      distanceMiles: 1.0698,
-      imageUrl: "https://popmenucloud.com/cwlvubnt/ea921b3e-e032-422d-a14c-265e6c895b89.png",
-      imageBackground: "#222326",
-      imageAlt: "Shanti Indian Cuisine logo"
-    },
-
-    {
-      id: "great-wok",
-      name: "Great Wok — Dorchester",
-      cuisines: ["Chinese"],
-      description: "Chinese takeout with rice and noodle dishes, combination plates, and vegetable options.",
-      address: "1284 Massachusetts Ave #1608, Dorchester, MA 02125",
-      menuUrl: "https://order.greatwokma.com/order/main",
-      price: { min: 13.95, max: 16.95, level: 2 },
-      dietary: {
-        vegetarian: "yes",
-        vegan: "unknown",
-        glutenFree: "no",
-        halal: "unknown"
-      },
-      coordinates: {
-        lat: 42.3209947,
-        lng: -71.0616522
-      },
-      distanceMiles: 1.4002,
-      imageUrl: "https://imagedelivery.net/9lr8zq_Jvl7h6OFWqEi9IA/1b8ab327-1bcd-4182-05b4-181c5e0a6b00/public",
-      imageBackground: "#ffffff",
-      imageAlt: "The Great Wok logo"
-    },
-
-    {
-      id: "just-thai-kitchen",
-      name: "Just Thai Kitchen",
-      cuisines: ["Thai"],
-      description: "Thai noodles, curries, fried rice, and vegetable dishes at this Dorchester restaurant.",
-      address: "1512A Dorchester Ave, Fields Corner, Dorchester, MA 02122",
-      menuUrl: "https://justthaikitchen.com/menu",
-      price: { min: 10, max: 25, level: 2 },
-      dietary: {
-        vegetarian: "yes",
-        vegan: "yes",
-        glutenFree: "yes",
-        halal: "no"
-      },
-      dietaryNote: "According to your supplied spreadsheet, vegetarian, vegan, and gluten-free dishes may be available with ingredient or preparation changes. This restaurant is listed as not halal. Confirm ingredients, sauces, and preparation directly with the restaurant.",
-      coordinates: null,
-      distanceMiles: 2.5,
-
-      /* Logo uploaded to the same folder as restaurants.html */
-      imageUrl: "just-thai-kitchen.png",
-
-      imageBackground: "#fff9ee",
-      imageAlt: "Just Thai Kitchen restaurant logo"
-    },
-    {
-      id: "224-boston",
-      name: "224 Boston",
-      cuisines: ["Italian", "Italian-American", "Steakhouse", "Seafood"],
-      description: "Italian-American comfort food, steaks, and seafood.",
-      address: "224 Boston St, Dorchester, MA 02125",
-      menuUrl: "https://www.224boston.com/menu",
-      price: { min: 20, max: 30, level: 3 },
-      dietary: {
-        vegetarian: "yes",
-        vegan: "unknown",
-        glutenFree: "unknown",
-        halal: "unknown"
-      },
-      coordinates: null,
-      distanceMiles: 1.7,
-      imageUrl: "224 Boston restaurant logo.jpeg",
-      imageBackground: "#ffffff",
-      imageAlt: "224 Boston restaurant photo"
-    },
-    {
-  id: "venezia",
-  name: "Venezia",
-  cuisines: ["Italian", "Italian-American", "Seafood"],
-  description: "Italian dining with outdoor seating, private dining, and cocktails.",
-  address: "20 Ericsson St, Boston, MA 02122",
-  menuUrl: "https://www.veneziaboston.com/menu-4",
-  price: { min: 20, max: 30, level: 3 },
-
-  dietary: {
-    vegetarian: "yes",
-    vegan: "limited",
-    glutenFree: "yes",
-    halal: "no",
-    nutFree: "yes",
-    soyFree: "unknown",
-    dairyFree: "unknown",
-    eggFree: "unknown",
-    peanutFree: "unknown",
-    shellfishFree: "unknown",
-    wheatFree: "unknown"
-  },
-
-  dietaryNote: "Vegetarian options are available. Vegan options are limited and may require modifications. Gluten-free and nut-free options are reported available, but ingredients and cross-contact risks must be confirmed directly with the restaurant. Not halal-certified; confirm meat and sauce ingredients with the restaurant.",
-
-  coordinates: null,
-  distanceMiles: 3.0,
-
-  imageUrl: "venezia.jpeg",
-  imageBackground: "#ffffff",
-  imageAlt: "Venezia Italian restaurant"
-},
-  ]
-};
-
-
-const preferenceData = (() => {
-  try { return JSON.parse(localStorage.getItem("bitebuddyPreferences") || "{}"); }
-  catch (e) { return {}; }
-})();
-const groupName = localStorage.getItem("bitebuddyGroupName") || "Your dining group";
-document.getElementById("groupName").textContent = groupName;
-const dietaryKey = {"Vegetarian":"vegetarian","Vegan":"vegan","Gluten-Free":"glutenFree","Gluten-free":"glutenFree","Halal":"halal"};
-const category = name => preferenceData[name] || {priority:"nice",choices:[]};
-const selected = name => category(name).choices || [];
-const isMust = name => category(name).priority === "must";
-const normalized = value => String(value || "").toLowerCase().replace(/[^a-z0-9]/g, "");
-function cuisineMatches(r, choice) {
-  const wanted = normalized(choice);
-  return r.cuisines.some(c => normalized(c) === wanted || normalized(c).includes(wanted) || wanted.includes(normalized(c)));
-}
-function budgetMatches(r, choice) {
-  const min = r.price.min, max = r.price.max;
-  if (choice === "Under $15") return min < 15;
-  if (choice.includes("15") && choice.includes("25")) return max >= 15 && min <= 25;
-  if (choice.includes("25") && choice.includes("40")) return max >= 25 && min <= 40;
-  if (choice.includes("40+")) return max >= 40;
-  return false;
-}
-function dietStatus(r, choice) {
-  const key = dietaryKey[choice];
-  if (!key) return null;
-  return r.dietary ? r.dietary[key] : null;
-}
-function distanceLimit(choice) {
-  const m = String(choice).match(/[0-9]+/);
-  return m ? Number(m[0]) : null;
-}
-function scoreRestaurant(r) {
-  let earned = 0, possible = 0, reasons = [];
-  let mustFailed = false;
-  const groups = [
-    {name:"Cuisine", weight:35, test:choice => cuisineMatches(r, choice), reason: "Matches your cuisine preference"},
-    {name:"Budget", weight:25, test:choice => budgetMatches(r, choice), reason: "Fits your budget"},
-    {name:"Dietary Needs", weight:30, test:choice => { const s = dietStatus(r, choice); return s === "yes" || (!isMust("Dietary Needs") && s === "limited"); }, reason: "Has listed dietary options"},
-    {name:"Distance", weight:10, test:choice => r.distanceMiles !== null && r.distanceMiles <= (distanceLimit(choice) || Infinity), reason: "Within your preferred distance"}
-  ];
-  groups.forEach(g => {
-    const choices = selected(g.name);
-    if (!choices.length) return;
-    possible += g.weight;
-    const matches = choices.some(g.test);
-    if (matches) { earned += g.weight; reasons.push(g.reason); }
-    else if (isMust(g.name)) mustFailed = true;
-  });
-  let score = possible ? Math.round(earned / possible * 100) : Math.max(50, 85 - Math.round((r.distanceMiles || 2) * 5));
-  if (mustFailed) score = Math.min(score, 35);
-  return {score, reasons, mustFailed, possible};
-}
-function escapeHTML(value) {
-  return String(value ?? "").replace(/[&<>"']/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
-}
-function priceText(r) {
-  return "$" + r.price.min.toFixed(0) + "–$" + r.price.max.toFixed(0);
-}
-function dietaryLabels(r) {
-  const labels = [];
-  Object.entries({vegetarian:"Vegetarian",vegan:"Vegan",glutenFree:"Gluten-Free",halal:"Halal"}).forEach(([key,label]) => {
-    if (r.dietary && r.dietary[key] === "yes") labels.push(label);
-    else if (r.dietary && r.dietary[key] === "limited") labels.push(label + " options");
-  });
-  return labels.slice(0,3).join(" · ") || "Check dietary options with restaurant";
-}
-function renderCard(r, index, selectedId) {
-  const match = scoreRestaurant(r);
-  const selectedClass = r.id === selectedId ? " selected" : "";
-  const image = r.imageUrl || "";
-  const distance = r.distanceMiles == null ? "Distance not confirmed" : r.distanceMiles.toFixed(1) + " mi";
-  const reason = match.reasons.length ? match.reasons.join(" · ") : "One of the restaurants in your curated BiteBuddy database.";
-  return `<article class="card${selectedClass}" data-id="${escapeHTML(r.id)}">
-    <img class="photo" src="${escapeHTML(image)}" alt="${escapeHTML(r.imageAlt || r.name)}" loading="lazy" onerror="this.style.display='none'">
-    <div class="content"><div class="topline"><span class="rank">#${index+1} pick</span><span class="score">${match.score}% Match</span></div>
-    <h2 class="name">${escapeHTML(r.name)}</h2><p class="cuisine">${escapeHTML(r.cuisines.join(" · "))}</p>
-    <div class="facts"><span>${escapeHTML(priceText(r))}</span><span>·</span><span>${escapeHTML(distance)}</span></div>
-    <p class="diet">${escapeHTML(dietaryLabels(r))}</p><p class="reason">${escapeHTML(reason)}</p>
-    <div class="bottom"><span class="vote-status">${r.id === selectedId ? "Your vote" : "Not selected"}</span><button class="vote${r.id === selectedId ? " selected" : ""}" type="button" data-vote="${escapeHTML(r.id)}">${r.id === selectedId ? "Selected" : "Vote"}</button></div>
-    <a href="${escapeHTML(r.menuUrl)}" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:12px;color:#003D2E;font-size:11px;font-weight:700;text-decoration:underline">View menu ↗</a>
-    </div></article>`;
-}
-let currentVote = localStorage.getItem("bitebuddySelectedVote") || "";
-let finished = false;
-let secondsRemaining = 18 * 60;
-const message = document.getElementById("message");
-function showMessage(text) { message.textContent = text; message.classList.add("visible"); }
-function getRankedRestaurants() {
-  const all = restaurantData.restaurants.map(r => ({...r, match:scoreRestaurant(r)}));
-  const hasMust = ["Cuisine","Budget","Dietary Needs","Distance"].some(name => isMust(name) && selected(name).length);
-  let candidates = hasMust ? all.filter(r => !r.match.mustFailed) : all;
-  if (candidates.length < 3) candidates = all;
-  candidates.sort((a,b) => b.match.score-a.match.score || (a.distanceMiles ?? Infinity)-(b.distanceMiles ?? Infinity));
-  return candidates.slice(0,3);
-}
-function renderRecommendations() {
-  const ranked = getRankedRestaurants();
-  const grid = document.getElementById("recommendationGrid");
-  if (!ranked.length) {
-    grid.innerHTML = '<div class="empty"><h2>No recommendations available</h2><p>Check your restaurant database.</p></div>';
-    return;
+'use strict';
+const grid=document.getElementById('recommendationGrid');
+const subtitle=document.getElementById('subtitle');
+let activeGroup, activeMatches=[], currentStatus=null;
+const panel=document.getElementById('votingPanel'), votingMessage=document.getElementById('votingMessage'), startButton=document.getElementById('startVoting');
+function safe(text){return String(text??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function status(title,message){grid.innerHTML='<div class="empty"><h2>'+safe(title)+'</h2><p>'+safe(message)+'</p></div>';}
+async function run(){
+ try{
+  const group=await BiteBuddy.requireGroup();
+  document.getElementById('groupName').textContent=group.name;
+  const [members,rows,response]=await Promise.all([BiteBuddy.groupMembers(),BiteBuddy.groupPreferences(),fetch('restaurant-catalog.json')]);
+  if(!response.ok)throw new Error('Could not load restaurant-catalog.json. Serve this folder through Live Server.');
+  const catalog=await response.json();
+  if(members.length < group.group_size || members.some(m=>!rows.some(p=>p.user_id===m.user_id))){
+    status('Waiting for group','Everyone must join and submit preferences before results are available.');return;
   }
-  if (currentVote && !ranked.some(r => r.id === currentVote)) currentVote = "";
-  grid.innerHTML = ranked.map((r,i) => renderCard(r,i,currentVote)).join("");
-  document.getElementById("subtitle").textContent = selected("Cuisine").length || selected("Budget").length || selected("Dietary Needs").length || selected("Distance").length
-    ? "Ranked using your saved preferences. Confirm dietary details directly with each restaurant."
-    : "Choose preferences to personalize these recommendations. Showing the top three from your restaurant list.";
-  document.getElementById("voteSummary").textContent = currentVote ? "Your vote saved in this browser" : "Choose your favorite restaurant";
-  document.getElementById("recommendationGrid").querySelectorAll("[data-vote]").forEach(button => button.addEventListener("click", () => {
-    if (finished) { showMessage("Voting is finished in this demo."); return; }
-    currentVote = button.dataset.vote;
-    localStorage.setItem("bitebuddySelectedVote", currentVote);
-    renderRecommendations();
-    showMessage("Your vote is saved in this browser. It is not shared with other members without a backend.");
-  }));
+  const preferences=members.map(m=>{
+    const item=rows.find(p=>p.user_id===m.user_id);
+    try {return BiteBuddyMatchingAdapter.adapt(item.data);}
+    catch(e){throw new Error(m.name+': '+e.message);}
+  });
+  window.BiteBuddyMatchingRestaurants=BiteBuddyMatchingAdapter.toCatalog(catalog);
+  // Algorithm loads after the restaurant catalog is available.
+  await new Promise((resolve,reject)=>{
+    const script=document.createElement('script');script.src='matchingAlgorithm.js';script.onload=resolve;script.onerror=()=>reject(new Error('Could not load matchingAlgorithm.js'));document.body.append(script);
+  });
+  const matches=BiteBuddyMatching.findRestaurantMatches(preferences);
+  if(!matches.length){status('No eligible matches','No restaurants meet everyone’s dietary requirements in the current catalog.');return;}
+  activeGroup=group;activeMatches=matches;
+  const details=new Map(catalog.map(r=>[r.id,r]));
+  subtitle.textContent='Calculated for '+members.length+' group members using 50% cuisine, 35% budget, 15% distance; fairness: 60% average + 40% lowest score.';
+  document.getElementById('voteSummary').textContent='Matches calculated from everyone’s preferences';
+  grid.innerHTML=matches.map((m,i)=>{
+    const r=details.get(m.id)||{};
+    const dietTags=(r.dietaryTags||[]).map(t=>'<span class="diet-tag'+(t.status==='limited'?' limited':'')+'">'+(t.status==='yes'?'✓ ':'')+safe(t.label)+'</span>').join('');
+    const score=m.groupScore;
+    const price=r.price ? ('$'+r.price.min+'–$'+r.price.max) : 'Price unknown';
+    const distance=Number.isFinite(m.distanceMiles)?m.distanceMiles.toFixed(1)+' mi':'Distance unknown';
+    const image=r.imageUrl ? '<img class="photo" src="'+safe(r.imageUrl)+'" alt="'+safe(m.name)+'" onerror="this.style.display=\'none\'">' : '';
+    return '<article class="card" data-restaurant-id="'+safe(m.id)+'">'+image+'<div class="content"><div class="topline"><span class="rank">#'+(i+1)+' pick</span><span class="score">'+score.toFixed(1)+' / 100</span></div><h2 class="name">'+safe(m.name)+'</h2><p class="cuisine">'+safe((r.cuisines||[m.cuisine]).join(' · '))+'</p><div class="facts"><span>'+safe(price)+'</span><span>'+safe(distance)+'</span></div><div class="diet" aria-label="Dietary options">'+(dietTags||'<span class="cuisine">Dietary options not confirmed</span>')+'</div><p class="reason">Group average: '+m.averageScore.toFixed(1)+' · Lowest individual: '+m.lowestScore.toFixed(1)+'</p>'+(r.menuUrl?'<a href="'+safe(r.menuUrl)+'" target="_blank" rel="noopener noreferrer">View menu ↗</a>':'')+'<div class="bottom"><span class="vote-status" data-vote-status="'+safe(m.id)+'"></span><button class="vote" type="button" data-vote="'+safe(m.id)+'" disabled>Vote</button></div></div></article>';
+  }).join('');
+  panel.hidden=false;
+  grid.querySelectorAll('[data-vote]').forEach(button=>button.addEventListener('click',()=>castVote(button.dataset.vote)));
+  await refreshVoteStatus();
+  setInterval(()=>refreshVoteStatus().catch(e=>showMessage(e.message)),3000);
+ } catch(e){status('Unable to calculate matches',e.message);}
 }
-document.getElementById("changeVote").addEventListener("click", () => {
-  if (finished) { showMessage("Voting has already been finished."); return; }
-  showMessage("Select Vote on another restaurant card to change your choice.");
-});
-document.getElementById("finishVoting").addEventListener("click", () => {
-  if (!currentVote) { showMessage("Please vote for one of the three restaurants first."); return; }
-  finished = true;
-  const chosen = restaurantData.restaurants.find(r => r.id === currentVote);
-  document.querySelectorAll("[data-vote]").forEach(b => b.disabled = true);
-  document.getElementById("finishVoting").disabled = true;
-  document.getElementById("finishVoting").textContent = "Vote recorded ✓";
-  document.getElementById("votingMessage").textContent = "Your selection is " + chosen.name + ". This demo stores only your vote in this browser.";
-  showMessage("Vote recorded locally. To collect votes from all group members, BiteBuddy will need a shared database or backend.");
-});
-function updateTimer() {
-  if (secondsRemaining <= 0) { document.getElementById("timer").textContent = "Voting time ended"; return; }
-  const min = Math.floor(secondsRemaining/60), sec = secondsRemaining%60;
-  document.getElementById("timer").textContent = "Voting closes in " + min + ":" + String(sec).padStart(2,"0");
-  secondsRemaining--;
+function showMessage(message){const el=document.getElementById('message');el.textContent=message;el.classList.add('visible');}
+async function refreshVoteStatus(){
+ const {data,error}=await BiteBuddy.db().rpc('bitebuddy_private_vote_status',{p_group_id:activeGroup.id});
+ if(error)throw error;
+ currentStatus=data;
+ const started=!!data.started,complete=!!data.complete;
+ startButton.hidden=started||!data.isHost;
+ if(!started){
+   votingMessage.textContent='The host must start voting before members can choose.';
+ }else if(complete){
+   const winner=activeMatches.find(m=>m.id===data.winner);
+   votingMessage.textContent='All '+data.required+' members voted. Winner: '+(winner?.name||data.winner)+'!';
+ }else{
+   votingMessage.textContent=data.voted+' of '+data.required+' members have voted. Results are hidden until everybody votes.';
+ }
+ document.getElementById('voteSummary').textContent=complete?'Voting complete':started?'Private voting in progress':'Voting not started';
+ for(const button of grid.querySelectorAll('[data-vote]')){
+   const id=button.dataset.vote;
+   const label=grid.querySelector('[data-vote-status="'+id+'"]');
+   button.disabled=!started||complete;
+   button.textContent=data.myVote===id?'Your vote ✓':'Vote';
+   button.classList.toggle('selected',data.myVote===id);
+   const tally=complete?data.results.find(r=>r.id===id)?.votes:undefined;
+   label.textContent=complete?(String(tally??0)+' votes'+(data.winner===id?' · WINNER 🏆':'')) : '';
+ }
 }
-renderRecommendations();
-updateTimer();
-setInterval(updateTimer,1000);
-</script>
-</body>
-</html>
+startButton.addEventListener('click',async()=>{
+ startButton.disabled=true;
+ try{
+  const candidates=activeMatches.map(m=>({id:m.id,score:m.groupScore}));
+  const {error}=await BiteBuddy.db().rpc('bitebuddy_start_private_vote',{p_group_id:activeGroup.id,p_candidates:candidates});
+  if(error)throw error;await refreshVoteStatus();
+ }catch(e){showMessage(e.message);}finally{startButton.disabled=false;}
+});
+async function castVote(id){
+ try{
+  const {error}=await BiteBuddy.db().rpc('bitebuddy_cast_private_vote',{p_group_id:activeGroup.id,p_restaurant_id:id});
+  if(error)throw error;await refreshVoteStatus();
+ }catch(e){showMessage(e.message);}
+}
+run();
+</script></body></html>

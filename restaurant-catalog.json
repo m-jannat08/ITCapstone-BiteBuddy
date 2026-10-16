@@ -1,0 +1,594 @@
+[
+  {
+    "id": "thelo-mediterranean",
+    "name": "Thelo Mediterranean",
+    "cuisines": [
+      "Mediterranean"
+    ],
+    "description": "Greek pitas, Mediterranean bowls, and grilled platters on Dorchester Avenue.",
+    "address": "860 Dorchester Ave, Dorchester, MA 02125",
+    "menuUrl": "https://thelomediterranean.com/",
+    "price": {
+      "min": 13.99,
+      "max": 24.99,
+      "level": 2
+    },
+    "dietary": {
+      "vegetarian": "yes",
+      "vegan": "limited",
+      "glutenFree": "limited",
+      "halal": "no"
+    },
+    "coordinates": {
+      "lat": 42.321469635618,
+      "lng": -71.056700848418
+    },
+    "distanceMiles": 1.1886,
+    "imageUrl": "https://cdn01.s4shops.com/skytabweb/uploads/aba7f03c-f689-f111-b337-000d3a7b73be/15c0c960-43b5-f111-a6a7-000d3a7d7da5.png",
+    "imageBackground": "#162f26",
+    "imageAlt": "Thelo Mediterranean restaurant logo",
+    "dietaryTags": [
+      {
+        "label": "Vegetarian options",
+        "status": "yes"
+      },
+      {
+        "label": "Vegan · limited",
+        "status": "limited"
+      },
+      {
+        "label": "Gluten-free · limited",
+        "status": "limited"
+      }
+    ]
+  },
+  {
+    "id": "dora-taqueria",
+    "name": "Dora Taqueria",
+    "cuisines": [
+      "Mexican"
+    ],
+    "description": "A Dorchester taqueria serving burritos, taco plates, and birria.",
+    "address": "112 Stoughton St, Dorchester, MA 02125",
+    "menuUrl": "https://dorataqueria.online/locations/dorchester",
+    "price": {
+      "min": 10.99,
+      "max": 15.99,
+      "level": 1
+    },
+    "dietary": {
+      "vegetarian": "yes",
+      "vegan": "limited",
+      "glutenFree": "limited",
+      "halal": "no"
+    },
+    "coordinates": {
+      "lat": 42.315322728933,
+      "lng": -71.061158734802
+    },
+    "distanceMiles": 1.2696,
+    "imageUrl": "https://dorataqueria.online/assets/dora/logo.png",
+    "imageBackground": "#202a28",
+    "imageAlt": "Dora Taqueria logo",
+    "dietaryTags": [
+      {
+        "label": "Vegetarian options",
+        "status": "yes"
+      },
+      {
+        "label": "Vegan · limited",
+        "status": "limited"
+      },
+      {
+        "label": "Gluten-free · limited",
+        "status": "limited"
+      }
+    ]
+  },
+  {
+    "id": "the-chester-tavern",
+    "name": "The Chester Tavern",
+    "cuisines": [
+      "American"
+    ],
+    "description": "American tavern cooking with burgers, bowls, pasta, and larger dinner entrées.",
+    "address": "1119 Dorchester Ave, Dorchester, MA 02125",
+    "menuUrl": "https://www.thechestertavern.com/menus/",
+    "price": {
+      "min": 17,
+      "max": 32,
+      "level": 3
+    },
+    "dietary": {
+      "vegetarian": "yes",
+      "vegan": "limited",
+      "glutenFree": "limited",
+      "halal": "no"
+    },
+    "coordinates": {
+      "lat": 42.312443189258,
+      "lng": -71.057401633214
+    },
+    "distanceMiles": 1.0671,
+    "imageUrl": "https://images.getbento.com/accounts/e3e915f130a577ffbbc56b024fa61cc8/media/images/85696TheChester-Logo-Circle-dark.png?w=1000&fit=max&auto=compress,format&cs=origin&h=1000",
+    "imageBackground": "#f4f0e7",
+    "imageAlt": "The Chester Tavern logo",
+    "dietaryTags": [
+      {
+        "label": "Vegetarian options",
+        "status": "yes"
+      },
+      {
+        "label": "Vegan · limited",
+        "status": "limited"
+      },
+      {
+        "label": "Gluten-free · limited",
+        "status": "limited"
+      }
+    ]
+  },
+  {
+    "id": "halal-fusion",
+    "name": "The Halal Fusion",
+    "cuisines": [
+      "Mediterranean"
+    ],
+    "description": "Build-your-own bowls, falafel pitas, and chicken meals at the Boston location in Mattapan.",
+    "address": "686 Morton St, Mattapan, MA 02126",
+    "menuUrl": "https://www.clover.com/online-ordering/the-halal-fusion-boston",
+    "price": {
+      "min": 13.98,
+      "max": 17.98,
+      "level": 2
+    },
+    "dietary": {
+      "vegetarian": "yes",
+      "vegan": "no",
+      "glutenFree": "unknown",
+      "halal": "yes"
+    },
+    "coordinates": {
+      "lat": 42.284707241568,
+      "lng": -71.092341984036
+    },
+    "distanceMiles": 3.4543,
+    "imageUrl": "https://thehalalfusionboston.com/wp-content/uploads/2025/11/WhatsApp-Image-2025-10-10-at-18.55.02_7f81a0a1-e1763625475120.png",
+    "imageBackground": "#fff9ee",
+    "imageAlt": "The Halal Fusion logo",
+    "dietaryTags": [
+      {
+        "label": "Vegetarian options",
+        "status": "yes"
+      },
+      {
+        "label": "Halal options",
+        "status": "yes"
+      }
+    ]
+  },
+  {
+    "id": "shanti-dorchester",
+    "name": "Shanti — Dorchester",
+    "cuisines": [
+      "Indian"
+    ],
+    "description": "Indian curries, biryani, and tandoori dishes with a broad selection of vegetable entrées.",
+    "address": "1111 Dorchester Avenue, Boston, MA 02125",
+    "menuUrl": "https://www.shantiboston.com/dorchester-menu",
+    "price": {
+      "min": 15,
+      "max": 20,
+      "level": 2
+    },
+    "dietary": {
+      "vegetarian": "yes",
+      "vegan": "yes",
+      "glutenFree": "yes",
+      "halal": "yes"
+    },
+    "coordinates": {
+      "lat": 42.31266,
+      "lng": -71.057461
+    },
+    "distanceMiles": 1.0698,
+    "imageUrl": "https://popmenucloud.com/cwlvubnt/ea921b3e-e032-422d-a14c-265e6c895b89.png",
+    "imageBackground": "#222326",
+    "imageAlt": "Shanti Indian Cuisine logo",
+    "dietaryTags": [
+      {
+        "label": "Vegetarian options",
+        "status": "yes"
+      },
+      {
+        "label": "Vegan options",
+        "status": "yes"
+      },
+      {
+        "label": "Gluten-free options",
+        "status": "yes"
+      },
+      {
+        "label": "Halal options",
+        "status": "yes"
+      }
+    ]
+  },
+  {
+    "id": "great-wok",
+    "name": "Great Wok — Dorchester",
+    "cuisines": [
+      "Chinese"
+    ],
+    "description": "Chinese takeout with rice and noodle dishes, combination plates, and vegetable options.",
+    "address": "1284 Massachusetts Ave #1608, Dorchester, MA 02125",
+    "menuUrl": "https://order.greatwokma.com/order/main",
+    "price": {
+      "min": 13.95,
+      "max": 16.95,
+      "level": 2
+    },
+    "dietary": {
+      "vegetarian": "yes",
+      "vegan": "unknown",
+      "glutenFree": "no",
+      "halal": "unknown"
+    },
+    "coordinates": {
+      "lat": 42.3209947,
+      "lng": -71.0616522
+    },
+    "distanceMiles": 1.4002,
+    "imageUrl": "https://imagedelivery.net/9lr8zq_Jvl7h6OFWqEi9IA/1b8ab327-1bcd-4182-05b4-181c5e0a6b00/public",
+    "imageBackground": "#ffffff",
+    "imageAlt": "The Great Wok logo",
+    "dietaryTags": [
+      {
+        "label": "Vegetarian options",
+        "status": "yes"
+      }
+    ]
+  },
+  {
+    "id": "just-thai-kitchen",
+    "name": "Just Thai Kitchen",
+    "cuisines": [
+      "Thai"
+    ],
+    "description": "Thai noodles, curries, fried rice, and vegetable dishes at this Dorchester restaurant.",
+    "address": "1512A Dorchester Ave, Fields Corner, Dorchester, MA 02122",
+    "menuUrl": "https://justthaikitchen.com/menu",
+    "price": {
+      "min": 10,
+      "max": 25,
+      "level": 2
+    },
+    "dietary": {
+      "vegetarian": "yes",
+      "vegan": "yes",
+      "glutenFree": "yes",
+      "halal": "no"
+    },
+    "dietaryNote": "According to your supplied spreadsheet, vegetarian, vegan, and gluten-free dishes may be available with ingredient or preparation changes. This restaurant is listed as not halal. Confirm ingredients, sauces, and preparation directly with the restaurant.",
+    "coordinates": null,
+    "distanceMiles": 2.5,
+    "imageUrl": "just-thai-kitchen.png",
+    "imageBackground": "#fff9ee",
+    "imageAlt": "Just Thai Kitchen restaurant logo",
+    "dietaryTags": [
+      {
+        "label": "Vegetarian options",
+        "status": "yes"
+      },
+      {
+        "label": "Vegan options",
+        "status": "yes"
+      },
+      {
+        "label": "Gluten-free options",
+        "status": "yes"
+      }
+    ]
+  },
+  {
+    "id": "224-boston",
+    "name": "224 Boston",
+    "cuisines": [
+      "Italian"
+    ],
+    "description": "Italian-American comfort food, steaks, and seafood.",
+    "address": "224 Boston St, Dorchester, MA 02125",
+    "menuUrl": "https://www.224boston.com/menu",
+    "price": {
+      "min": 20,
+      "max": 30,
+      "level": 3
+    },
+    "dietary": {
+      "vegetarian": "yes",
+      "vegan": "unknown",
+      "glutenFree": "unknown",
+      "halal": "unknown"
+    },
+    "coordinates": null,
+    "distanceMiles": 1.7,
+    "imageUrl": "224 Boston restaurant logo.jpeg",
+    "imageBackground": "#ffffff",
+    "imageAlt": "224 Boston restaurant photo",
+    "dietaryTags": [
+      {
+        "label": "Vegetarian options",
+        "status": "yes"
+      }
+    ]
+  },
+  {
+    "id": "venezia",
+    "name": "Venezia",
+    "cuisines": [
+      "Italian"
+    ],
+    "description": "Italian dining with outdoor seating, private dining, and cocktails.",
+    "address": "20 Ericsson St, Boston, MA 02122",
+    "menuUrl": "https://www.veneziaboston.com/menu-4",
+    "price": {
+      "min": 20,
+      "max": 30,
+      "level": 3
+    },
+    "dietary": {
+      "vegetarian": "yes",
+      "vegan": "limited",
+      "glutenFree": "yes",
+      "halal": "no",
+      "nutFree": "yes",
+      "soyFree": "unknown",
+      "dairyFree": "unknown",
+      "eggFree": "unknown",
+      "peanutFree": "unknown",
+      "shellfishFree": "unknown",
+      "wheatFree": "unknown"
+    },
+    "dietaryNote": "Vegetarian options are available. Vegan options are limited and may require modifications. Gluten-free and nut-free options are reported available, but ingredients and cross-contact risks must be confirmed directly with the restaurant. Not halal-certified; confirm meat and sauce ingredients with the restaurant.",
+    "coordinates": null,
+    "distanceMiles": 3,
+    "imageUrl": "venezia.jpeg",
+    "imageBackground": "#ffffff",
+    "imageAlt": "Venezia Italian restaurant",
+    "dietaryTags": [
+      {
+        "label": "Vegetarian options",
+        "status": "yes"
+      },
+      {
+        "label": "Vegan · limited",
+        "status": "limited"
+      },
+      {
+        "label": "Gluten-free options",
+        "status": "yes"
+      },
+      {
+        "label": "Nut-free options",
+        "status": "yes"
+      }
+    ]
+  },
+  {
+    "id": "dot-block",
+    "name": "The Dot Block Diner",
+    "cuisines": [
+      "American"
+    ],
+    "description": "Classic American omelets, pancakes, sandwiches, burgers, seafood, salads.",
+    "address": "1203 Dorchester Ave #1, Dorchester, MA 02125",
+    "menuUrl": "https://dotblockdiner.com/menu",
+    "price": {
+      "min": 10,
+      "max": 20,
+      "level": 2
+    },
+    "dietary": {
+      "vegetarian": "yes",
+      "vegan": "limited",
+      "glutenFree": "yes",
+      "halal": "no",
+      "nutFree": "limited"
+    },
+    "coordinates": {
+      "lat": 42.309672,
+      "lng": -71.058343
+    },
+    "distanceMiles": 2.2,
+    "imageUrl": "https://static-content.owner.com/f9bf3f80-6589-4f40-9c60-4d5e966fca81.png?h=56&auto=format&dpr=2",
+    "imageBackground": "#ffffff",
+    "imageAlt": "Dot Block",
+    "dietaryTags": [
+      {
+        "label": "Vegetarian options",
+        "status": "yes"
+      },
+      {
+        "label": "Vegan · limited",
+        "status": "limited"
+      },
+      {
+        "label": "Gluten-free options",
+        "status": "yes"
+      },
+      {
+        "label": "Nut-free · limited",
+        "status": "limited"
+      }
+    ]
+  },
+  {
+    "id": "p-and-r",
+    "name": "P&R Jamaican Restaurant and Ice Cream Parlor",
+    "cuisines": [
+      "Jamaican"
+    ],
+    "description": "Caribbean classics, fresh patties,tropical beverages, homemade ice cream.",
+    "address": "208 Dudley St, Boston, MA 02119",
+    "menuUrl": "https://www.ubereats.com/store/p%26r-jamaican-restaurant-and-ice-cream-parlor/KPb5hKLWSyK8ujy-zrtENQ",
+    "price": {
+      "min": 1,
+      "max": 10,
+      "level": 1
+    },
+    "dietary": {
+      "vegetarian": "yes",
+      "vegan": "yes",
+      "glutenFree": "limited",
+      "halal": "no",
+      "nutFree": "unknown"
+    },
+    "coordinates": {
+      "lat": 42.328647,
+      "lng": -71.081045
+    },
+    "distanceMiles": 3.2,
+    "imageUrl": "https://www.eatpandr.com/wp-content/uploads/2016/11/Logomakr_simple-logo-109x109.png",
+    "imageBackground": "#ffffff",
+    "imageAlt": "P&R",
+    "dietaryTags": [
+      {
+        "label": "Vegetarian options",
+        "status": "yes"
+      },
+      {
+        "label": "Vegan options",
+        "status": "yes"
+      },
+      {
+        "label": "Gluten-free · limited",
+        "status": "limited"
+      }
+    ]
+  },
+  {
+    "id": "pho-hoa-dorchester",
+    "name": "Pho Hoa",
+    "cuisines": [
+      "Vietnamese"
+    ],
+    "description": "Vietnamese restaurant serving pho and other Vietnamese dishes.",
+    "address": "1370 Dorchester Ave, Boston, MA 02122",
+    "menuUrl": "https://www.phohoarestaurant.com/",
+    "price": {
+      "min": null,
+      "max": null,
+      "level": 2
+    },
+    "dietary": {
+      "vegetarian": "limited",
+      "vegan": "limited",
+      "glutenFree": "limited",
+      "halal": "unknown"
+    },
+    "coordinates": {
+      "lat": null,
+      "lng": null
+    },
+    "distanceMiles": 2,
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfF3MfN-68XfNqmTQrCZvx5b_E8Vr_xWeYTbyGCwYdnFT2PaNvjW-XnE3P&s=10",
+    "imageBackground": "",
+    "imageAlt": "Pho Hoa Vietnamese restaurant",
+    "dietaryTags": [
+      {
+        "label": "Vegetarian · limited",
+        "status": "limited"
+      },
+      {
+        "label": "Vegan · limited",
+        "status": "limited"
+      },
+      {
+        "label": "Gluten-free · limited",
+        "status": "limited"
+      }
+    ]
+  },
+  {
+    "id": "chau-chow-dorchester",
+    "name": "Chau Chow Restaurant",
+    "cuisines": [
+      "Chinese"
+    ],
+    "description": "Sit-down Chinese restaurant serving Cantonese dishes, dim sum, seafood, and family-style meals.",
+    "address": "699 Morrissey Blvd, Dorchester, MA 02122",
+    "menuUrl": "https://www.chauchowrestaurant.com/",
+    "price": {
+      "min": 12,
+      "max": 35,
+      "level": 2
+    },
+    "dietary": {
+      "vegetarian": "limited",
+      "vegan": "limited",
+      "glutenFree": "limited",
+      "halal": "unknown"
+    },
+    "coordinates": {
+      "lat": null,
+      "lng": null
+    },
+    "distanceMiles": 1.7,
+    "imageUrl": "https://homeisakitchen.com/wp-content/uploads/2013/03/chau-chow-city-dim-sum-dorcester-ma.jpeg",
+    "imageBackground": "",
+    "imageAlt": "Chau Chow Chinese restaurant",
+    "dietaryTags": [
+      {
+        "label": "Vegetarian · limited",
+        "status": "limited"
+      },
+      {
+        "label": "Vegan · limited",
+        "status": "limited"
+      },
+      {
+        "label": "Gluten-free · limited",
+        "status": "limited"
+      }
+    ]
+  },
+  {
+    "id": "la-taqueria-dorchester",
+    "name": "La Taqueria",
+    "cuisines": [
+      "Mexican"
+    ],
+    "description": "Mexican restaurant serving tacos, burritos, bowls, and quesadillas.",
+    "address": "1132 Blue Hill Ave, Boston, MA 02124",
+    "menuUrl": "https://www.lataqueriaboston.com/menu.html",
+    "price": {
+      "min": 10,
+      "max": 20,
+      "level": 2
+    },
+    "dietary": {
+      "vegetarian": "limited",
+      "vegan": "unknown",
+      "glutenFree": "limited",
+      "halal": "unknown"
+    },
+    "coordinates": {
+      "lat": null,
+      "lng": null
+    },
+    "distanceMiles": 4.8,
+    "imageUrl": "https://images.squarespace-cdn.com/content/v1/5b27d708b98a78bacb64b6d2/bca3bdf9-02e2-452c-b421-6a076add1b49/Untitled+design+%282%29.png",
+    "imageBackground": "",
+    "imageAlt": "La Taqueria restaurant",
+    "dietaryTags": [
+      {
+        "label": "Vegetarian · limited",
+        "status": "limited"
+      },
+      {
+        "label": "Gluten-free · limited",
+        "status": "limited"
+      }
+    ]
+  }
+]

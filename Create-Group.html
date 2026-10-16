@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -324,8 +323,8 @@
         }
 
         .qr-code {
-            width: 95px;
-            height: 95px;
+            width: 160px;
+            height: 160px;
             flex-shrink: 0;
             background: white;
             border: 1px solid #E2E2E2;
@@ -503,6 +502,22 @@
             }
         }
     </style>
+<style>[hidden]{display:none !important}</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script src="bitebuddy-backend.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+<style>
+#inviteQr img,#inviteQr canvas{max-width:100%;height:auto}.generate-btn:disabled{opacity:.7;cursor:wait}
+.members-panel{border-top:1px solid #DDE9E1;margin-top:24px;padding-top:20px}
+.members-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.members-heading h3{font-size:16px;color:#003D2E}.members-heading span{background:#E9F8D9;color:#003D2E;padding:7px 11px;border-radius:20px;font-size:12px;font-weight:bold}
+#memberList{list-style:none;display:grid;gap:9px;margin:14px 0;padding:0}
+#memberList li{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid #DDE9E1;border-radius:10px;font-size:13px;color:#16352C}
+.member-avatar{background:#E9F8D9;width:31px;height:31px;border-radius:50%;display:grid;place-items:center;font-weight:bold}
+.member-you{margin-left:auto;color:#68766F;font-size:11px}
+.member-status,.member-empty{color:#68766F;font-size:12px;line-height:1.5}
+</style>
 </head>
 
 <body>
@@ -577,8 +592,12 @@
                         id="groupName"
                         class="text-input"
                         placeholder="Enter your team name. Example: Ctrl + Alt + Eat"
-                        value="Enter your team name"
+                        maxlength="60"
                     >
+
+                    <label for="hostName" style="margin-top:16px">Your name</label>
+                    <input type="text" id="hostName" class="text-input"
+                           placeholder="Enter your name" maxlength="40" autocomplete="nickname">
 
                     <div class="group-size">
                         <label>Group size</label>
@@ -593,7 +612,7 @@
                             <button type="button" class="size-btn"
                                 onclick="selectSize(this)">4 people</button>
 
-                            <button type="button" class="size-btn"
+                            <button type="button" class="size-btn selected"
                                 onclick="selectSize(this)">5 people</button>
 
                             <button type="button" class="size-btn"
@@ -608,23 +627,23 @@
                     >
                         ✨ Generate Invite
                     </button>
+                    <p id="createStatus" role="status" aria-live="polite" style="margin-top:13px;color:#003D2E;font-size:13px"></p>
                 </section>
 
                 <!-- INVITE CARD -->
-                <section class="card">
+                <section class="card" id="inviteCard" hidden>
                     <div class="invite-header">
                         <h2>Your invite is ready!</h2>
-                        <span class="active-badge">Active for 24 hours</span>
+                        <span class="active-badge">Invite valid for 24 hours</span>
                     </div>
 
                     <div class="invite-code">
                         <small>INVITE CODE</small>
-                        <strong id="inviteCode">BITE-482</strong>
+                        <strong id="inviteCode">—</strong>
                     </div>
 
                     <div class="qr-section">
-                        <div class="qr-code" aria-label="QR code placeholder">
-                            <div class="qr-pattern"></div>
+                        <div class="qr-code" id="inviteQr" aria-label="QR code for group invite">
                         </div>
 
                         <div class="invite-info">
@@ -650,14 +669,19 @@
                             </button>
                         </div>
                     </div>
+                    <div class="members-panel" aria-live="polite">
+                        <div class="members-heading"><h3>Who joined your group?</h3><span id="memberCount">0 / 0 joined</span></div>
+                        <ul id="memberList"><li class="member-empty">Waiting for the host…</li></ul>
+                        <p class="member-status" id="memberStatus">Names will appear here as your friends join.</p>
+                    </div>
                 </section>
 
             </div>
 
             <!-- THIS BUTTON STAYS AT THE BOTTOM -->
             <div class="continue-section">
-                <a href="join-group.html" class="continue-btn">
-                    Continue to Join Group →
+                <a href="preferences.html" id="continueFromCreate" class="continue-btn" hidden>
+                    Continue to Preferences →
                 </a>
             </div>
 
@@ -666,68 +690,142 @@
 
     <!-- JAVASCRIPT -->
     <script>
-        let selectedGroupSize = 5;
-
-        function selectSize(button) {
-            document.querySelectorAll(".size-btn").forEach(function (btn) {
-                btn.classList.remove("selected");
-            });
-
-            button.classList.add("selected");
-
-            selectedGroupSize = parseInt(button.textContent, 10);
-        }
-
-        function generateInvite() {
-            const teamName = document
-                .getElementById("groupName")
-                .value
-                .trim();
-
-            if (teamName === "") {
-                alert("Please enter a team name.");
-                document.getElementById("groupName").focus();
-                return;
-            }
-
-            const randomNumber = Math.floor(100 + Math.random() * 900);
-            const inviteCode = "BITE-" + randomNumber;
-
-            document.getElementById("inviteCode").textContent = inviteCode;
-
-            document.getElementById("inviteMessage").textContent =
-                "Friends can enter the code or scan the QR code to join "
-                + teamName + ".";
-
-            alert(
-                "Invite created for " + teamName
-                + "!\nGroup size: " + selectedGroupSize + " people"
-                + "\nInvite code: " + inviteCode
-            );
-        }
-
-        async function copyInvite() {
-            const code = document.getElementById("inviteCode").textContent;
-
-            // Replace this with your published join page URL if needed.
-            const inviteLink = new URL("join-group.html", window.location.href).href
-                + "?code=" + encodeURIComponent(code);
-
-            try {
-                await navigator.clipboard.writeText(inviteLink);
-                alert("Invite link copied!");
-            } catch (error) {
-                alert("Your invite code is: " + code);
-            }
-        }
-
-        function downloadQR() {
-            alert(
-                "A working QR code image will need to be generated "
-                + "before it can be downloaded."
-            );
-        }
-    </script>
+'use strict';
+let selectedGroupSize = 5;
+let createdGroup = null;
+let memberChannel = null;
+let memberRefreshBusy = false;
+let memberUserId = null;
+const createButton = document.querySelector('.generate-btn');
+const createStatus = document.getElementById('createStatus');
+function selectSize(button) {
+  document.querySelectorAll('.size-btn').forEach(el => el.classList.remove('selected'));
+  button.classList.add('selected');
+  selectedGroupSize = parseInt(button.textContent, 10);
+}
+function inviteLink(code) {
+  const url = new URL('join-group.html', window.location.href);
+  url.searchParams.set('code', code);
+  return url.href;
+}
+function drawQR(code) {
+  const node = document.getElementById('inviteQr');
+  node.replaceChildren();
+  if (typeof QRCode !== 'function') {
+    node.textContent = 'QR library unavailable. Share the invite link instead.';
+    return;
+  }
+  new QRCode(node, { text: inviteLink(code), width: 145, height: 145,
+    colorDark: '#003D2E', colorLight: '#FFFFFF', correctLevel: QRCode.CorrectLevel.M });
+}
+async function generateInvite() {
+  const name = document.getElementById('groupName').value.trim();
+  const hostName = document.getElementById('hostName').value.trim();
+  if (!hostName || hostName.length > 40) {
+    createStatus.textContent = 'Please enter your name (1–40 characters).';
+    document.getElementById('hostName').focus();
+    return;
+  }
+  if (!name || name === 'Enter your team name') {
+    createStatus.textContent = 'Please enter your own group name.';
+    document.getElementById('groupName').focus();
+    return;
+  }
+  if (createdGroup) {
+    createStatus.textContent = 'This group has already been created. Use the existing invite or create a new group on a fresh page.';
+    return;
+  }
+  createButton.disabled = true;
+  createStatus.textContent = 'Saving your group to Supabase…';
+  try {
+    createdGroup = await BiteBuddy.createGroup(name, selectedGroupSize, hostName);
+    document.getElementById('inviteCode').textContent = createdGroup.invite_code;
+    document.getElementById('inviteMessage').textContent =
+      `Friends can enter this code or scan this QR code to join ${createdGroup.name}.`;
+    drawQR(createdGroup.invite_code);
+    document.getElementById('inviteCard').hidden = false;
+    document.getElementById('continueFromCreate').hidden = false;
+    createStatus.textContent = `Group created! Share ${createdGroup.invite_code} with up to ${selectedGroupSize - 1} friends.`;
+    await startMemberUpdates();
+  } catch (error) {
+    console.error(error);
+    createStatus.textContent = `Could not create group: ${error.message}`;
+    createButton.disabled = false;
+  }
+}
+async function updateMemberList() {
+  if (!createdGroup || memberRefreshBusy || document.hidden) return;
+  memberRefreshBusy = true;
+  try {
+    const members = await BiteBuddy.groupMembers();
+    const list = document.getElementById('memberList');
+    list.replaceChildren();
+    members.sort((a,b) => a.name.localeCompare(b.name));
+    for (const member of members) {
+      const item = document.createElement('li');
+      const avatar = document.createElement('span');
+      avatar.className = 'member-avatar';
+      avatar.textContent = (member.name || '?').charAt(0).toUpperCase();
+      const name = document.createElement('span');
+      name.textContent = member.name || 'Member';
+      item.append(avatar, name);
+      if (member.user_id === memberUserId) {
+        const you = document.createElement('span');
+        you.className = 'member-you';
+        you.textContent = 'You';
+        item.append(you);
+      }
+      list.append(item);
+    }
+    if (!members.length) {
+      const item = document.createElement('li');
+      item.textContent = 'No members yet';
+      list.append(item);
+    }
+    document.getElementById('memberCount').textContent = `${members.length} / ${createdGroup.group_size} joined`;
+    document.getElementById('memberStatus').textContent = members.length >= createdGroup.group_size
+      ? 'Everyone has joined! You can continue to preferences.'
+      : `Waiting for ${createdGroup.group_size - members.length} more ${createdGroup.group_size - members.length === 1 ? 'person' : 'people'}…`;
+  } catch (error) {
+    console.error(error);
+    document.getElementById('memberStatus').textContent = 'Could not update members: ' + error.message;
+  } finally {
+    memberRefreshBusy = false;
+  }
+}
+async function startMemberUpdates() {
+  const user = await BiteBuddy.user();
+  memberUserId = user.id;
+  await updateMemberList();
+  memberChannel = BiteBuddy.db().channel('create-members-' + createdGroup.id)
+    .on('postgres_changes', {event:'*',schema:'public',table:'group_members',filter:'group_id=eq.'+createdGroup.id}, updateMemberList)
+    .subscribe();
+  window.setInterval(updateMemberList, 4000);
+}
+window.addEventListener('pagehide', () => {
+  if (memberChannel) BiteBuddy.db().removeChannel(memberChannel);
+});
+async function copyInvite() {
+  if (!createdGroup) { createStatus.textContent = 'Generate your group invite first.'; return; }
+  try {
+    await navigator.clipboard.writeText(inviteLink(createdGroup.invite_code));
+    createStatus.textContent = 'Invite link copied.';
+  } catch (error) {
+    createStatus.textContent = `Copy this code instead: ${createdGroup.invite_code}`;
+  }
+}
+function downloadQR() {
+  if (!createdGroup) { createStatus.textContent = 'Generate your group invite first.'; return; }
+  const target = document.querySelector('#inviteQr img, #inviteQr canvas');
+  if (!target) { createStatus.textContent = 'QR image unavailable. Copy the invite link instead.'; return; }
+  try {
+    const link = document.createElement('a');
+    link.href = target.tagName === 'CANVAS' ? target.toDataURL('image/png') : target.src;
+    link.download = 'BiteBuddy-' + createdGroup.invite_code + '.png';
+    link.click();
+  } catch (_) { createStatus.textContent = 'QR download failed. You can copy the invite link.'; }
+}
+</script>
 
 </body>
 </html>

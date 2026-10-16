@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -504,6 +503,10 @@
       }
     }
   </style>
+<style>[hidden]{display:none !important}</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script src="bitebuddy-backend.js"></script>
 </head>
 
 <body>
@@ -536,7 +539,7 @@
     <div class="status-banner" role="status" aria-live="polite">
       <span class="status-dot"></span>
       <span id="bannerText">
-        All preferences are in · Matching now
+        Checking submitted preferences…
       </span>
     </div>
 
@@ -579,7 +582,7 @@
         </div>
 
         <p class="progress-caption" id="progressCaption">
-          73% · Checking 42 nearby restaurants
+          Loading group preferences…
         </p>
       </section>
 
@@ -587,21 +590,20 @@
       <section class="matching-card" aria-label="Matching status">
         <div class="status-pills">
           <span class="pill completed">
-            ✓ Preferences combined
+            ✓ Group connected
           </span>
 
           <span class="pill completed">
-            ✓ Must-haves verified
+            ○ Preferences submitted
           </span>
 
           <span class="pill current" id="rankingPill">
-            ● Ranking group fit
+            ○ Algorithm not connected
           </span>
         </div>
 
         <p class="card-message" id="cardMessage">
-          We're comparing the group's preferences to find restaurants
-          everyone can enjoy.
+          Once your group submits preferences, this page will be ready for your friend's matching algorithm.
         </p>
       </section>
 
@@ -616,9 +618,7 @@
           Explore Restaurants →
         </a>
 
-        <a class="btn" href="top-recommendations.html">
-          Continue to Top Recommendations →
-        </a>
+        <a class="btn" id="viewMatches" href="top-recommendations.html" hidden>View Top 3 Matches →</a>
 
       </div>
 
@@ -632,69 +632,69 @@
   </div>
 
   <script>
-    "use strict";
-
-    /*
-      Front-end matching demonstration.
-      Actual restaurant recommendations require your matching
-      algorithm to be connected.
-    */
-
-    const progressFill = document.getElementById("progressFill");
-    const progressBar = document.getElementById("progressBar");
-    const progressCaption = document.getElementById("progressCaption");
-    const bannerText = document.getElementById("bannerText");
-    const heading = document.getElementById("heading");
-    const subtitle = document.getElementById("subtitle");
-    const cardMessage = document.getElementById("cardMessage");
-    const rankingPill = document.getElementById("rankingPill");
-    const actions = document.getElementById("actions");
-
-    let progress = 73;
-
-    function updateProgress(value) {
-      progress = value;
-
-      progressFill.style.width = progress + "%";
-
-      progressBar.setAttribute(
-        "aria-valuenow",
-        progress
-      );
-
-      progressCaption.textContent =
-        progress < 100
-          ? progress + "% · Checking 42 nearby restaurants"
-          : "100% · Matching demonstration complete";
+"use strict";
+const progressFill = document.getElementById('progressFill');
+const progressBar = document.getElementById('progressBar');
+const progressCaption = document.getElementById('progressCaption');
+const bannerText = document.getElementById('bannerText');
+const heading = document.getElementById('heading');
+const subtitle = document.getElementById('subtitle');
+const cardMessage = document.getElementById('cardMessage');
+const rankingPill = document.getElementById('rankingPill');
+const actions = document.getElementById('actions');
+let checking = false;
+function updateProgress(pct, label) {
+  progressFill.style.width = pct + '%';
+  progressBar.setAttribute('aria-valuenow', String(pct));
+  progressCaption.textContent = label;
+}
+async function refreshGroupStatus() {
+  if (checking) return;
+  checking = true;
+  try {
+    const group = await BiteBuddy.requireGroup();
+    const [prefs, members] = await Promise.all([
+      BiteBuddy.groupPreferences(), BiteBuddy.groupMembers()
+    ]);
+    const submittedIds = new Set(prefs.map(row => row.user_id));
+    const submitted = members.filter(member => submittedIds.has(member.user_id)).length;
+    const total = members.length;
+    const groupSize = group.group_size;
+    const allJoinedSubmitted = total > 0 && submitted === total;
+    const fullGroup = total >= groupSize;
+    const ready = allJoinedSubmitted && fullGroup;
+    updateProgress(total ? Math.round(100 * submitted / total) : 0,
+      `${submitted} of ${total} joined members submitted preferences`);
+    bannerText.textContent = `${total}/${groupSize} joined · ${submitted}/${total} preferences submitted`;
+    heading.textContent = ready ? 'Group data ready for matching!' : 'Waiting for your group…';
+    subtitle.textContent = ready
+      ? 'Everyone has submitted preferences. View the top three restaurants using your group’s preferences.'
+      : 'Have everyone join with the same invite code and save their food preferences.';
+    rankingPill.textContent = ready ? '✓ Ready to calculate matches' : '○ Waiting for submissions';
+    document.getElementById('viewMatches').hidden = !ready;
+    if (ready) {
+      cardMessage.textContent = 'All members have submitted preferences. Click View Top 3 Matches to calculate recommendations.';
+    } else if (!fullGroup) {
+      cardMessage.textContent = `Group ${group.name}: ${total} of ${groupSize} members joined; ${submitted} have saved preferences. Waiting for more members to join.`;
+    } else {
+      const waiting = members.filter(member => !submittedIds.has(member.user_id)).map(member => member.name);
+      cardMessage.textContent = `Waiting for preferences from: ${waiting.join(', ')}.`;
     }
-
-    const matchingDemo = setInterval(() => {
-      updateProgress(Math.min(progress + 1, 100));
-
-      if (progress >= 100) {
-        clearInterval(matchingDemo);
-
-        heading.textContent =
-          "Your group's match is ready!";
-
-        subtitle.textContent =
-          "Explore the restaurant list to choose your next meal.";
-
-        bannerText.textContent =
-          "Matching demonstration complete";
-
-        rankingPill.textContent =
-          "✓ Ranking demonstration complete";
-
-        rankingPill.classList.add("completed");
-        rankingPill.classList.remove("current");
-
-        cardMessage.textContent =
-          "This is a front-end demo. Actual recommendations will appear when your matching algorithm is connected.";
-
-        actions.hidden = false;
-      }
-    }, 120);
-  </script>
+    actions.hidden = false;
+  } catch (error) {
+    updateProgress(0, 'Unable to load group preferences');
+    heading.textContent = 'Could not load group data';
+    subtitle.textContent = 'Create or join a group, then try again.';
+    bannerText.textContent = 'Supabase connection needed';
+    cardMessage.textContent = error.message;
+    actions.hidden = false;
+  } finally {
+    checking = false;
+  }
+}
+refreshGroupStatus();
+// Poll periodically so multiple browsers see changes without a page refresh.
+setInterval(refreshGroupStatus, 5000);
+</script>
 </body>
 </html>
