@@ -1,19 +1,10 @@
 /*
- * BiteBuddy — shared navigation and button behavior.
- *
- * INSTALL: Put this file and bitebuddy-ui.css beside your HTML pages.
- * Add these lines just before </head>, after the page's existing styles:
- *   <link rel="stylesheet" href="bitebuddy-ui.css">
- *   <script src="bitebuddy-ui.js" defer></script>
- *
- * Works with the original <header class="navbar"> and the updated navbar.
- * Your page content, dining photo, application handlers and backend stay intact.
- */
+ * BiteBuddy — shared navigation and button behavior. */
 (() => {
   'use strict';
 
-  // Change the slogan here to update every page using this script.
-  const SLOGAN = ['Good food.', 'Great company.'];
+  // slogan
+  const SLOGAN = ['Good food.', 'Good Mood.'];
   const MOBILE_QUERY = '(max-width: 820px)'; // Match the breakpoint in the CSS.
   const SELECTABLE = '.size-btn, .chip, .priority-btn, .vote';
 
@@ -160,7 +151,6 @@
   }
 
   function enhanceMenu(header) {
-    // Avoid duplicate click handlers when an older inline UI script is still present.
     if (header.classList.contains('bb-navbar--enhanced')) return;
     const toggle = header.querySelector('.bb-menu-toggle');
     const navigation = header.querySelector('.bb-nav');
