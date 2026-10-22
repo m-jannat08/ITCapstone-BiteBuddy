@@ -1,12 +1,3 @@
-/* BiteBuddy — shared navbar and button styles.
- * Keep this file and bitebuddy-ui.js beside your HTML pages and original logo.
- * Add the following just before </head>, after existing <style> blocks:
- *   <link rel="stylesheet" href="bitebuddy-ui.css">
- *   <script src="bitebuddy-ui.js" defer></script>
- * The JavaScript adds the navbar structure and the bb-ui body class for you.
- * Edit the color variables below, or search NAVIGATION / ACTION BUTTONS.
- * Page content, dining-photo styling and application logic are not replaced.
- */
 :root {
   --bb-forest: #003d2e;
   --bb-forest-hover: #075740;
@@ -19,7 +10,7 @@
   --bb-ui-font: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
-/* Explicitly preserve hidden application states, including flex buttons. */
+
 body.bb-ui [hidden] { display: none !important; }
 
 /* NAVIGATION --------------------------------------------------------------- */
@@ -66,9 +57,7 @@ body.bb-ui [hidden] { display: none !important; }
   border-radius: 12px;
 }
 
-/* Original uploaded artwork, not a recreated icon or text wordmark.
-   The viewport hides only the empty outer margins of the square image.
-   The source PNG and its proportions remain unchanged. */
+
 .bb-navbar .bb-brand-lockup {
   display: inline-flex;
   align-items: center;
@@ -93,7 +82,7 @@ body.bb-ui [hidden] { display: none !important; }
   height: 152px;
   max-width: none;
   object-fit: contain;
-  /* Margin centering also works when reduced-motion rules remove transforms. */
+  /* Margin centering */
   margin: -76px 0 0 -76px;
 }
 .bb-navbar .bb-brand__tagline {
@@ -264,7 +253,7 @@ body.bb-ui .vote.selected {
 }
 body.bb-ui button.join-btn { min-height: 52px; }
 
-/* Keep selected controls recognizably different from navigation / actions. */
+
 body.bb-ui :is(.size-btn, .chip, .priority-btn) {
   display: inline-flex;
   align-items: center;
@@ -366,7 +355,7 @@ body.bb-ui .generate-btn:disabled, body.bb-ui #saveMatch:disabled, body.bb-ui #s
   .bb-navbar .bb-nav__link { padding-left: 13px; padding-right: 13px; }
 }
 
-/* A progressive-enhancement menu: without JS, all navigation stays visible. */
+
 @media (max-width: 820px) {
   .bb-navbar .bb-navbar__inner {
     width: calc(100% - 40px);
