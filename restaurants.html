@@ -10,6 +10,7 @@
   --green: #003D2E;
   --deep: #002F24;
   --lime: #8AF23A;
+  --orange: #FF6B3D;
   --cream: #F8F6EF;
   --ink: #16352C;
   --muted: #64736B;
@@ -73,7 +74,7 @@ main.wrap {
   padding-top: 32px;
   padding-bottom: 70px;
 }
-
+  
 .page-heading { margin-bottom: 28px; }
 
 h1 {
@@ -344,6 +345,8 @@ h1 {
   .badge { font-size: 10px; padding: 5px 7px; }
 }
 </style>
+<link rel="stylesheet" href="bitebuddy-ui.css">
+<script src="bitebuddy-ui.js" defer></script>
 </head>
 
 <body>
@@ -467,20 +470,20 @@ const restaurantData = {
       id: "dora-taqueria",
       name: "Dora Taqueria",
       cuisines: ["Mexican"],
-      description: "Burritos, tacos, taco plates, and birria.",
+      description: "A Dorchester taqueria serving burritos, taco plates, and birria.",
       address: "112 Stoughton St, Dorchester, MA 02125",
       menuUrl: "https://dorataqueria.online/locations/dorchester",
       price: { min: 10.99, max: 15.99, level: 1 },
       dietary: { vegetarian: "yes", vegan: "limited", glutenFree: "limited", halal: "no" },
       distanceMiles: 1.3,
       imageUrl: "https://dorataqueria.online/assets/dora/logo.png",
-      imageBackground: "#222326"
+      imageBackground: "#202a28"
     },
     {
       id: "the-chester-tavern",
       name: "The Chester Tavern",
       cuisines: ["American"],
-      description: "Burgers, bowls, pasta, and American dinner entrees.",
+      description: "American tavern cooking with burgers, bowls, pasta, and dinner entrees.",
       address: "1119 Dorchester Ave, Dorchester, MA 02125",
       menuUrl: "https://www.thechestertavern.com/menus/",
       price: { min: 17, max: 32, level: 3 },
@@ -493,13 +496,14 @@ const restaurantData = {
       id: "halal-fusion",
       name: "The Halal Fusion",
       cuisines: ["Mediterranean"],
-      description: "Bowls, falafel pitas, and chicken meals.",
+      description: "Bowls, falafel pitas, and chicken meals in Mattapan.",
       address: "686 Morton St, Mattapan, MA 02126",
       menuUrl: "https://www.clover.com/online-ordering/the-halal-fusion-boston",
       price: { min: 13.98, max: 17.98, level: 2 },
       dietary: { vegetarian: "yes", vegan: "no", glutenFree: "unknown", halal: "yes" },
       distanceMiles: 3.5,
-      imageUrl: "https://thehalalfusionboston.com/wp-content/uploads/2025/11/WhatsApp-Image-2025-10-10-at-18.55.02_7f81a0a1-e1763625475120.png"
+      imageUrl: "https://thehalalfusionboston.com/wp-content/uploads/2025/11/WhatsApp-Image-2025-10-10-at-18.55.02_7f81a0a1-e1763625475120.png",
+      imageBackground: "#fff9ee"
     },
     {
       id: "shanti-dorchester",
@@ -515,34 +519,17 @@ const restaurantData = {
       imageBackground: "#222326"
     },
     {
-  id: "fiskies-indian-cafe",
-  name: "Fiskie's Indian Cafe",
-  cuisines: ["Indian"],
-  description: "Enjoy flavorful Indian dishes, curries, rice dishes, and delicious favorites at Fiskie's Indian Cafe in Dorchester.",
-  address: "27 Harbor Point Blvd, Dorchester, MA 02125",
-  menuUrl: "https://fiskies.com",
-  price: { min: 10, max: 20, level: 2 },
-  dietary: {
-    vegetarian: "yes",
-    vegan: "yes",
-    glutenFree: "yes",
-    halal: "unknown"
-  },
-  distanceMiles: 1.0,
-  imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSM9a498dKnN-BPFLoJ8pr-LeFE4VLmveUKe2_ynUlzSj0rpbEzKIXGdiE&s=10",
-  imageAlt: "Fiskie's Indian Cafe promotional image"
-},
-    {
       id: "great-wok",
       name: "Great Wok — Dorchester",
       cuisines: ["Chinese"],
-      description: "Chinese takeout, rice, noodles, combination plates, and vegetable dishes.",
+      description: "Chinese takeout with rice, noodles, combination plates, and vegetable options.",
       address: "1284 Massachusetts Ave, Dorchester, MA 02125",
       menuUrl: "https://order.greatwokma.com/order/main",
       price: { min: 13.95, max: 16.95, level: 2 },
       dietary: { vegetarian: "yes", vegan: "unknown", glutenFree: "no", halal: "unknown" },
       distanceMiles: 1.4,
-      imageUrl: "https://imagedelivery.net/9lr8zq_Jvl7h6OFWqEi9IA/1b8ab327-1bcd-4182-05b4-181c5e0a6b00/public"
+      imageUrl: "https://imagedelivery.net/9lr8zq_Jvl7h6OFWqEi9IA/1b8ab327-1bcd-4182-05b4-181c5e0a6b00/public",
+      imageBackground: "#ffffff"
     },
     {
       id: "just-thai-kitchen",
@@ -554,7 +541,8 @@ const restaurantData = {
       price: { min: 10, max: 25, level: 2 },
       dietary: { vegetarian: "yes", vegan: "yes", glutenFree: "yes", halal: "no" },
       distanceMiles: 2.5,
-      imageUrl: "just-thai-kitchen.png"
+      imageUrl: "just-thai-kitchen.png",
+      imageBackground: "#fff9ee"
     },
     {
       id: "224-boston",
@@ -566,7 +554,8 @@ const restaurantData = {
       price: { min: 20, max: 30, level: 3 },
       dietary: { vegetarian: "yes", vegan: "unknown", glutenFree: "unknown", halal: "unknown" },
       distanceMiles: 1.7,
-      imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHVTcygkLLDZL3NrX6B1UfnOEW8VcxkSyQMpKXdgp-sM5AZwKeuma55hA&s=10"
+      imageUrl: "224 Boston restaurant logo.jpeg",
+      imageBackground: "#ffffff"
     },
     {
       id: "venezia",
@@ -578,7 +567,8 @@ const restaurantData = {
       price: { min: 20, max: 30, level: 3 },
       dietary: { vegetarian: "yes", vegan: "limited", glutenFree: "yes", halal: "no" },
       distanceMiles: 3,
-      imageUrl: "venezia.jpeg"
+      imageUrl: "venezia.jpeg",
+      imageBackground: "#ffffff"
     },
     {
       id: "boston-fried-chicken",
@@ -589,20 +579,23 @@ const restaurantData = {
       menuUrl: "https://www.bostonfriedchickenma.com/dzkg7xih/boston-fried-chicken-dorchester-02124/menu",
       price: { min: 10, max: 20, level: 2 },
       dietary: { vegetarian: "limited", vegan: "unknown", glutenFree: "unknown", halal: "yes" },
+      dietaryNote: "Confirm halal availability, vegetarian choices, ingredients, and shared-fryer practices with the restaurant.",
       distanceMiles: 3,
-      imageUrl: "bfc.png"
+      imageUrl: "bfc.png",
+      imageBackground: "#ffffff"
     },
     {
       id: "dot-block",
       name: "The Dot Block Diner",
       cuisines: ["American"],
-      description: "Omelets, pancakes, sandwiches, burgers, seafood, and salads.",
+      description: "Classic omelets, pancakes, sandwiches, burgers, seafood, and salads.",
       address: "1203 Dorchester Ave #1, Dorchester, MA 02125",
       menuUrl: "https://dotblockdiner.com/menu",
       price: { min: 10, max: 20, level: 2 },
       dietary: { vegetarian: "yes", vegan: "limited", glutenFree: "yes", halal: "no" },
       distanceMiles: 2.2,
-      imageUrl: "https://static-content.owner.com/f9bf3f80-6589-4f40-9c60-4d5e966fca81.png?h=56&auto=format&dpr=2"
+      imageUrl: "https://static-content.owner.com/f9bf3f80-6589-4f40-9c60-4d5e966fca81.png?h=56&auto=format&dpr=2",
+      imageBackground: "#ffffff"
     },
     {
       id: "p-and-r",
@@ -614,31 +607,35 @@ const restaurantData = {
       price: { min: 1, max: 10, level: 1 },
       dietary: { vegetarian: "yes", vegan: "yes", glutenFree: "limited", halal: "no" },
       distanceMiles: 3.2,
-      imageUrl: "https://www.eatpandr.com/wp-content/uploads/2016/11/Logomakr_simple-logo-109x109.png"
+      imageUrl: "https://www.eatpandr.com/wp-content/uploads/2016/11/Logomakr_simple-logo-109x109.png",
+      imageBackground: "#ffffff"
     },
     {
       id: "pho-hoa-dorchester",
       name: "Pho Hoa",
       cuisines: ["Vietnamese"],
-      description: "Vietnamese pho and other Vietnamese dishes.",
+      description: "Vietnamese restaurant serving pho and other Vietnamese dishes.",
       address: "1370 Dorchester Ave, Boston, MA 02122",
       menuUrl: "https://www.phohoarestaurant.com/",
       price: { min: 10, max: 25, level: 2 },
       dietary: { vegetarian: "limited", vegan: "limited", glutenFree: "limited", halal: "unknown" },
       distanceMiles: 2,
-      imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfF3MfN-68XfNqmTQrCZvx5b_E8Vr_xWeYTbyGCwYdnFT2PaNvjW-XnE3P&s=10"
+      imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfF3MfN-68XfNqmTQrCZvx5b_E8Vr_xWeYTbyGCwYdnFT2PaNvjW-XnE3P&s=10",
+      imageBackground: "#ffffff"
     },
     {
       id: "estella-boston",
       name: "Estella",
-      cuisines: ["American", "Caribbean", "Fusion"],
+      cuisines: ["American", "Caribbean", "Fusion", "International"],
       description: "A downtown Boston restaurant offering appetizers, pasta, seafood, and vegetarian options.",
       address: "49 Temple Pl, Boston, MA 02111",
       menuUrl: "https://www.estellaboston.com/menus/",
       price: { min: 14, max: 58, level: 3 },
       dietary: { vegetarian: "yes", vegan: "limited", glutenFree: "limited", halal: "unknown" },
+      dietaryNote: "Confirm ingredients, preparation, and cross-contact directly with the restaurant.",
       distanceMiles: 4.1,
-      imageUrl: "44346Estella_Restaurant.png"
+      imageUrl: "44346Estella_Restaurant.png",
+      imageBackground: "#ffffff"
     },
     {
       id: "chau-chow-dorchester",
@@ -650,31 +647,35 @@ const restaurantData = {
       price: { min: 12, max: 35, level: 2 },
       dietary: { vegetarian: "limited", vegan: "limited", glutenFree: "limited", halal: "unknown" },
       distanceMiles: 1.7,
-      imageUrl: "https://homeisakitchen.com/wp-content/uploads/2013/03/chau-chow-city-dim-sum-dorcester-ma.jpeg"
+      imageUrl: "https://homeisakitchen.com/wp-content/uploads/2013/03/chau-chow-city-dim-sum-dorcester-ma.jpeg",
+      imageBackground: "#ffffff"
     },
     {
       id: "la-taqueria-dorchester",
       name: "La Taqueria",
       cuisines: ["Mexican"],
-      description: "Mexican tacos, burritos, bowls, and quesadillas.",
+      description: "Mexican restaurant serving tacos, burritos, bowls, and quesadillas.",
       address: "1132 Blue Hill Ave, Boston, MA 02124",
       menuUrl: "https://www.lataqueriaboston.com/menu.html",
       price: { min: 10, max: 20, level: 2 },
       dietary: { vegetarian: "limited", vegan: "unknown", glutenFree: "limited", halal: "unknown" },
       distanceMiles: 4.8,
-      imageUrl: "https://images.squarespace-cdn.com/content/v1/5b27d708b98a78bacb64b6d2/bca3bdf9-02e2-452c-b421-6a076add1b49/Untitled+design+%282%29.png"
+      imageUrl: "https://images.squarespace-cdn.com/content/v1/5b27d708b98a78bacb64b6d2/bca3bdf9-02e2-452c-b421-6a076add1b49/Untitled+design+%282%29.png",
+      imageBackground: "#ffffff"
     },
     {
       id: "gyu-kaku-south-bay",
       name: "Gyu-Kaku Japanese BBQ",
       cuisines: ["Japanese", "BBQ"],
-      description: "Japanese barbecue with meats and vegetables grilled at the table.",
+      description: "Japanese barbecue where guests grill meats and vegetables at the table.",
       address: "23 District Ave, Dorchester, MA 02125",
       menuUrl: "https://www.gyu-kaku.com/southbay/",
       price: { min: 30, max: 50, level: 3 },
+      promotion: "15% student discount — confirm current availability and restrictions.",
       dietary: { vegetarian: "limited", vegan: "unknown", glutenFree: "yes", halal: "unknown" },
       distanceMiles: 1.7,
-      imageUrl: "gyu-kaku.jpeg"
+      imageUrl: "gyu-kaku.jpeg",
+      imageBackground: "#ffffff"
     },
     {
       id: "kura-revolving-sushi",
@@ -686,7 +687,8 @@ const restaurantData = {
       price: { min: 20, max: 50, level: 3 },
       dietary: { vegetarian: "limited", vegan: "limited", glutenFree: "limited", halal: "unknown" },
       distanceMiles: 1.7,
-      imageUrl: "kura shushi bar.png"
+      imageUrl: "kura shushi bar.png",
+      imageBackground: "#ffffff"
     },
     {
       id: "sallys-apizza",
@@ -698,19 +700,21 @@ const restaurantData = {
       price: { min: 20, max: 30, level: 3 },
       dietary: { vegetarian: "yes", vegan: "limited", glutenFree: "limited", halal: "unknown" },
       distanceMiles: 1.7,
-      imageUrl: "Sally logo.png"
+      imageUrl: "Sally logo.png",
+      imageBackground: "#ffffff"
     },
     {
       id: "110-grill-south-bay",
       name: "110 Grill",
       cuisines: ["American"],
-      description: "Modern American burgers, salads, seafood, steaks, and dietary options.",
+      description: "Modern American dining with burgers, salads, seafood, steaks, and dietary options.",
       address: "1 District Ave, Boston, MA 02125",
       menuUrl: "https://www.110grill.com/newengland-menu",
       price: { min: 20, max: 30, level: 3 },
       dietary: { vegetarian: "limited", vegan: "limited", glutenFree: "yes", halal: "unknown" },
       distanceMiles: 1.7,
-      imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcK5ygQXPyowBA3qb3_7-r3Jk4fXjWG2YX5Dnpr47Ac4WWjzjflLT8ba4&s=10"
+      imageUrl: "110 grill.jpeg",
+      imageBackground: "#ffffff"
     },
     {
       id: "olive-garden-south-bay",
@@ -722,7 +726,8 @@ const restaurantData = {
       price: { min: 15, max: 30, level: 2 },
       dietary: { vegetarian: "yes", vegan: "limited", glutenFree: "limited", halal: "unknown" },
       distanceMiles: 1.7,
-      imageUrl: "olive garden.jpg"
+      imageUrl: "olive garden.jpg",
+      imageBackground: "#ffffff"
     },
     {
       id: "daves-hot-chicken",
@@ -734,7 +739,8 @@ const restaurantData = {
       price: { min: 10, max: 20, level: 2 },
       dietary: { vegetarian: "limited", vegan: "unknown", glutenFree: "unknown", halal: "yes" },
       distanceMiles: 1.7,
-      imageUrl: "daves-hot-chicken.png"
+      imageUrl: "daves-hot-chicken.png",
+      imageBackground: "#ffffff"
     },
     {
       id: "yeanies",
@@ -746,7 +752,8 @@ const restaurantData = {
       price: { min: 10, max: 20, level: 2 },
       dietary: { vegetarian: "yes", vegan: "no", glutenFree: "no", halal: "no" },
       distanceMiles: 1.3,
-      imageUrl: "https://images.squarespace-cdn.com/content/v1/66c76598a32bc5757c24a524/660564e2-3aae-4661-97ba-21b0d572e8de/YeaniesBAS_Logo-3_Yellow.png?format=1500w"
+      imageUrl: "https://images.squarespace-cdn.com/content/v1/66c76598a32bc5757c24a524/660564e2-3aae-4661-97ba-21b0d572e8de/YeaniesBAS_Logo-3_Yellow.png?format=1500w",
+      imageBackground: "#ffffff"
     },
     {
       id: "ba-le",
@@ -758,73 +765,47 @@ const restaurantData = {
       price: { min: 10, max: 20, level: 2 },
       dietary: { vegetarian: "yes", vegan: "limited", glutenFree: "limited", halal: "no" },
       distanceMiles: 1.6,
-      imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7i44vcWzxJBIZmRaUQUQxNk_lLSe_8B9dZmDQBisL-w&s=10"
-    },
-    {
-      id: "applebees-south-bay",
-      name: "Applebee's Grill + Bar",
-      cuisines: ["American", "Burgers", "Steak", "Bar & Grill"],
-      description: "Casual American dining with burgers, pasta, steaks, appetizers, and desserts.",
-      address: "11A Allstate Road, South Bay Shopping Center, Dorchester, MA 02125",
-      menuUrl: "https://restaurants.applebees.com/en-us/ma/dorchester/11a-allstate-road-81086",
-      price: { min: 20, max: 30, level: 3 },
-      dietary: { vegetarian: "limited", vegan: "limited", glutenFree: "limited", halal: "unknown" },
-      distanceMiles: 1.5,
-      imageUrl: "applebees.jpg"
-    },
-    {
-      id: "the-halal-guys-south-bay",
-      name: "The Halal Guys",
-      cuisines: ["Halal", "Mediterranean", "Middle Eastern", "Fast Food"],
-      description: "Halal chicken and gyro platters, pita sandwiches, falafel, rice, and signature sauces.",
-      address: "10 District Ave, Unit C-15, Boston, MA 02125",
-      menuUrl: "https://thehalalguys.com/locations/10-district-ave-boston/",
-      price: { min: 10, max: 20, level: 2 },
-      dietary: { vegetarian: "limited", vegan: "limited", glutenFree: "unknown", halal: "yes" },
-      distanceMiles: 1.5,
-      imageUrl: "halalguys.png",
-    
-    },
-
-    {
-      id: "totto-ramen",
-      name: "Totto Ramen",
-      cuisines: ["Japanese", "Ramen"],
-      description: "A Japanese ramen spot for ramen lovers, known for its rich, creamy chicken broth, signature Paitan ramen, and flavorful noodle bowls.",
-      address: "20A District Avenue, Boston, MA 02125",
-      menuUrl: "https://www.tottoramen.com/",
-      price: { min: 10, max: 20, level: 2 },
-      dietary: {
-        vegetarian: "limited",
-        vegan: "unknown",
-        glutenFree: "unknown",
-        halal: "unknown"
-      },
-      distanceMiles: 1.5,
-      imageUrl: "tottoramen.png",
+      imageUrl: "http://balebanhmiboston.com/images/logo-dina-white.png",
       imageBackground: "#ffffff"
     },
     {
-  id: "ali-baba-restaurant-cafe",
-  name: "Ali Baba Restaurant & Cafe",
-  cuisines: ["Turkish", "Mediterranean", "Middle Eastern"],
-  description: "A Turkish restaurant and cafe serving grilled kebabs, rice platters, and traditional favorites in Boston's South End.",
-  address: "145 E Berkeley St, Boston, MA 02118",
-  menuUrl: "https://www.alibabasouthend.com/menu",
+  id: "applebees-south-bay",
+  name: "Applebee's Grill + Bar",
+  cuisines: ["American", "Burgers", "Steak", "Bar & Grill"],
+  description: "Casual American dining with burgers, pasta, steaks, appetizers, and desserts.",
+  address: "11A Allstate Road, South Bay Shopping Center, Dorchester, MA 02125",
+  menuUrl: "https://restaurants.applebees.com/en-us/ma/dorchester/11a-allstate-road-81086",
   price: { min: 20, max: 30, level: 3 },
-  rating: 4.3,
   dietary: {
-    vegetarian: "yes",
+    vegetarian: "limited",
+    vegan: "limited",
+    glutenFree: "limited",
+    halal: "unknown"
+  },
+  dietaryNote: "Confirm ingredients, allergens, and halal options directly with the restaurant.",
+  distanceMiles: 1.5,
+  imageUrl: "applebees.jpg",
+  imageBackground: "#ffffff"
+},
+{
+  id: "the-halal-guys-south-bay",
+  name: "The Halal Guys",
+  cuisines: ["Halal", "Mediterranean", "Middle Eastern", "Fast Food"],
+  description: "Halal chicken and gyro platters, pita sandwiches, falafel, rice, and signature sauces.",
+  address: "10 District Ave, Unit C-15, Boston, MA 02125",
+  menuUrl: "https://thehalalguys.com/locations/10-district-ave-boston/",
+  price: { min: 10, max: 20, level: 2 },
+  dietary: {
+    vegetarian: "limited",
     vegan: "limited",
     glutenFree: "unknown",
     halal: "yes"
   },
-  distanceMiles: 3.0,
-  imageUrl: "https://www.alibabasouthend.com/images/alibaba-logo.png",
-  imageBackground: "#ffffff",
-  imageAlt: "Ali Baba Restaurant & Cafe logo"
+  dietaryNote: "Confirm allergens, ingredients, and preparation practices directly with the restaurant.",
+  distanceMiles: 1.5,
+  imageUrl: "halalguys.png",
+  imageBackground: "#ffdc00"
 },
-
     {
       id: "cafe-polonia",
       name: "Cafe Polonia",
@@ -835,8 +816,8 @@ const restaurantData = {
       price: { min: 20, max: 30, level: 3 },
       dietary: { vegetarian: "yes", vegan: "limited", glutenFree: "limited", halal: "no" },
       distanceMiles: 1.9,
-      imageBackground: "#222326",
-      imageUrl: "https://cafepolonia.com/wp-content/uploads/2025/08/cafe_polonia_logo_vector_orig_w_350_shadow.png"
+      imageUrl: "https://cafepolonia.com/wp-content/uploads/2025/08/cafe_polonia_logo_vector_orig_w_350_shadow.png",
+      imageBackground: "#ffffff"
     }
   ]
 };
@@ -868,10 +849,7 @@ function escapeHTML(value) {
 }
 
 function priceSymbols(restaurant) {
-  const level = Number(restaurant.price?.level);
-  return Number.isInteger(level) && level >= 1 && level <= 3
-    ? "$".repeat(level)
-    : "Price varies";
+  return "$".repeat(restaurant.price.level);
 }
 
 function renderBadge(restaurant, key) {
@@ -879,7 +857,7 @@ function renderBadge(restaurant, key) {
 
   if (!["yes", "limited"].includes(status)) return "";
 
-  const label = (dietNames[key] || key) +
+  const label = dietNames[key] +
     (status === "limited" ? " · limited" : " options");
 
   return `<span class="badge ${status === "limited" ? "limited" : ""}">
@@ -899,32 +877,20 @@ function readFilters() {
 
 function selectRestaurants(filters) {
   let items = restaurantData.restaurants.filter(restaurant => {
-    const cuisines = Array.isArray(restaurant.cuisines)
-      ? restaurant.cuisines
-      : [];
+    if (filters.cuisine &&
+        !restaurant.cuisines.includes(filters.cuisine)) return false;
 
-    if (filters.cuisine && !cuisines.includes(filters.cuisine)) {
+    if (filters.diet &&
+        !["yes", "limited"].includes(restaurant.dietary?.[filters.diet])) {
       return false;
     }
 
-    if (
-      filters.diet &&
-      !["yes", "limited"].includes(restaurant.dietary?.[filters.diet])
-    ) {
-      return false;
-    }
+    if (filters.distance &&
+        (restaurant.distanceMiles == null ||
+         restaurant.distanceMiles > filters.distance)) return false;
 
-    if (
-      filters.distance &&
-      (restaurant.distanceMiles == null ||
-       restaurant.distanceMiles > filters.distance)
-    ) {
-      return false;
-    }
-
-    if (filters.price && restaurant.price?.level !== filters.price) {
-      return false;
-    }
+    if (filters.price &&
+        restaurant.price.level !== filters.price) return false;
 
     return true;
   });
@@ -934,13 +900,11 @@ function selectRestaurants(filters) {
     distance: (a, b) =>
       (a.distanceMiles ?? Infinity) - (b.distanceMiles ?? Infinity),
     price: (a, b) =>
-      (a.price?.level ?? Infinity) - (b.price?.level ?? Infinity) ||
-      (a.price?.min ?? Infinity) - (b.price?.min ?? Infinity)
+      a.price.level - b.price.level ||
+      (a.price.min ?? Infinity) - (b.price.min ?? Infinity)
   };
 
-  if (sorters[filters.sort]) {
-    items.sort(sorters[filters.sort]);
-  }
+  if (sorters[filters.sort]) items.sort(sorters[filters.sort]);
 
   return items;
 }
@@ -948,17 +912,9 @@ function selectRestaurants(filters) {
 function renderCard(restaurant, filters) {
   const dietaryKeys = [
     filters.diet,
-    "vegetarian",
-    "halal",
-    "vegan",
-    "glutenFree",
-    "nutFree",
-    "soyFree",
-    "dairyFree",
-    "eggFree",
-    "peanutFree",
-    "shellfishFree",
-    "wheatFree"
+    "vegetarian", "halal", "vegan", "glutenFree",
+    "nutFree", "soyFree", "dairyFree", "eggFree",
+    "peanutFree", "shellfishFree", "wheatFree"
   ].filter((key, index, array) =>
     key && array.indexOf(key) === index
   );
@@ -969,26 +925,20 @@ function renderCard(restaurant, filters) {
 
   const distanceText = restaurant.distanceMiles == null
     ? "Distance not confirmed"
-    : `${Number(restaurant.distanceMiles).toFixed(1)} mi`;
+    : `${restaurant.distanceMiles.toFixed(1)} mi`;
 
   const imageUrl = restaurant.imageUrl || "";
-  const menuUrl = restaurant.menuUrl || "#";
-  const cuisines = Array.isArray(restaurant.cuisines)
-    ? restaurant.cuisines.join(" · ")
-    : "Cuisine not listed";
 
   return `
     <article class="restaurant-card">
       <div class="restaurant-visual"
         style="background:${escapeHTML(restaurant.imageBackground || "#ffffff")}">
-
         <img
           src="${escapeHTML(imageUrl)}"
-          alt="${escapeHTML(restaurant.name)}"
+          alt="${escapeHTML(restaurant.imageAlt || restaurant.name)}"
           loading="lazy"
           onerror="this.style.display='none';this.nextElementSibling.style.display='block';"
           style="${imageUrl ? "" : "display:none"}">
-
         <div class="logo-fallback"
           style="${imageUrl ? "" : "display:block"}">
           ${escapeHTML(restaurant.name)}
@@ -997,12 +947,8 @@ function renderCard(restaurant, filters) {
 
       <div class="restaurant-info">
         <h2 class="restaurant-title">${escapeHTML(restaurant.name)}</h2>
-
-        <p class="cuisine-meta">${escapeHTML(cuisines)}</p>
-
-        <p class="restaurant-description">
-          ${escapeHTML(restaurant.description)}
-        </p>
+        <p class="cuisine-meta">${escapeHTML(restaurant.cuisines.join(" · "))}</p>
+        <p class="restaurant-description">${escapeHTML(restaurant.description)}</p>
 
         <div class="restaurant-facts">
           <p class="price-line">${priceSymbols(restaurant)}</p>
@@ -1013,7 +959,7 @@ function renderCard(restaurant, filters) {
 
         <div class="restaurant-actions">
           <a class="btn"
-            href="${escapeHTML(menuUrl)}"
+            href="${escapeHTML(restaurant.menuUrl)}"
             target="_blank"
             rel="noopener noreferrer">
             View menu ↗
@@ -1052,9 +998,7 @@ function renderRestaurants() {
       <section class="empty-state">
         <h2>No matching restaurants</h2>
         <p>Try another cuisine, a different budget, or a wider distance.</p>
-        <button class="btn" type="button" id="emptyClear">
-          Clear filters
-        </button>
+        <button class="btn" type="button" id="emptyClear">Clear filters</button>
       </section>`;
   }
 }
@@ -1069,13 +1013,7 @@ function clearFilters() {
 
 function initializeRestaurants() {
   const cuisines = [
-    ...new Set(
-      restaurantData.restaurants.flatMap(restaurant =>
-        Array.isArray(restaurant.cuisines)
-          ? restaurant.cuisines
-          : []
-      )
-    )
+    ...new Set(restaurantData.restaurants.flatMap(r => r.cuisines))
   ].sort();
 
   cuisines.forEach(cuisine => {
@@ -1083,11 +1021,8 @@ function initializeRestaurants() {
   });
 
   [
-    "cuisineFilter",
-    "priceFilter",
-    "dietaryFilter",
-    "distanceFilter",
-    "sortSelect"
+    "cuisineFilter", "priceFilter", "dietaryFilter",
+    "distanceFilter", "sortSelect"
   ].forEach(id => {
     byId(id).addEventListener("change", renderRestaurants);
   });
@@ -1095,9 +1030,7 @@ function initializeRestaurants() {
   byId("clearFilters").addEventListener("click", clearFilters);
 
   byId("restaurantGrid").addEventListener("click", event => {
-    if (event.target.closest("#emptyClear")) {
-      clearFilters();
-    }
+    if (event.target.closest("#emptyClear")) clearFilters();
   });
 
   renderRestaurants();
